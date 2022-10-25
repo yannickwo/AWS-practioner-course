@@ -1,0 +1,46 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture.
+In this lecture we're just going to have a quick look at the different compute
+services. So this will come up in your exam.
+You will be expected to know the different compute services.
+So we're just going to review what they are and we'll start with EC2.
+So this is basically just a virtual machine in the cloud,
+and we've used it extensively throughout this course.
+So I'm sure you all know what it is.
+We then have LightSail and these are basically simple cloud servers.
+So the difference between EC2 and LightSail is EC2 you deploy into like a VPC,
+which we're going to cover off us in a couple of lectures from now but basically
+it's a virtual data center in the cloud and you can control things like all the
+networking components, the firewall rules,
+you can connect it up with S3, with DynamoDB, et cetera.
+Whereas with LightSail it's much simplified process. So
+you basically pick the type of virtual machine that you want.
+So whether it's Windows or Linux and then the size,
+and it will deploy it for you,
+you don't get any of the customization that you would get with
+EC2. So it's a great way of just getting started with compute in the AWS.
+We then have Lamda, which is serverless compute in the cloud.
+So we covered that off in the last lecture and then we have batch
+computing,
+and this is basically a compute service that you use for batch computing.
+Moving on. We have Elastic Beanstalk,
+and this is a platform as a service compute service.
+So basically it will go in and provision things like your web servers,
+your database servers, and install things like MySQL, et cetera.
+So it's a way of deploying very quickly to the AWS cloud
+and it's all automated. We then have the serverless application repository,
+and this allows you to deploy pre-provision serverless applications,
+such as Alexa skills and we cover that off in the Certified Solutions Architect
+Associate course but essentially this is basically you've got pre-built skills
+that you can deploy into Lambda,
+and then you can go in and edit the code yourself and then we have AWS outposts,
+and this is a way of extending compute to your own data centers or on premise
+and then finally we have EC2 Image Builder,
+and this helps you build your own custom EC2 images for Linux and Windows.
+So you will get some scenario-based questions where it will just basically say,
+Hey, which of these, which of the following are compute services.
+So I want you to just to remember, I mean,
+you could just get away with remembering the main ones, so like EC2, Lambda,
+Elastic Beanstalk,
+and the serverless application repository, but try and remember all eight,
+if you can. So that is it for this lecture everyone. If you have any questions,
+please let me know. If not, feel free to move on to the next lecture. Thank you.

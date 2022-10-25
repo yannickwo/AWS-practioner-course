@@ -1,0 +1,316 @@
+Okay.
+Hello, Cloud Gurus, and welcome to this lecture.
+In this lecture we're going to look
+at Tagging and Resource Groups.
+So we have been tagging our EC2 instances
+as we've been going throughout this course,
+but you probably have terminated them already.
+So what I'm going to do is,
+I'm going to show you quickly a little demo of tags.
+Before we do, let's go onto what tags are.
+So, tags are basically just key value pairs
+attached to AWS resources.
+And they basically contain metadata.
+And metadata is just data about data.
+And sometimes tags can be inherited.
+So, if we're using CloudFormation, for example,
+and we decide to tag the Department Finance
+to a particular CloudFormation stack.
+When that CloudFormation stack
+provisions resources, such as EC2 instances,
+or RDS instances, et cetera,
+that department of finance tag
+will be inherited by all those resources.
+And so resource groups basically just make it
+easy to group your resources,
+using the tags that are assigned to them.
+So you can group resources that share one or more tags.
+Resource groups can contain information,
+such as our region, our name, our employee ID,
+our department, et cetera, et cetera.
+We're going to have a quick look at that
+in a lab in two seconds.
+And so tags can also contain specific information.
+So let's say for EC2, could contain
+our public and our private IP addresses.
+For ELB, it could have our port configurations.
+What ports are we going to open up on our
+elastic load balancers?
+Or, for RDS, it could contain our database engines,
+could tell you that this is a MySQL database,
+this is an Aurora database, et cetera, et cetera.
+So let's go over to the AWS console
+and have a quick look at Tags and Resource Groups,
+as well as the Tag Editor Feature.
+Okay, so here I am in the AWS Management Console.
+And you can see resource groups in here.
+And we've got various different options.
+We've got our saved groups.
+We can create a group.
+So this is a resource group.
+We can do our tag editor,
+or we can create a classic group.
+Now before I go and do that,
+what I'm going to do is, I'm going to go over to EC2
+and I'm going to provision a whole bunch
+of EC2 instances around the world.
+I'm going to provision
+four different EC2 instances around the world.
+You can watch the first one.
+So, we're in Northern Virginia,
+I'm going to go to EC2
+and I'm just going to provision an instance.
+And I'm just going to use the Amazon Linux AMI,
+Amazon Linux 2 AMI,
+and I'm just going to do the standard.
+And I'm going to leave everything as default,
+go ahead hit Next for our storage,
+going to leave that as default.
+And I'm going to start adding my tags.
+So I'm going to add four tags.
+So my name, this is going to be WebServer01.
+And then I'm going to add another tag,
+so we'll say Department.
+So this could belong to the Finance Department.
+And then I'm going to add another tag,
+this could be my region.
+So in here I could do Northern Virginia,
+just to make it easy.
+And then in here I will do my Employee ID.
+And I'm just going to enter a bunch
+of random letters and numbers.
+So this allows me to see that this is a web server,
+owned by the finance department,
+it's in Northern Virginia,
+and the person who provisioned it
+is this Employee ID.
+Next I'm just going to go in and do my
+standard security groups, so WebDMZ.
+I'm going to go ahead and hit Review and Launch.
+And I'm going to go ahead and launch this
+and using my existing Key Pair.
+And I'm just going to repeat
+that exact same, you know, motion
+for the next three different regions.
+So I'm going to spin up
+another three EC2 instances.
+And I'm going to put them in random regions
+around the world.
+Now you don't have to do this,
+you can just watch this video
+and you will understand how
+Tagging and Resources Groups work by the end.
+So I'm just going to pause the video,
+while I provision another three EC2 instances.
+Okay, so I've provisioned my instances.
+I've done it in four places around the world.
+And it's actually quite interesting what's happened.
+So I've done it in Northern Virginia,
+I've done it in Sydney,
+I've done it in, I think, London,
+and then I've also done it in Stockholm.
+Now, at the time of recording,
+Stockholm is a very new region,
+it's only a couple of weeks old,
+since it's come up online.
+And depending on when you watch this video,
+this may change for you.
+And so I want to show you Resource Groups.
+And Resource Groups is basically broken down
+into two different categories.
+You've got Tag Editor
+and then you've got Classic Groups.
+And if you click on Create A Group,
+here or here,
+it's going to open up exactly the same page
+that's in Systems Manager,
+which we'll cover that in a second.
+But let's just start with Tag Editor.
+So if we click on Tag Editor,
+in here we can select our regions.
+And I'm going to go through and select every region,
+but notice that Stockholm is not yet a region
+that is available for Tag Editor.
+So you will find that when new regions
+come up online, they might not have the full,
+you know, functionality immediately.
+It can take some time.
+So I've selected all my regions,
+in here I'm going select my Resource Types.
+I could just have EC2,
+I could have Instances Individually,
+or I could have all Resource Types.
+I'm going to do all Resource Types
+and I'm going to Sort By Department.
+And in here we can say Tagged With Any Value,
+but we could just say the Finance Department,
+or Marketing, or whatever.
+And then what you'd need to do
+is just click on Find Resources.
+And straightaway I can see my six EC2 instances,
+or rather three EC2 instances
+and three EBS volumes, spread around the world.
+I can't see Stockholm here yet,
+because it is not a region that is supported
+for this particular service just yet.
+And so I can actually drill in,
+so I can say, okay, show me this department,
+or this EC2 instances
+owned by the Finance Department.
+I can click in here and see all the other tags,
+so I can see which employee provisioned it,
+what the name of the resource is,
+and then the region that it's in.
+And then I can also click Manage Resources
+and that will drop me into the AWS Console,
+drop me straight into the EC2 instance screen
+and I can go in
+and make any changes there that I want.
+So Tag Editor is a great way
+of finding all your different tags.
+And back at that Tag Editor screen,
+what they can do is,
+let's say I want the Finance Department,
+I can go ahead and create
+a new Tag Key for the Finance EC2 instance.
+And I can select multiple values in here.
+So Tag Editor is a great way of adding,
+or being able to find your resources,
+as well as go in and create new tags.
+Now if we go back over to Resource Groups,
+one thing I will by the way just point out,
+is that Tag Editor is a global service.
+So this is global,
+you can't do it on a per region basis.
+You control the regions in here and sometimes,
+like I said, the newer regions do not exist.
+Now if we go over to our Create A Group,
+that will open up this screen here.
+And in here we can create a Query-Based Group.
+So we can go ahead and create a group,
+we're going to do it based on tags.
+Notice up here, my region has changed
+to Northern Virginia.
+So let's go over to EU Stockholm,
+which is where I created one.
+And then in here I'm going to go ahead and do,
+select Resource Type,
+so we're going to say All Supported, that's fine.
+And then in here my Tags,
+so I'm just going to write Department.
+And then I'm going to go ahead and hit Add.
+And then I'm going to scroll all the way down
+and we'll call this my, let's say, Department Stockholm.
+So what departments have resources in Stockholm.
+And I'm going to go ahead and hit Create Group.
+And that has now created a group.
+And I can see in here my Group Resources,
+so I've got an EC2 instance and an EC2 volume.
+Now what is really cool,
+is if we copy and paste this into our clipboard.
+And then we can go over to Execute Automaton.
+So this is AWS Systems Manager
+and it allows you to manage
+a whole bunch of EC2 instances at scale,
+so you could have literally thousands
+of EC2 instances.
+And you can go in
+and do some form of automation in there.
+So let's go ahead and what we'll do is
+we'll go AWS Stop EC2 Instance.
+We're going run it
+against this Resource Group.
+So I'm going to now say,
+I want to stop my EC2 instance.
+We're going to execute the entire automation at once.
+And we're just going to leave everything as Default.
+Just up here we're just going to go to our Targets
+and we're going to go to Resource Group.
+And then we're going to paste our name
+of our Resource Group in here,
+so it's our Department Stockholm.
+So basically what we're doing, is we're going
+to stop every EC2 instance in Stockholm.
+And go ahead and hit Execute Automation.
+What have I forgotten?
+Select Parameter, so in here it's based
+off our Instance ID.
+So go ahead and hit Execute Automation.
+And so that has now executed
+and it has been initiated.
+And you can see the overall status is Pending.
+And if, oh, it's almost In Progress,
+if we go over to our Services,
+click on EC2,
+make sure we're in the Stockholm Region,
+click on here.
+We can see that this service has now been stopped.
+So that's the two differences between them.
+When you're using your Groups,
+which is part of the Classic Groups,
+it's on a per region basis.
+So there is no global group.
+Whereas Tag Editor does work globally.
+And it's good to show you at the moment
+that you know, Tag Editor
+can take a little bit of time
+to be updated with the new regions.
+So right now Stockholm is not supported for Tag Editor.
+I'm sure by the time you watch this video it probably is.
+So onto my exam tips, so what are tags?
+Well, tags are simply key values pairs
+that are attached to AWS resources.
+They consist of metadata,
+which is simply data about data.
+And tags can sometimes be inherited.
+So when using CloudFormation,
+for example, all the resources that you create
+using CloudFormation
+will be tagged with the tags that you set
+when you first deploy
+that CloudFormation template.
+And just remember that Resource Groups
+make it easier to group your resources
+using the tags that are assigned to them.
+And you can group resources that share one or more tags.
+And we looked at an example where
+we could use a region, or we could use names,
+or we could even use health checks,
+or departments or employee IDs, et cetera, et cetera.
+And then just remember that using
+Resource Groups, you can also apply automation
+to resources tagged with specific tags.
+For example, we stopped all our EC2 instances
+in the Stockholm region in our lab.
+And then Resources Groups,
+in combination with AWS Systems Manager,
+allow us to control and execute automation
+against entire fleets of EC2 instances,
+all at the push of a button.
+So they put a stop to all our EC2 instances in Stockholm.
+I realize there was only one in our example,
+but if we'd gone on and added 100 different EC2 instances,
+you can see how useful
+Resource Groups and AWS Systems Manager can be,
+because we can stop all those.
+Rather than clicking on them individually,
+we can just click one button
+and stop 100 EC2 instances.
+So that is where
+Resources Groups and AWS Systems Manager
+can be really, really useful.
+And then also, just remember
+AWS Systems Manager and Resource Groups
+are on a regional basis.
+Tag Editor is a global service
+that allows us to discover resources
+and to add additional tags to them as well.
+And then newer regions may take some time
+to be compatible with Tag Editor,
+so we saw that with Stockholm.
+Hopefully by the time you watch this video,
+the Stockholm region would have been added.
+So that is it for this lecture, guys.
+If you have any questions, please let me know.
+If not, feel free to move onto the next lecture.
+Thank you.

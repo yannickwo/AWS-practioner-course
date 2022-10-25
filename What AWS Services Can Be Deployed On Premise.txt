@@ -1,0 +1,109 @@
+Okay, hello, Cloud Gurus,
+and welcome to this lecture.
+In this lecture, we're going to look at
+which services can be used on premise,
+so it's a bit opposite to the last lecture
+where we looked at which services are global.
+These are the AWS services
+that you can actually use on premise
+in your own data centers
+or inside your corporate headquarters,
+and it's important to understand this
+going into the certified cloud practitioner exam.
+So which AWS services can be used on premise?
+Well, the first is Snowball,
+and Snowball is just basically a gigantic disk.
+You essentially get it delivered to your headquarters,
+and then you load up all your data on it,
+and then ship it back to Amazon.
+So this is what a Snowball looks like,
+and typically they'll come out
+in 80 terabytes worth of size.
+So let's pretend you've got a hundred terabytes
+of information inside your data center
+or inside your corporate headquarters,
+and you've got a hundred megabit per second line.
+That's going to take you over 100 days to load up into AWS,
+and that could be, you know, that's over three months.
+If you get a Snowball, however,
+they come in 80 terabytes worth of size,
+so you need two of them to load up to 100 terabytes,
+and you could basically move that data
+into AWS within one week,
+so essentially, a Snowball is just like a gigantic disk
+that Amazon send out to you, you load your data into it,
+and then you send it back to Amazon
+who then load it into S3.
+A Snowball Edge is very much similar to a Snowball
+except that it also has CPU,
+and it's basically a computer with storage,
+and it allows you to deploy Lambda functions on premise,
+so you can actually have your Lambda functions,
+you know, right there on premise.
+Boeing used this in their aircraft
+to do testing on their aircraft.
+I don't know the specifics of it, but I do know that,
+you know, that's one use case of it.
+So it's essentially you would use a Snowball Edge
+where you can't get AWS connectivity.
+Maybe you're working in the Antarctic or something
+but you need AWS resources.
+You can use a Snowball Edge, and it comes with things
+like Lambda as well as storage.
+So those are two AWS services that can be used on premise.
+Next up is Storage Gateway.
+Storage Gateway is very similar to Snowball
+except it stays on premise at all times.
+It can either be physical or virtual,
+so you can have a virtual machine
+or you can have a physical device in your data center,
+and Storage Gateway is used in a number of different ways,
+but essentially it's a way of caching your files
+inside your data center or inside your headquarters,
+and it then replicates those files directly to S3,
+but it does mean that if in some cases,
+if you were to lose a internet connection,
+you still have those files locally.
+So Storage Gateway is another AWS service
+that can be used on premise.
+CodeDeploy is a way of deploying your code
+to EC2 Instances, but you can also deploy your code
+to your on premise web servers as well.
+We cover CodeDeploy in a lot of detail
+in the Certified Developer Associate course.
+For the purposes of the Certified Cloud Practitioner Exam
+you basically just need to know what it is and what it does
+and that you can use it to deploy applications,
+your applications on premise,
+and of course, CodeDeploy, the name is, you know,
+gives a big hint as to what it actually does.
+It deploys code.
+We then have Opsworks.
+Opsworks is similar to Elastic Beanstalk.
+We cover Opsworks off in a lot of detail
+in the Certified SysOps Administrator Associate Exam,
+so do check that out as well.
+Opsworks uses Chef,
+which is a way of doing automated deployments,
+and you can use Opsworks to deploy your application code
+to either EC2 instances inside the AWS Cloud
+as well as to your on premise,
+you know, web servers as well.
+And then IoT Greengrass is another AWS Service.
+It's basically IoT, but it connects your devices
+up to the AWS cloud,
+and that's an on premise service as well.
+So which AWS services can be used
+to deploy applications on premise?
+Well, we covered them both off.
+CodeDeploy, and the hint is in the name.
+It deploys code, so it can be on premise
+as well as into EC2, and then also Opsworks as well.
+So that is it for this lecture.
+It's very, very a quick one,
+so just remember which AWS Services can be used on premise:
+Snowballs, Snowball Edge, Storage Gateway, CodeDeploy,
+Opsworks and IoT Greengrass.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture.
+Thank you.

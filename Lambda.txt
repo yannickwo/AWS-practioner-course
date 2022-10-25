@@ -1,0 +1,189 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture in this lecture,
+we're going to look at AWS Lambda,
+and this is a fundamental topic to understand essentially at a high level,
+what the service is when you go into your exam. So in this lesson,
+we're going to go through a brief history of cloud we'll then look at what
+Lambda is. We'll look at the basics such as architectures,
+supported languages, pricing, version control,
+and the shared responsibility model.
+Essentially those last four items so supported languages, pricing,
+version control,
+and shared responsibility model are what you definitely need to know on the
+topic of Lambda going into your exam. We'll then look at what sets Lambda apart,
+and we'll look at Lambda in action, and then move on to our exam tips. Now,
+before we go onto the brief history of cloud,
+I just want to make it super easy for you to understand what Lambda is and how
+you use it. So Lambda in action,
+every time you speak to an Amazon Echo or speak to Amazon Alexa,
+you are directly talking to Lambda. You are directly interfacing with Lambda.
+So almost everyone who's watching this video has probably interacted with Lambda
+in some way, shape, or form. In fact, just by using the A Cloud Guru website,
+you're interacting with Lambda. Our entire website is serverless.
+It's all basically Lambda functions that respond to you via API Gateway.
+So let's have a talk about the brief history of clouds. Now,
+I've been quite fortunate.
+I've been in IT for over 10 years and I was around when it was all just
+data centers.
+I used to work at Rackspace and we would take an order for a server maybe
+somebody wanted two web servers and two database servers,
+and these would be physical machines that we would have to go out and purchase.
+We'd rack them. We do all the networking, we'd install the operating systems,
+the antivirus,
+install all the applications that we support and so when a customer
+placed an order,
+it would take between 10 to 20 business days for us to set that up.
+Now that might sound crazy to you now because you've been using EC2 and you can
+provision a virtual machine at the touch of a button and that's really where
+infrastructure as a service came in. So in 2006,
+Amazon launched EC2, and it was amazing.
+It was literally,
+you could spin up a server within minutes using an API call just by hitting a
+button in the, you know,
+the Amazon console and that server was then available to you and then if you
+didn't want it anymore,
+you could kill it off and it made a huge difference to the tech startup scenes,
+because suddenly you didn't need to buy or rent servers for months or
+years on end.
+You could just use-you could spin up an EC2 instance and pay for it by
+the hour and then when you didn't need it anymore you could terminate it and you
+didn't incur a lot of costs and even our platform,
+we never would've been able to get started without virtualization.
+If we had to go out and purchase servers it just would have been a non-starter
+for us and A Cloud Guru wouldn't exist. So that's infrastructure as a service,
+we then have platform as a service. This is things like Elastic Beanstalk.
+This is where it not just provisions like an EC2 instance,
+but also go in and provision like a web server could go and provision a database
+server, et cetera.
+Containers is a way of taking your code very popular container technologies
+called Docker. if you think about the way we move furniture around the world,
+so we've got, let's say some table and chairs in China,
+and you want to you know, move that to the United States. How do we do that?
+And how do we do that at scale? Well,
+we use C containers and they're all the same size the world over and all the
+ports and docks in the world are basically set up to move those
+C containers around and so containers in the virtual world is just a
+place to store your code where everything is standardized.
+So if you deploy your code into a container,
+you can run it on any web server anywhere in the world and that code will run
+exactly the same way.
+The problem with containers is still have to manage all the containers.
+With serverless we moved to Lambda and it's the ultimate abstraction layer.
+So this is a place where we store our code and our code basically just gets
+invoked every time it gets triggered. You don't have to worry about anything.
+You don't have to worry about the maintenance of operating systems, servers,
+antivirus, application versions, et cetera, et cetera. Literally,
+all you have to worry about is your code.
+So that's why it's called the ultimate abstraction layer.
+So what is Lambda? Well, like I said,
+ultimate abstraction layer gets rid of the management of things like data
+centers, operating systems, assembly, code, and protocols.
+Amazon manages all that for you. They manage all the hardware,
+the application layers, the AWS APIs,
+et cetera and then they manage the high-level languages that Lambda
+runs on and literally all you worry about is your code.
+So Lambda is a compute service where you can upload your code and create a
+Lambda function and AWS Lambda takes care of provisioning and managing the
+servers you use to run the code.
+You don't have to worry about operating systems, patching, scaling, et cetera.
+Lambda's event driven compute service that you can run your code in response to
+events
+and these could be things like changes to data in an Amazon S3 bucket or
+DynamoDB table.
+So let's say you've got a meme generation website and your user wants to create
+a meme. So they upload a photo and enter in some texts.
+As soon as that photo hits the S3 bucket,
+it could trigger a Lambda function and that Lambda function could take the texts
+that your user, you know,
+put in to the website and then essentially write that text over
+the image and then the Lambda function would then save that to another S3
+bucket. So that's how Lambda works.
+It's basically a compute service to run your code in response to HTTP requests
+using Amazon API Gateway or API calls made using the AWS
+SDKs and like I said, just by interacting with the A Cloud Guru platform,
+you are using Lambda right now. Our entire website is serverless.
+So let's have a look at traditional architecture before Lambda came out.
+So we would basically have an elastic load balance,
+or it could just be a normal load balancer if you weren't using AWS and then you
+would have your web servers and then you'd have your backend database.
+So it could be RDS or DynamoDB, et cetera,
+et cetera and then when Lambda came out essentially what you're doing is
+instead of hitting a load balancer,
+so you're hitting API Gateway and you're making API calls to API Gateway,
+which is then triggering your Lambda functions and then Lambda can store
+things in say RDS or DynamoDB, et cetera,
+et cetera but if truly serverless architecture would be where it's stalls things
+in DynamoDB and then you are literally just paying for execution
+time in this example below.
+So with the traditional architecture,
+you'll always going to have your RDS instance on,
+and you're always going to have your EC2 instance on,
+and you're always going to have your load balancer on.
+The way serverless architecture works is you only pay for these things when
+you're using them.
+So when you're making an API call or when you're triggering a Lambda function,
+or when you're storing data into DynamoDB,
+and it saves a fortune. In fact,
+we were able to run A Cloud Guru basically for free for the first two years
+because we, everything that we were doing was within the free tier limits.
+So we had almost no costs in terms of our overall IT spend
+using serverless architecture.
+So you can see how it really enables you to scale your business very,
+very quickly. You don't have to have all these ongoing costs.
+You only pay for something if somebody uses it.
+So in terms of what you should understand going into your exam about Lambda,
+there's really a full, important options. So supported languages,
+what languages does Lambda support? Well as of recording, it's Node.js, Java,
+Python, C#, Go, and PowerShell.
+You should understand how Lambda is priced.
+So it's priced on two different methods. It's the number of requests.
+So your first million requests are free and then it's basically 20 cents per
+1 million requests thereafter and then you also pay for
+duration.
+So this is calculated from the time your code begins executing until it returns
+or otherwise terminates and it's rounded up to the nearest 100
+milliseconds and the price depends on the amount of memory you allocate to your
+function and you're charged-I'm not going to read that out,
+but you're charged less than a cent for every gigabyte second used.
+So remember that it's charged on duration and it's also charged on the
+number of requests.
+The next thing you should know going into your exam is version control.
+You can use version control with Lambda to have multiple versions of your code,
+and you can roll back your code at any time restoring previous versions.
+Also understand the shared responsibility model,
+which we talked about in the security section of the course.
+So you're responsible for your code and what version of programming
+language that it's running but
+Amazon's responsible for basically everything else. So all the hardware,
+the operating systems,
+the security patching of the entire software stack, the antivirus,
+stopping people from going into the data centers, et cetera, et cetera.
+So the great thing about using Lambda here is you're not really responsible for
+much other than your code itself and the version of programming languages
+that it's running on. So why is Lambda cool? Why do I love Lambda?
+Why does A Cloud Guru love Lambda? Well,
+it means you can get rid of your traditional servers.
+You don't have to worry about having web servers and database servers and it
+scales automatically and continuously.
+So you don't need to worry about your Black Friday or Cyber Monday, you know,
+scaling events at Lambda,
+the way Lambda works is it scales automatically and like
+I said, it's super, super cheap.
+We didn't actually have any infrastructure bills until a couple of years after
+starting the company and just remember if you forget in your exam what
+Lambda is just remember that you use it every time you talk to an
+Amazon Echo. So every time you talk to Alexa,
+that's triggering Lambda functions in the AWS cloud and Alexa-essentially
+Lambda's talking back to you via Alexa going onto my Lambda exam tips.
+Just remember that Lambda scales out and not up.
+Lambda functions are independent.
+So one event equals one function.
+Lambda is serverless, and that's really important to remember.
+Know how Lambda is priced. This is really important to remember as well.
+So it's on is both per invocation as well as per execution
+time and you can have multiple versions of your code inside of Lambda
+and then finally just remember the shared responsibility model that you're
+responsible for your code and the version of the language that you're running
+and Amazon's responsible for everything else. So the hardware,
+the operating system, the security patching, antivirus, et cetera, et cetera.
+So that is it for this lecture everyone. If you have any questions,
+please let me know if not, feel free to move on to the next lecture. Thank you.

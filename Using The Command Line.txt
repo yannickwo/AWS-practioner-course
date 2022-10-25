@@ -1,0 +1,185 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture. In this lecture,
+we're going to learn how to use the AWS command line. So, like I said,
+in the last lecture we've been using the console to go in and provision EC2
+instances to provision S3 buckets to use IAM,
+but there are other ways you can interact with AWS and one of those ways is
+through the command line.
+So let's look at how we do that and this is a lab and you will need to log into
+the AWS console. Okay. So here I am in the AWS console.
+What I'm going to do is I'm going to go over to Identity and Access Management
+and if you remember, we created a user called Ryan Kroonenberg.
+So IAM you always find under security identity and
+compliance that's down here and then what I'm going to do is you can see my user
+and my group in here. If you haven't got that,
+just go ahead and recreate a user and give them administrative access.
+Test yourself if you can do that, if you can't remember how to do it,
+go back to the IAM lecture and here, we're just going to go to users.
+You probably when creating this user did not download
+the key.
+So if we click in here and if we just go ahead and go over to our security
+credentials. When we created this user,
+we gave them programmatic access to IAM.
+So we're given an access key ID and a secret access key. Now,
+if you have lost that for any reason, all you can do is just go in and hit,
+Make Inactive and go ahead and deactivate that that will then
+deactivate it and you can even go ahead and delete it and to confirm deletion,
+you just need to enter the access key ID
+and this is a really annoying one. So you just copy that into your clipboard,
+like so, and go ahead and paste it in here and then go ahead and hit Delete,
+and that will then delete it. So what I'm going to do is just recreate that key.
+So I'm creating my access key, like I said, you only ever get this once,
+so I'm going to download it and get my access key ID and then what I'm going to
+do is go in and close that the next thing we need to do is go in an
+SSH into our EC2 instance. So like I said,
+the easiest way to do that is by using our EC2 Instance Connect
+and I'm actually in the wrong availability zone in here.
+So I can see my instance in here and here's my web server. I can click in here.
+And then what I can do is go and hit connect and then using EC2 Instance
+Connect, I can go ahead and connect in. Now for the rest of this course,
+I am going to do it using a Mac using Terminal,
+just because it makes it a lot easier for you guys to read what I'm writing,
+because I can control the fonts, et cetera.
+but I would highly recommend it doesn't matter if you're a Windows user or a Mac
+user,
+I would highly recommend is using EC2 Instance Connect for the rest of this
+course, but it's entirely up to you. Windows users,
+you would need to log in using PuTTY. Mac users if you want to use Terminal,
+you can, or both of you can use EC2 Instance Connect. Now,
+Mac users, you remember that we logged in just by typing this command,
+SSH EC2-user at, and then public IP address.
+And then -i and then the name of our private keys.
+So mine was called my NV key pair KP for key pair.
+So I'm going to go ahead and hit enter and I'm now logged in.
+I'm going to elevate my privileges to root,
+and I'm going to go ahead and clear the screen. So for windows users,
+you just need to connect in using PuTTY type in sudo SU and then type clear,
+and we should all have the same screens now.
+So what I want to do is I want to show you how to use the command line.
+So we can use the command line by using the phrase AWS,
+and then we always use the service. So let's say it's AWS S3.
+So we want to use the AWS console or you want to use in particular S3 and we
+want to make a bucket.
+So we're going to type make bucket and then the name of our bucket,
+we'll call it A Cloud Guru 2019 CCP
+certified cloud practitioner and I'm going to go ahead and hit enter.
+Now this isn't going to work and the reason it's not going to work is it says
+unable to locate credentials.
+So we need to be able to configure this EC2 instance to talk to
+S3 and the way we can do that,
+there's two ways we can give it credentials so we can give it the credentials of
+Ryan Kroonenberg,
+the administrator access the administrator we just set up in identity access
+management,
+or we can do it using roles and we're going to just show you how to use roles in
+the next lecture. So in order to configure credentials,
+all we need to do is type in AWS and then configure and hit Enter.
+And now it's asking us for our access key ID and then our secret access key.
+So our access key ID is simply like our username and our secret access key is
+simply our password.
+I want you to go to your CSV file and get your access key ID and copy it into
+your clipboard. Okay. So I'm in that CSV file.
+I'm just going to grab this access key ID and copy it into my clipboard.
+Then I'm going to go back to my terminal window and I'm just going to paste it
+in here. Then I'm going to go back and grab my secret access key.
+I've got my secret access key. I'm going to paste it into my clipboard. Now,
+if you were to do this and copy the exact access,
+key ID and secret access key that you can see on my screen,
+if I haven't made this inactive,
+you can go in and start have you'd have full control of my AWS admin
+account so just bear that in mind, I'm not going to,
+after I've finished this lecture,
+I'm going to go through and delete this access key ID and secret access key.
+Embarrassingly,
+once I did expose my access key ID and secret access key
+in a lecture and it was actually AWS security who pointed it out to me,
+someone on the security team was doing my course and they decided to actually
+just manually type out my access,
+key ID and secret access key and they had full control of my AWS account,
+but they were very kind enough to drop me an email and say, Hey, Ryan,
+you need to delete this key.
+So I'm going to go ahead and hit Enter the default region name I'm going to do
+as US- then AZ and then -1. So US East 1,
+and I'm just going to hit Enter for my default output format.
+So I've now entered in my access key ID and secret access key.
+If I was to run the same command again. So AWS then S3,
+just make sure I haven't done a space. AWS S3 make bucket, and then S3,
+and then a :
+and // and we're going to call it A Cloud Guru-2019.
+Then -CCP hopefully announced stolen that bucket going to hit enter
+and there we go. We have now made the bucket.
+You can see make bucket a cloud guru 2019 CCP and if I type in
+AWS S3 LS, this is a command to list all my buckets.
+We can now see this new bucket, a cloud guru 2019 CCP,
+and we can see my Ryan and Faye bucket if I was to go ahead and type in
+echo. So echo just means to output and then hello
+and then I want to output this to hello.txt
+and I go ahead and do that. That has now outputted and created a file.
+If I type in LS,
+you can see it's called hello.txt and what I can do is I can type in AWS
+S3 and then copy and then it's hello.txt and where do I want to
+copy that? Well,
+I want to copy it to my S3 bucket and we're going to call it a cloud guru 2019
+and hyphen CCP, all lower case. If I type enter,
+you can now see that it's uploaded that file to that bucket.
+Let's go over to the AWS console and have a look. Okay.
+So here I am in the AWS console,
+just going to go back to AWS and click on services. If we go over to S3,
+which is under Storage,
+I'm just going to click in there and we can now see this bucket.
+We can see it in the GUI or in the console itself and if I click in here,
+I can see my object, hello.txt and it's six bytes insights.
+So I have now created a file.
+I actually created that on EC2 and then I copied it over from EC2
+to S3 and because my user has full administrative access,
+my user can do anything on the command line.
+My user could go in and provision many more EC2 instances.
+My user can go and start using machine learning and artificial intelligence.
+My user can create buckets. My users can literally do anything.
+Let's go back over to the the command line. So to keep things simple,
+I'm just going to clear the screen. Now, if we go over to our home directory,
+and then we go over to cd.aws,
+this is a hidden directory inside our home directory. And in here,
+we can see our configuration and we can see our credentials.
+We go over to our credentials. I believe it's a directory. It might not.
+That might actually be a file. It's a file.
+So if we type in nano and then credentials,
+so credentials and Nano is just like a text editor for Linux.
+in here, we can see my access, key ID and my secret access key.
+Now the big problem we have right now is what happens if this EC2 instance
+gets hacked?
+What happens if I give out my private key to someone and I leave port 22 open,
+and someone can just log into my EC2 instance,
+they can then just browse over to my home directory,
+go into the AWS directory and open up this file and they'll have my access key
+ID and my secret access key and like I said,
+you can use this access key ID and secret access key on any computer in the
+world and you have complete control of my AWS environment,
+use it via the command line. So we really do not want to expose this. In fact,
+we pretty much don't want to use access key IDs and secret access keys,
+wherever possible.
+So what we're going to do is I'm just going to go and quit this now.
+So I'm going to what I'm going to do is just type AWS configure
+again, and I'm just going to give it some bad information.
+So I'm going to change my access,
+key ID and secret access key and hit Enter and Enter. Now,
+if I type AWS S3 LS,
+my credentials are not going to work because it's now using an access key ID and
+secret access key that does not exist.
+So the next thing we're going to do in the next lecture is we're going to go
+ahead and look at roles.
+And we're going to look at how I role can help us basically communicate with
+S3 and other AWS services in a much more secure fashion but before we
+go onto that, let's have a look at my exam tips. So going into the exam,
+just to remember that you can interact with AWS in three ways:
+using the console which is what we've been doing before,
+using the command line interface or CLI which is what we've just been doing,
+and then by also using the software development kit,
+and that's beyond the scope of this course,
+that's where you actually start programming and you're using a programming
+language to interact with the AWS environment,
+but you do need to remember going into your exams,
+the three different ways of being able to interact with the AWS console.
+So that's it for this lecture, guys,
+hopefully you had fun with the command line. In the next lecture,
+we're going to look at a more secure way of communicating with the AWS
+CLI. So if you've got the time, please join me in the next lecture. Thank you.

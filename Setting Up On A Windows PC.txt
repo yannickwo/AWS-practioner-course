@@ -1,0 +1,112 @@
+Okay, hello Cloud Gurus, and welcome to this lecture.
+In this lecture we're going to look at how you can
+get set up to do the rest of this course
+if you're using a Windows PC.
+Now you will need to open up a web browser,
+and go over to Google.
+Okay, so I'm in Google,
+and all you need to type into Google is putty,
+hit enter, you get this URL.
+So Download PuTTY, it's chia... Chiark.
+So C-H-I-A-R-K.greenend.org.uk.
+Click on that and you'll be able to download the installer.
+Get the 64-bit installer,
+assuming you've got a 64-bit machine,
+most Windows users are.
+And go ahead and download that.
+Next thing you need to do is just go back to Google,
+and up here type notepad++.
+So it's notepad++ and go ahead and download this.
+This is a very famous text editor,
+it'll make it easy to download or to edit your code
+that we're going to be using in the rest of this course.
+So click on the current version,
+go ahead and hit the big download button.
+Make sure you don't fall for these adverts.
+Download the actual installer,
+and then you need to go over to your Downloads directory.
+Okay, so I'm in my Downloads directory,
+and so what we need to do now is install both PuTTY
+and notepad++.
+So go ahead and install that.
+I won't waste your time watching me install it.
+Okay, so I've installed both those applications.
+I want you to go back to your web browser,
+and you will need to log into the AWS Console.
+So go ahead and log in.
+Once you're logged in, you're going to get
+the following splash screen.
+Choose up here, you choose your region.
+So I want you to choose a region that's closest to you.
+So at the moment, I'm going to choose the
+Northern Virginia region, but you might want to
+choose the London region or the Californian region,
+et cetera and we're
+going to cover off what regions are in a little bit.
+But choose the region that is closest to you.
+Once you've done that, you need to go to compute,
+and then you'll need to click on EC2.
+And what we're going to go ahead and do is
+we're going to go ahead and down or create a key.
+So we go all the way down to Key Pairs.
+Click on Key Pairs, which is under Network and Security.
+And then what we want to do is go create our Key Pair.
+So what is this?
+Well this is basically a key to log into our web servers.
+So any server that we provision,
+this is the key to log into it.
+So give your key a name.
+I'm going to call mine ACloudGuru.
+You can give it any name that you want.
+And every time you create a key,
+it is unique to the region that you create it in.
+So this is only available to my web servers
+that will be in Virginia.
+But when I create some web servers in London,
+then I'll need to create a London key.
+So go ahead and hit create.
+Once that's downloaded,
+it'll download to your Downloads directory.
+What you need to do is you just need to go over to your
+start bar, and you need to scroll down and find PuTTY.
+PuTTY should be installed down here,
+so you see here PuTTY.
+And PuTTY will have a whole bunch of different
+applications in it.
+What you want is Puttygen.
+And this basically will generate our key.
+So this is downloaded as a .PEM.
+But in order to use PuTTY,
+we need to convert it to a .PPK file.
+The way we do that is we just click in here
+load an existing private key.
+And what we need to do is change the file type
+to all files.
+And then go to our Downloads directory,
+and then make sure you select the key
+that ends in .PEM.
+So mine's called ACloudGuru.pem.
+So going to open that up and it says it's successfully
+imported the foreign key, hit okay.
+And then all you need to do now is hit save private key.
+And it says, "Are you sure you want to save this key
+without a passphrase to protect it?"
+Just go ahead and hit yes,
+and we're going to save it in our Downloads Directory,
+and I'm going to call it ACloudGuru as well.
+Now this will save as a .PPK file rather than a .PEM.
+And if we just click back in your Downloads directory,
+we've got this cool little icon of a server wearing a hat.
+And that is your PPK file.
+And so that is it for this lecture.
+Once you've installed PuTTY, notepad++,
+and your PuTTY PPK file, you're all good to go.
+So in the next lecture,
+we're going to go and set up a billing alarm.
+A billing alarm will basically give us an alert
+when we go over ten dollars,
+or whatever amount that you specify.
+And then we're going to get our hands dirty with
+Identity Access Management or IAM.
+So if you've got the time,
+please join me in the next lecture, thank you.

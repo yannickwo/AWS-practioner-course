@@ -1,0 +1,171 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture.
+In this lecture we're going to look at CloudFront. So what is CloudFront?
+Well, CloudFront is Amazon's content delivery network or CDN,
+and a content delivery network is a system of distributed servers or network
+that delivers webpages and other web content to a user based on their
+geographical locations of the user, the origin of the webpage,
+and a content delivery server. So what does that actually mean? Well,
+let's look at how the internet works without a CDN.
+So let's say we've got a file server.
+It's sitting in London and it has a video file on it and let's say that file is
+about one or two gigs in size. So it's quite a large file.
+I've got our users from all over the world from North America, South America,
+South Africa, Australia,
+and India and they want to watch this video and the way they do it is they
+connect into London and they pull that video down and it can take an awful lot
+of time depending on where they are, depending on their connection speeds
+and it can be quite a slow process.
+So we have these things called CDN networks and they make the whole process a
+lot faster and before we look at how they work,
+we just need to explore three key pieces of terminology.
+So the first one is that we have edge locations and if you remember from the
+start of this course,
+we started talking about edge locations and there's always more edge locations
+than there are regions and this is basically the location where content will be
+cached.
+So this is where we cache our content and this is separate to an AWS region
+or availability zone. We then have our origin,
+and this is the origin of all the files that the CDN will distribute.
+So this normally will be an S3 bucket,
+but it could also be an EC2 instance or an elastic load balancer,
+or even Route 53.
+And then we have our distributions and this is actually the name given to the
+CDN, which consists of a collection of edge locations.
+So let's look at how this works from a CDN perspective. So here we are,
+we've got our origin, which is our S3 bucket,
+and that's where our files are sitting.
+So that's where our large video files of over a gig in size.
+We then have our users spread all over the world. Now,
+if CloudFront is turned on, this is what happens.
+Our users will first query the edge location and they will basically say,
+Hey, do you have a copy of this file? I really, really want to watch this video,
+but it's about a gig in size. Now, the edge locations,
+because this is the first user that's ever queried that a file,
+the edge locations will not have a copy.
+And what they'll do is they'll connect to the origin and they'll download the
+file to the edge location and the edge of the file is stored at that
+edge location and is then streamed to the user.
+Then when a second user comes in and queries the same file,
+that file is already cached at the edge location and that
+second user doesn't have to then download it from the origin.
+It doesn't have to then be downloaded from the S3 bucket in London.
+They can actually just it from an edge location nearest them.
+So in America or in South South America or South Africa or Australia,
+or in India or Singapore, APAC region, et cetera, et cetera.
+So that's how CloudFront and CDNs work.
+The first user is always going get that added latency.
+You can't get around that,
+but once the file is cached here at the edge location,
+all other users after that will be able to access it.
+And the file is cached for a number of a length of time and that's specified by
+a thing called TTL or time to live and TTLs are always given in
+seconds and usually you would have a TTL of about 48 hours.
+So basically the 48 hours after this user has access to that file.
+It's going to be cached here at the edge location for other users to be able to
+access it. So CloudFront can be used to deliver your entire website,
+including dynamic, static, streaming, and interactive content,
+using a global network of edge locations and requests for your content are
+automatically routed to the nearest edge location.
+So content delivered is always delivered with the best possible performance.
+So with CloudFront is two different types of distributions.
+You've got your web distribution, which is the one that we're going to use,
+and this is typically used for websites. And then we've got RTMP.
+This is used for media streaming for flash,
+and it's not a commonly used all that much anymore.
+Most people use the web distributions. So that being said,
+let's go ahead and set up a CloudFront distribution.
+We'll need to log into the AWS console. Okay. So here I am in the AWS console,
+I need to go over to services. Now you won't find CloudFront under storage.
+CloudFront is actually a networking tool,
+so you're going to find it under networking.
+So if we scroll down and need to find it, network and content delivery,
+and you can see here CloudFront,
+so it's a content delivery network and what we need to do is go ahead and create
+our first distribution. So, like I said, in the last slide,
+we've got two different types of distribution.
+So we've got web and we've got RTMP.
+RTMP is used for Adobe flash media servers.
+RTMP protocol completely beyond the scope of this course.
+We're just going to do a simple web distribution.
+In here we've got our origin's domain name and if we actually click in,
+you'll be able to see an S3 bucket, I'm going to use the Ryan and Faye S3 .
+bucket. Our origin path, basically inside out S3 bucket.
+We can have folders as our origins.
+but we're going to just use the entire bucket as our origin,
+rather than a folder within our bucket and here we can restrict bucket access.
+So we can say, Hey,
+we only want people to be able to access these files using the CloudFront
+distribution link. We don't want them to be able to access it using S3.
+I'm not going to do that. I'm just going to hit no,
+we're going to basically leave everything as default. In here
+you can actually say, Hey, I only want them to connect over HTTPS.
+I don't want them to use HTTP,
+but I'm just going to leave everything as default.
+In here this is where set out time to live.
+So this is how long our objects will be cached at our edge locations.
+I'm going to leave them all as default and basically I'm going to leave
+everything as default and go all the way down and hit create distribution and so
+now it's already generated a domain name for our distributions and distributions
+can take an awful lot of time to set up.
+This will probably not the status won't change for at least half an hour.
+So what I'm going to do is I'm going to pause the video.
+I'm going to wait for this distribution to be deployed,
+and then we'll go ahead and have a look at how we can use it. Okay.
+So it's been over an hour. This has now changed to deployed.
+So it has now deployed. In here I can grab my domain name.
+You can just move this across,
+and it's always a random series of letters and numbers then .cloudfront.net.
+So I'm going to copy this into my clipboard.
+In order to resolve the actual files,
+what am I going to do is just go back to services.
+I'm going to go over to S3 and we're going to go find out origin.
+My origin is of course my Ryan and Faye bucket.
+I'm going to click in here and I'm going to try and get my Faye Ryan hyphen
+Replay file. So I'm just going to type this into my browser.
+So here I am in my browser, I'm going to paste in my CloudFront distribution,
+and then I'm going to just do forward slash and it was called Faye I'll just
+double check.
+It was Faye Ryan hyphen replay Faye Ryan hyphen
+replay.jpg.
+I'm going to go ahead and hit enter and that has downloaded fairly quickly.
+If I do a command R or a control F5, if you're using windows.
+So we're doing a force refresh.
+You can see it's loading basically instantaneously.
+So it has cached this at an edge location nearest me and now basically,
+instead of going over to where this bucket was created,
+I think it was in Northern Virginia.
+It's actually getting this from a London edge location.
+So it goes incredibly quickly. So let's go to my exam tips.
+So in terms of my exam tips,
+just remember the three different types of terminology in CloudFront.
+So we've got our edge location.
+This is the location where the content will be cached.
+This is separate to an AWS region or availability zone.
+Our origin is just the origin of all of tthe files that the CDN will distribute.
+So this can either be an S3 bucket or an EC2 instance or an elastic load
+balancer, or Route 53,
+and then our distribution and that's simply the name given to the CDN,
+which is a collection of edge locations. So we created our distribution at now,
+and then we have two different types of distributions.
+We've got a web distribution,
+which is the one we just created and then we've got RTMP,
+which is used for Adobe flash media RTMP protocol is used for media
+streaming.
+One other thing you should note is the edge locations are not read only.
+You can write to them too,
+so you can actually put an object to them and so you can use S3 transfer
+acceleration, which we looked at in previous lectures,
+and that's basically using your edge locations to write files up to
+S3. So bear that in mind as well.
+Also remember that objects are cached for the life of the TTL for the time to
+live and TTL is always in seconds, and you can clear your cache objects,
+but you are going to be charged for doing that. So just to clean up,
+we'll go back over to services, go and find, CloudFront,
+which is under your network and content delivery and go ahead and click on
+CloudFront in order to delete this distribution first, you must disable it.
+Go ahead and hit yes. Disabled. It's going to take a while to disable again.
+It could be 20 minutes or so once that has been disabled,
+you can just click in here and click delete.
+So go ahead and delete that because we don't need this for the rest of the
+course. So that is it for this lecture. Guys, if you have any questions,
+please let me know. If not, feel free to move on to the next lecture. Thank you.

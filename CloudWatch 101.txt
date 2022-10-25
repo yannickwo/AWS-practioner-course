@@ -1,0 +1,56 @@
+Okay. Hello, Cloud Guru and welcome to this lecture. In this lecture,
+we're going to look at CloudWatch and we're going to look at CloudWatch at a
+very high level. Essentially,
+what you need to understand for the certified cloud practitioner exam is just
+what CloudWatch is. So what is CloudWatch? Well,
+CloudWatch is a monitoring service to monitor your AWS resources as well as the
+applications that you run on AWS.
+So CloudWatch is all about monitoring performance.
+Whenever you think of CloudWatch,
+I want you to think of a personal trainer with you at the gym,
+and they're monitoring your performance.
+They're making sure that you are lifting the right amount of weights, et cetera.
+So what does it actually mean in the AWS world? Well,
+CloudWatch monitor things like compute. They can monitor your EC2 instances,
+a commodity, your auto scaling groups, your Elastic Load Balancers.
+It can do things like your Route 53 health checks, et cetera, et cetera.
+it can monitor storage and content delivery. So it can look at your EBS volumes,
+which are just your virtual hard disks that are attached to EC2.
+It can look at things like storage gateway could look at things like CloudFront
+and then it also monitors the underlying physical host.
+So whenever you have an EC2 instance or a virtual machine,
+it's always sitting on a physical server somewhere and CloudWatch can actually
+monitor those physical servers as well. So it can monitor things like the CPU.
+It can monitor things like the network, the disk, the status checks.
+So whether or not the host is healthy or not, and that's it,
+that's all you really need to understand about CloudWatch going into the exam.
+Now, towards the end of this course,
+we are going to cover things like CloudWatch to CloudTrail to AWS
+Inspector, et cetera, et cetera but right now,
+all you need to understand is what CloudWatch is. So going into your,
+just remember what CloudWatch is used, it's used for monitoring performance.
+CloudWatch can monitor most of AWS as well as your applications, right?
+Run on AWS.
+you can actually create custom metrics so you can install it custom bits of
+software on your web servers.
+And you could monitor the number of users visiting your website,
+or you could monitor things like the number of open database connections to
+RDS, et cetera, et cetera.
+CloudWatch with EC2 will monitor events every five minutes by default.
+You can have one minute intervals by turning on detailed monitoring,
+and you can create CloudWatch alarms,
+which will then go and trigger notifications and CloudWatch. overall,
+just remember it's all about performance.
+So when you see CloudWatch in the exam, think of the you know,
+the example of a personal trainer, who's monitoring your performance
+and like I said, at the end of this course,
+we're going to compare a whole bunch of AWS services that sounds similar,
+but they all do different things.
+And when you go into the certified cloud practitioner exam, honestly,
+it's probably going to be worth about 10 marks,
+knowing the difference between CloudTrail, CloudWatch, AWS Inspector,
+AWS Trusted Advisor, et cetera, et cetera and we will cover all that off at the,
+the end of the course, but for now, just for me,
+but that CloudWatch is all about monitoring performance.
+So that is it for this lecture everyone. If you have any questions,
+please let me know if not, feel free to move on to the next lecture. Thank you.

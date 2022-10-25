@@ -1,0 +1,248 @@
+[Ryan} Okay. Hello, cloud gurus.
+And welcome to this lecture.
+In this lecture we're going to look at CloudFormation.
+Now CloudFormation is by far
+one of AWS's most powerful tools.
+And it's actually what got me
+interested in AWS to begin with.
+I used to be an infrastructure architect.
+So I would go out and build
+environments with physical servers.
+This would be hundred plus server deals
+that I'd be working across multiple sites.
+We had to put everything in from the sand,
+the networking gear, the firewalls,
+the load balances, the networking switches.
+And then we did this across multiple sites.
+So we had MPLS circuits.
+We had to figure out how to fail over from one to the other.
+And these deployments typically would take
+three to six months to provision
+just because of the complexity
+and the amount of physical hardware that you needed.
+And then AWS released CloudFormation.
+What CloudFormation does is
+it turns your infrastructure into code.
+And so what you do is you create these templates
+and you say, hey, create an EC two instance.
+That's a T2 micro and deploy it into this availability zone
+et cetera, et cetera.
+And this code can then be deployed in multiple regions.
+And you can actually go and codify your entire environment.
+And then basically provision that in multiple regions
+in multiple AWS accounts all within minutes.
+And it completely changed my perspective on cloud.
+I suddenly realized that AWS weren't playing around
+that they were going to be a very serious contender
+in the public cloud space.
+And that's when I started becoming obsessed
+with AWS and wanting to learn it because I knew
+as an infrastructure architect, my days would be numbered.
+Turned out to be one of the best decisions ever of my life.
+I love AWS and cloud formation
+is really what got me started on the journey.
+So what we're going to do in this lecture
+is we're going to look at CloudFormation.
+We gonna go and provision a very simple WordPress site.
+I'm going to caveat it right now
+and say the WordPress site won't actually work
+because the AWS CloudFormation template is out of date.
+It's provided by the CloudFormation team.
+And I have reported it to AWS
+but I haven't heard anything back yet.
+But you'll be able to see the EC two instances
+and the RDS instances, et cetera.
+You just won't be able to log in to WordPress
+and do the WordPress installation
+at least not without SSH into your EC two instance
+and changing the version of PHP.
+But that aside it will demonstrate to you the power
+of CloudFormation and what you can do with it.
+And if you are interested in learning CloudFormation
+we have deep dive courses on the A Cloud Guru Platform.
+So this is a lab
+and you will need to log into the AWS console.
+Okay? So here I am in the AWS console.
+And if we click on Services
+you'll find CloudFormation under Management and Governance.
+So you can see it in there.
+Go ahead and click on it.
+Right now I've got no stacks,
+so CloudFormation consists of stacks.
+So what we want to do is go ahead and create a stack.
+Now you can use your own templates.
+You can create templates and a designer
+or you can use a sample template.
+We're going to use a sample template.
+In here we're going to use
+a simple WordPress blog sample template.
+And it's basically gonna go
+and you can see the template in here.
+It's hosted in S3.
+If anyone works for AWS
+could you ask them to update this template
+so that the WordPress side actually works.
+It'd be really appreciated.
+I'm gonna go ahead and hit next.
+In here we gonna enter our stack name.
+So I'm just going to do a cloud guru.
+I'm going to copy that
+into my clipboard and do that for everything.
+So my database name, my database password, my root password.
+And then my user.
+I'm gonna change this over to a T2 nano
+or maybe do a T2 micro.
+It's up to you.
+Select a key in here
+so that you're going to use to connect into EC two.
+So I'm going to use my private key.
+And then I'm just gonna leave everything else
+as default
+hit next, scroll all the way down and hit next.
+And we're gonna go ahead and create the stack.
+So that is now provisioning the stack.
+And what is in this stack is a simple EC two instance
+as well as an RDS instance.
+So it's going in
+and creating and configuring EC two as well as RDS.
+And then when this is done
+we should be able to get what's called an output.
+And that will be a URL that we can connect
+in to our AWS environment.
+CloudFormation can take a little bit of time
+depending on how complicated the environment is.
+This is pretty easy environment.
+So it probably take you five or 10 minutes.
+If you're doing hundreds of servers, it can take hours.
+So it really depends on how complicated the environment is.
+So I'm just gonna pause the video
+and wait for this stack to be created.
+Okay, that has now been created.
+You can see here, it says, create complete.
+Now this stack is actually only
+provisioning an EC two instance.
+I thought it might do an RDS instance as well
+but not with this particular template.
+If we click in outputs, we'll be able to see the URL.
+If we click in here
+you can see that we're getting an error message.
+And it's just saying your servers running PHP version
+5.3.29, but WordPress requires at least version 5.6.
+Unfortunately, this isn't my template.
+So I can't go in and fix it.
+This is AWS's.
+So someone wants to let the people
+in the AWS CloudFormation team
+know that the template isn't currently working.
+That would be fantastic.
+But in any sense, it doesn't matter.
+I just wanna show you what CloudFormation
+is capable of doing.
+So it's not only just capable
+of provisioning EC two instances.
+It can do RDS instances.
+It can install software.
+It's a way of automating your entire infrastructure.
+In here we can actually go
+and have a look at the template itself.
+You can go in and view it in the designer
+and you can go in and design your own templates as well.
+So you see it in here.
+It's quite a simple template is just provisioning
+essentially a security group and an EC two instance as well.
+Now we do have entire deep dive course
+on CloudFormation on the A Cloud Guru Platform.
+If you do want to learn more about CloudFormation
+it is essential to understand CloudFormation inside out
+if you're going to work as a solutions architect within AWS.
+And that's it really for CloudFormation.
+Let's go and have a quick look
+at our EC two instance that's running.
+I think I've got a web server that's still running.
+Yeah, I do.
+So web server or one, that's not what was provisioned
+by our CloudFormation template, but this one was.
+You can see it's a T2 micro.
+And again, you can see it's
+in our default VPC, et cetera, et cetera.
+So you could go in and delete this instance
+but that's not the best way to clean up CloudFormation.
+The best way is to go into CloudFormation
+and delete the stack.
+So I'm gonna go back over to CloudFormation
+and then all you need to do is go in and hit delete.
+And this will delete the entire stack.
+So delete all the resources that the CloudFormation
+template provisions.
+So in this case, it's just an EC two instance
+and a security group.
+But if you were doing RDS instances
+or Lambda functions or whatever
+you would then be able to go in
+and delete all those resources as well.
+One thing I will show you actually
+which is kind of interesting.
+If you go into Lambda and click in here,
+we can actually use CloudFormation
+to create basically Alexa skills.
+And it's in the serverless application repository.
+This is essentially just using CloudFormation
+to provision Lambda functions.
+If you type in here,
+it's defaulting right here.
+It says Alexa skills kit, no JS.
+So this will basically deploy a fact skill for Alexa.
+And again, it's beyond the scope of this course
+to teach you how to design Alexa skills.
+We do do it
+in The Certified Solutions Architect Associate Course
+as well as The Developer Associate Course.
+It is an awful lot of fun.
+And then again, we have Alexa courses
+on the API Group Platform.
+The cool thing with building Alexa skills is
+you don't need to know how to program.
+You can actually just use CloudFormation
+to deploy all the skills for you.
+And then you can just get
+up and get started really, really quickly.
+And we show you how to do that
+in The Solutions Architect Associate Course as well.
+We just quickly go back and check out on CloudFormation.
+We'll just make sure
+that the stack has gone and it has completely disappeared.
+We go into EC two and just check that our running instances
+you can see that instance has now been terminated.
+So let's go onto my exam tips.
+Just remember what cloud formation is.
+It's a service that helps you model
+and set up your AWS resources
+so that you can spend less time managing those resources
+and more time focusing on your applications that run in AWS.
+And you create a template
+that describes all the AWS resources that you want.
+So this can be things like EC two instances,
+RDS instances, et cetera, et cetera.
+And AWS cloud formation takes care of the provisioning
+and configuration or configuring of those resources for you.
+You don't need to individually go in
+and create and configure your AWS resources
+like we did with our WordPress site
+and figure out what's dependent on what
+AWS CloudFormation handles all of that for you.
+So CloudFormation is fantastically powerful.
+Elastic Beanstalk, and CloudFormation of both free services.
+However, just remember that the resources
+that they provision such as EC two instances
+or IDs instances, et cetera, are not free.
+So the service itself is free
+but not the actual resource that it provisions.
+And then finally just remember
+that Elastic Beanstalk is limited
+in what it can provision and is not programmable
+whereas CloudFormation can provision almost any AWS service
+and is completely programmable.
+So that is it for this lecture everyone.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture.
+Thank you.

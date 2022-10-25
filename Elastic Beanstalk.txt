@@ -1,0 +1,130 @@
+Okay, hello Cloud Gurus
+and welcome to this lecture.
+In this lecture we are going to look at Elastic Beanstalk,
+and it's going to be a really really quick lecture.
+Essentially what Elastic Beanstalk allows us to do is,
+as you remember when we were setting up our EC2 Instance
+we went in and we had to install Apache, we had to get
+PHP and stuff working for our WordPress install,
+we did it all through a Bootstrap Script,
+but we still had to go in and do
+all of this sort of stuff kind of manually.
+What Elastic Beanstalk allows us to do, is we can
+provision our EC2 Instances, we can provision
+our security groups, we can provision our
+Application Load Balancers, et cetera, et cetera,
+all at the click of just one button,
+so we don't need to go in and do this ourselves,
+Elastic Beanstalk automates everything for us.
+All we need to worry about is our actual code.
+So Elastic Beanstalk is very powerful,
+it's basically a way of deploying AWS
+resources if you don't know all that much about AWS
+and then in the next lecture,
+what we are going to look at is CloudFormation,
+which takes this even one step further.
+So this is a LAB, we going to keep
+it very high level and quite quick.
+But you will need to log into the AWS Console.
+Okay, so here I am in the AWS Console,
+and you'll be able to find Elastic Beanstalk under Compute.
+And actually a popular exam question can be,
+name all the compute services, or,
+select all the compute services.
+So Elastic Beanstalk is one, EC2 is one,
+those are the two we've mostly covered off,
+Lambda is a serverless compute service.
+So just know these that are high level.
+So let's go into Elastic Beanstalk and if you've
+never used Elastic Beanstalk before,
+you're going to get a splash screen like this.
+Go ahead and hit Get Started.
+In here we're going to give our application a name,
+I'm just going to call it HelloCloudGurus,
+and then here we chose our platform.
+So we can have a pre-configured platform, such as PHP.
+And PHP and MySQL is what we were using
+when we installed WordPress.
+And we can use a sample application
+or we can upload our own code.
+I am just going to use a sample application,
+and go ahead and hit Create Application.
+So it's now in Creating My Environment.
+It's going to take a few minutes,
+so I'm just going to pause the video
+and wait for this environment to come back up.
+And you can see as we go through here
+it's created a security group.
+It's using Elastic Beanstalk,
+it's created an S3 storage bucket for the environment data.
+So it is going through and provisioning AWS resources.
+It's all completely automated,
+so you don't have to worry about anything.
+You literally with Elastic Beanstalk
+upload your code, and away you go.
+So I'm just going to wait for this to come up online.
+Okay, so my environment has now been deployed,
+so we've got down here all our recent events.
+We can actually go and have a look at our environment
+just by clicking in here, it's going to have a URL,
+and there you go,
+Congratulations!
+Your AWS Elastic Beanstalk PHP application
+is now running on your own
+dedicated environment in the AWS Cloud.
+And it also tells us what PHP version we're running.
+So I'm back in the Elastic Beanstalk Console,
+I can go in here and change my configurations,
+we can go and modify our instance types
+we can add load balancers in here,
+we can do a whole bunch of different things,
+change our capacity from being a single instance
+to Multi-AZ instances, et cetera.
+So Elastic Beanstalk will come up an awful lot
+in the Certified SysOps Administrator Associate exam,
+as well as the Certified DevOps Professional exam.
+It does not really come up much in the Cloud Practitioner,
+other than knowing what Elastic Beanstalk is,
+and Elastic Beanstalk is essentially just a way
+of deploying applications to the cloud,
+you don't need to know anything about AWS,
+you can literally just go in, upload your code
+and Elastic Beanstalk will inspect the code,
+and say okay, I need to provision
+a PHP environment for this.
+So that's all it is.
+So to delete this environment we just
+go over to Services, just click on Elastic Beanstalk again,
+and then just go up to Actions
+and go to Delete Application, and that will delete
+all the security groups, all the S3 buckets,
+the EC2 instances et cetera, et cetera.
+So feel free to just delete that application.
+So what are my exam tips?
+Well just remember what Elastic Beanstalk is,
+so with Elastic Beanstalk you can quickly deploy
+and manage applications in the AWS cloud.
+You don't have to worry about the infrastructure
+that runs those applications.
+So like we just saw, we didn't have to worry about
+provisioning an EC2 instance, we didn't have to worry
+about going in and installing PHP,
+we didn't have to worry about security groups,
+or S3 buckets or anything like that.
+Literally all we had to worry about is uploading
+our application and Elastic Beanstalk will
+automatically handle the details of capacity provisioning,
+load balancing, scaling,
+application held monitoring et cetera.
+So just remember what Elastic Beanstalk is,
+essentially it will grow out your infrastructure.
+Think of it just like a beanstalk, it'll grow out
+your infrastructure underneath you, and all you give
+Elastic Beanstalk is some code, and then it will
+provision the infrastructure underneath you,
+similar to the way a beanstalk grows very, very quickly,
+and that's where it gets its name.
+So that is it for this lecture guys, if you have
+any questions, please let me know.
+If not feel free to move on to the next lecture,
+where we look at CloudFormation.

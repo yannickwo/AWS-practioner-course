@@ -1,0 +1,223 @@
+Okay, hello Cloud Gurus.
+Congratulations, you're at the very last lecture
+of the billing and pricing section of the course,
+we're just going to summarize everything that we've learned.
+Now, if you remember from reading the exam blueprint section
+that billing and pricing is worth about 16%.
+To be honest, it is actually in my opinion
+worth a hell of a lot more on the exam.
+It features very, very heavily on the exam.
+So it is worth remembering all the billing and pricing stuff
+that we've learned in this section of the course.
+So that being said, the very first thing I do before sitting
+the exam is go ahead and read this white paper.
+And just remember the conclusion that while the number
+and types of services offered by AWS have increased
+dramatically, the philosophy on pricing has not changed.
+You pay as you go, pay for what you use, pay less as you
+use more and pay even less when you reserve capacity.
+If you can remember that going into the exam
+it will make your scenario-based questions a lot easier.
+Make sure you remember going into your exam
+the difference between Capex and Opex.
+So, Capex stands for capital expenditure,
+which is where you pay up front.
+It's a fixed sunk cost.
+And then Opex stands for operational expenditure,
+which is where you pay for what you use.
+I want you to think of utility billings
+such as electricity, gas, water, et cetera.
+Also, it's really crucial that you remember
+the four different pricing models.
+So we've got on demand the EC2,
+which is where you pay by the hour, or by the minute,
+we've got reserved, which is where you pay up front,
+and the longer you reserve and the more you pay up front,
+the more discount you get.
+We then have spot,
+which enables you to bid whatever price you want
+for instance capacity, however you only ever want to use
+this way your applications have flexible start and end
+Times and then finally, we've got dedicated hosts.
+This is a physical EC2 server that's dedicated for you
+and your use only.
+And this can help you reduce costs by allowing you
+to use your existing server bound software licenses
+such as VMware or Oracle.
+Also remember the free services Amazon VPC is free,
+Elastic Beanstalk is free, CloudFormation is free,
+Identity Access Management or IAM is free,
+Auto Scaling is free, Opsworks is free
+and Consolidated Billing is all free.
+But do remember that the services like Elastic Beanstalk,
+or cloud formation or Opsworks,
+where they're provisioning resources for you like EC2
+you will have to pay for those resources.
+So just remember that going into your exam.
+Definitely, like I said, read
+the How AWS Pricing Works white paper.
+I'd do that after this lecture, if you can.
+Remember the difference between AWS Budgets
+and Cost Explorer.
+So, Budgets is used to budget or predict costs
+before they're incurred, whereas Cost Explorer is used
+to explore costs after they have been incurred.
+And then I want you to remember the different support plans.
+So we have basic which is free,
+that's probably what you've got with your free tier account,
+developer's $29 a month.
+It always depends on your spend.
+So if you are using, it starts at $29 a month,
+but if you've got a massive production account,
+it can increase but it's starts at $29 a month.
+Business is $100 a month
+and then enterprise is 15,000 a month.
+The big difference between enterprise
+and all the other support packages is you get
+a technical account manager, TAM.
+So that's the main difference.
+If you see a scenario question where you need a TAM,
+you want the enterprise support package.
+You also get much better response time.
+So if you've got a business critical app,
+and you need a response time within 15 minutes or less,
+you want to go for an enterprise level account.
+So moving on to tags.
+What are tags?
+Tags consist of a bunch of different things,
+but essentially, their key value pairs
+that are attached to AWS resources.
+So they're basically metadata.
+Metadata is just data about data.
+And tags can sometimes be inherited.
+So we have a cloud formation template, for example,
+and we do a tag on it, all the resources of that
+cloud formation stack spins up will inherit those tags.
+We then also learn about resource groups
+and it makes it easy to create the resources
+using the tags that are assigned to them,
+you can group resources that share one or more tags.
+So you can put tags in your resource group.
+So might be a tag about the region that it's in
+or the name of the resource or whether or not
+it's going to need to pass health checks,
+et cetera, et cetera.
+Also, remember that using resource groups, you can apply
+automation to resources tagged with those specific tags.
+For example, in this section,
+we stopped all EC2 instances in the Stockholm region.
+So we're able to do that using AWS Systems Manager.
+And Resource Groups in combination with AWS Systems Manager
+allow you to control, execute, automate,
+control and execute automation against entire fleets
+of EC2 instances all at the push of a button.
+So AWS Systems Manager is very, very powerful,
+but you have to do your tags correctly.
+And then we learned that tag editor is a global service
+that allows us to discover resources and to add additional
+tags to them, and that newer regions may take some time
+to be compatible with the tag editor.
+Moving on to AWS Organization.
+So, there's two different types.
+There's AWS Organizations full access
+and then as AWS Organizations just with, you know,
+consolidated billing.
+This is full access.
+So you have your root account,
+you then have your different organizational units.
+So finance, developer, could be marketing, whatever.
+And then you have AWS accounts
+that will sit behind those organizational units.
+And then you can apply policies either directly
+to organizational units or to AWS accounts themselves.
+And some best practices when dealing with AWS organizations.
+Just make sure you always enable
+multi-factor authentication on your root account.
+Make sure you use a strong and complex password
+on the root account.
+And then always make sure that the paying account
+should be used for billing purposes only.
+You shouldn't really be deploying resources
+into the paying account.
+We then had a look at linked accounts.
+So, you can have a 20 linked accounts
+to organizations currently, but you can just add more
+just by going to this web address and you can add
+more accounts into your organizations.
+In terms of billing alerts when monitoring is enabled
+on the paying account.
+The Linked Account is also included.
+So you can have billing alerts
+across all of your AWS accounts.
+But then you can also still create individual billing alerts
+on a per account basis.
+And we also looked at CloudTrail.
+So, remember CloudTrail is for auditing,
+whereas CloudWatch is for performance.
+CloudTrail, basically, what you should do is on
+a Per AWS account and has also enabled per region.
+And what you should do is basically enable CloudTrail
+on your account and in all regions,
+and then you can consolidate your log data
+using an S3 bucket.
+To do this, what you should be doing is turning on
+CloudTrail in the paying account, then creating
+a bucket policy that allows cross account access,
+and then you turn CloudTrail on in all the other accounts
+and then use the bucket in the paying accounts.
+It's basically sending that data to a bucket, almost like
+to a black hole, and no one can go in and then change that.
+Moving on to consolidated billing with AWS
+that allows you to get volume discounts
+on all your accounts.
+Remember that unused reserved instances for EC2
+are applied across the group.
+And then in CloudTrail is on a per account
+and per region basis, like I just said.
+And essentially what you do is you aggregate all the data
+into a single bucket belonging
+to the paying account as well.
+Moving on to Quick Start,
+this is a way of deploying your environments quickly
+using CloudFormation templates built by AWS Solutions
+Architects who are experts in that particular technology.
+So, we looked at doing a exchange deployment
+and it was literally we could just click the button
+and it would spin up a CloudFormation template
+that would build out our Exchange servers,
+our Active Directory servers, et cetera, et cetera.
+So Quick Start is always on a per account basis.
+Do not confuse it with AWS Landing Zone,
+which is a solution that helps customers set up
+a multi AWS account based on AWS best practices
+and currently it will set you up
+with four different AWS accounts.
+A organizations account, a Shared Services account,
+a log archive account, and then a security account.
+And then moving on finally to our different calculators.
+So AWS Simple Monthly Calculator is used to calculate
+your running costs on AWS on a per month basis,
+it is not a comparison tool.
+If you're being asked to do a comparison, you want AWS's
+Total Cost of Ownership calculator,
+which is used to compare the costs of running
+your infrastructure on premise in the AWS cloud.
+And then you can use it to generate reports
+which you can give to your C-level execs
+to make a business case to move to the cloud.
+And then finally, just remember
+that these calculator questions come up a lot.
+So I would go and play with both calculators
+and make sure you're comfortable with them.
+I was having an issue with the TCO,
+cost of the TCO calculator using Chrome.
+I switched over to Safari and it worked fine.
+So if you do have some kind of issue,
+just switch browsers and that should fix it.
+So, that is it for this lecture, guys.
+You've done really, really well.
+There's one more section to go and then you're ready
+to take your cloud practitioner exam.
+So if you've got the time
+please join me in the next section.
+Thank you.

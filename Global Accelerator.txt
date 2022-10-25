@@ -1,0 +1,32 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture.
+In this lecture we're going to look at Global Accelerator.
+Now you just need to understand what Global Accelerator is at a high level for
+the CCP exam.
+So AWS Global Accelerator is a service in which you can create accelerators to
+improve the availability and performance of your applications for local and
+global users.
+So essentially it's just accelerating traffic to your applications and what
+you're doing is you're directing traffic to optimal end points over the AWS
+global network and this improves the availability and performance of your
+internet applications that are used by a global audience.
+So how it works is basically it uses Amazon's dedicated network.
+So Global Accelerator sends your users traffic through AWS has global
+network infrastructure, improving your internet users performance by up to 60%.
+So when you're sending traffic across the network,
+you're using Amazon's dedicated network.
+It's not traversing a whole bunch of different ISPs, et cetera, et cetera,
+it's using Amazon's dedicated backbone network
+and this means that when the internet is congested,
+Global Accelerator's automatic routing optimizations will help keep your packet
+loss, jitter, and latency consistently low.
+So going into the exam,
+you just need to know what Global Accelerator is and where you would use it.
+So Global Accelerator is a service which you create accelerators to improve
+availability and performance of your application for local and global users and
+just remember that it's using Amazon's dedicated backbone network and this
+improves your internet users performance by up to 60%.
+So if you see any a scenario-based questions where it's asking how you can
+increase reliability and consistency when the internet is congested,
+I want you to think of Global Accelerator.
+So that is it for this lecture everyone. If you have any questions,
+please let me know. If not, feel free to move on to the next lecture. Thank you.

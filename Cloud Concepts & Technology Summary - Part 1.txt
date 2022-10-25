@@ -1,0 +1,287 @@
+Okay. Hello, Cloud Guru and welcome to this lecture.
+So in the next two lectures,
+we're just going to summarize everything we've learnt in this section,
+cloud concepts and technology. You have learnt an awful lot, to be honest,
+you probably more than 50% of your way there for passing this exam.
+So let's go ahead and review what we've learnt.
+I've broken this up into two parts because it does get quite long.
+Feel free to have a break halfway in between, get yourself a coffee, et cetera,
+et cetera. So we started off learning about the six advantages of cloud,
+which is you can trade capital expense for variable expense.
+So instead of buying a server upfront,
+you can pay by the minute or even by the second,
+you can benefit from massive economies of scale.
+You don't want to compete with Amazon. When they go and purchase these servers,
+they actually build them themselves. Stop guessing about capacity.
+You should do things like auto scaling so that you scale in line with your
+demand. You can increase your speed and agility.
+Just like I use the example of the A Cloud Guru platform was built in four
+weeks. So we were able to get our platform up off the ground in four weeks,
+and then stop spending money running and maintaining data centers. Again,
+don't try and compete with Amazon,
+let them do the heavy lifting for you and the final advantage of cloud is you
+can go global in minutes, you can deploy your websites to Tokyo,
+to Ireland, to Dublin, to London, et cetera, et cetera.
+So you can go global in minutes and then know the three different types of cloud
+computing. So you have infrastructure as a service.
+This is essentially using EC2. We then our platform as a service,
+a good example of that would be Elastic Beanstalk.
+And we then have software as a service and I use the example of Gmail.
+Moving on, know the three different types of cloud computing.
+So we've got public clouds. This is AWS, Azure,
+GCP, Alibaba. We've got hybrid,
+which is a mixture of public and private cloud and then private cloud or on
+premise cloud,
+which is where you manage it in your data center and it's typically using
+OpenStack or VMware.
+Always understand the difference between a region and an availability zone and
+an edge location. A region is a physical location in the world,
+which consists of two or more availability zones.
+An availability zone is one or more discrete data centers each with redundant
+power, networking, and connectivity housed in separate facilities and of course,
+edge locations are endpoints for AWS, which are used for caching content.
+Typically this consists of CloudFront Amazon's content delivery
+network. When choosing your AWS region or the right AWS region for you,
+you should consider a few things. First of all,
+consider your data sovereignty laws.
+Do you have to have your data within England, for example,
+or within the United States or within Canada? Et cetera, et cetera,
+is there some kind of regulation I'm making sure that you keep your customer's
+data in the country in which they reside?
+Also consider latency to your end users the majority of your customers in you
+know,
+North America and therefore you should probably provision your AWS resources
+in US East 1 or US West 1, et cetera.
+You don't want to provision your AWS resources in Tokyo if the majority of your
+customers are in the United States and then also consider what AWS services you
+need, do you need the latest and greatest AWS services? Well if so,
+you probably want to provision it in US East one for example Glacier,
+which is a data archival service didn't come to
+Singapore for a couple of years until the Singapore region was launched.
+So do just bear that in mind as well.
+Moving on to understand the different support packages.
+So we learnt this when we started to sign up to our AWS account,
+we've got the basic, which is free. We've got developer, which is $29 a month,
+but again, scales based on usage. Business starts at a hundred dollars a month.
+Again, it scales on usage and then we've got enterprise,
+which is $15,000 a month. Again, it scales based on usage. However,
+with enterprise,
+you get a technical account manager or a TAM and a big shout out to any TAMs
+watching this course,
+moving on billing alerts and billing alarms will alert you automatically when a
+certain level of AWS spend has been reached. So we set one up for $10.
+If you're learning AWS for the first time,
+you should turn it on so that you don't spend money without realizing it.
+We then looked at identity access management when we started logging into the
+AWS console.
+So IAM stands for identity access management.
+You don't specify a region when dealing with IAM.
+It is global and when you create a user or a group,
+these are created globally.
+We then went on to look at the different ways in which we could access the AWS
+platform.
+So we can do it via the console programmatically using the command line,
+as well as using the SDKs. So we saw that in IAM,
+when we were creating our users,
+we could give them console access or programmatic access.
+We also learnt that the root account is the email address that you use to set up
+your AWS account. The root account always has full administrator access.
+You should never give these account credentials away to anyone. Instead,
+you should be creating a user for each individual individually within your
+organization, and you should always secure this root account,
+using multifactor authentication, which we did using Google authenticator.
+A group is simply a place to store your users.
+Your users will always inherit the permissions that the group has.
+Example groups might be developers, system administrators, human resources,
+finance,
+et cetera and then to get set the permissions in a group you would need to
+create or attach a policy to that group. Policies consists of JavaScript,
+object notation,
+or JSON and these are referred to as key value pairs and you always have your
+keys such as the name and then the value. So here we go,
+we've got name and then A Cloud Guru.
+we then went on from IAM to S3, and we learned all about S3.
+So we learned that S3 is object based.
+It allows you to store and upload your files.
+Files can be zero bytes all the way up to five terabytes.
+There's unlimited storage files stored in these things called buckets.
+It's basically a folder in the cloud. That's what a bucket is.
+S3 is a universal namespace.
+So your names must be unique globally and this is what an S3
+name will look like. So it's S3 and then hyphen, and then the region.
+So euWest1.Amazon.aws.com
+and then forward slash and your bucket name.
+We then learnt that S3 is not suitable to install operating systems on and when
+you upload objects to S3,
+you're going to generate a HTTP 200 status code.
+We learned about the key fundamentals of S3. So we've got a key.
+This is simply the name of the object, the value. This is simply the data,
+and it's made up of a sequence of bytes.
+We then went on to learn about the consistency model for S3.
+So if you put an object up in S3 immediately,
+so a new object, you will be able to read that new object straight away,
+but then if you are actually updating an object or deleting an object,
+it can take some time to propagate. So you would get eventual consistency.
+So basically if you update an object and you go to read it immediately,
+you may get the old object. You may get the new object.
+If you wait a couple of seconds, then it'll be consistent.
+You'll get the newly uploaded object. Remember that when you view your buckets,
+you view them globally but you can have buckets in individual regions.
+So you can have a bucket in US East one, you can have a bucket in Sydney,
+you can have a bucket in Tokyo,
+but when you actually go into S3 to view all your buckets,
+you can view them at a global point.
+You can also replicate the contents of one bucket to another bucket in another
+region. This is called cross-region replication.
+So say you've got a bucket in US East 1,
+and you want to have a backup bucket Sydney,
+as soon as you write that file to S3 be replicated automatically over to
+Sydney. We then learned about S3 Transfer Acceleration.
+This is basically where you've got your users all around the world and instead
+of uploading directly to your S3 bucket,
+they upload to an edge location that is then basically goes
+over Amazon's backbone network,
+which is Amazon's own dedicated like cables and it's then transferred
+to S3 and we had a look at that.
+We used this little tool to see how good it
+worked and it basically increased our speed anywhere from like 20%,
+all the way up to 300% for every single region apart from Ireland.
+Moving on, we learned about the different six different types of S3
+storage classes. So we've got S3 standard. This gives you 99.9,
+9% availability and 11 nines durability.
+It's also stored across multiple availability zones,
+and it's actually designed to sustain the loss of two facilities concurrently.
+Then S3 infrequently accessed
+this is for data that's access less frequently,
+but requires a rapid access when you need it. It's lower than S3,
+but you're still charged or a retrieval fee.
+You have S3 one zone infrequently access.
+This is where you want quite a low cost for infrequently access data and you
+don't even require multiple availability zones. We have S3 intelligent tiering.
+This was released at Re:Invent in 2018.
+It's designed to optimize costs by automatically moving your data to the most
+cost effective tier and it uses machine learning to do that.
+We have S3 Glacier. This is a secure, durable,
+unloaded cost storage costs for data archival.
+Your retrieval time is configurable from minutes up to hours.
+We then have S3 Glacier Deep Archive. Again,
+this was released at Re:Invent 2018,
+and this is where our retrieval time of 12 hours is acceptable.
+It's the lowest cost storage class that you can get with S3.
+We learned that you can use bucket policies to make everything in an S3
+bucket public.
+We also learned you can go and use S3 to host static websites,
+such as .HTML and we created our own static website.
+We learnt that websites that require database connections,
+such as Wordpress cannot be hosted with S3.
+We also learned that S3 scales automatically to meet our demand.
+Many enterprises will use a static websites in S3 if they think there's going to
+be a large number of requests, such as a movie preview, for example.
+We then looked at CloudFront and how CloudFront works. So we have our origin,
+we have our users all around the world. We have our edge locations,
+basically the first time a user goes and requests a file.
+It queries an edge location. If that file is not on that edge location,
+it will download it from our origins. So from our S3 bucket,
+the next time a user goes and uses it, that file will be at our edge location.
+So you don't have to go all the way back to London.
+You can just get it from your nearest edge location.
+So edge locations is just the location where content will be cached.
+This is separate to an AWS region or availability zone.
+Our origin is just the origin of the files that the CDN will distribute.
+This can either be an S3 bucket,
+or an EC2 instance or an Elastic Load Balancer or Route 53 and then
+we learn about our distribution.
+This is the name that's given to the CDN network,
+and it consists of a collection of edge locations.
+We have two different types of distributions we used when we created our
+CloudFront distribution, we used a web distribution.
+This is typically use for websites. We also have a RTMP.
+This is used for Adobe flashes or streaming.
+so it's used for media streaming as well and we let the edge locations are not
+just read only. You can also write to them and you can put an object to them,
+which is what we looked at when we were looking at Transfer Acceleration.
+Remember also that objects are cached for the life of the TTL.
+TTL just stands for time to live and it's always in seconds,
+and you can clear cached objects from your edge locations.
+Maybe you've cached an object and you don't want it to maybe it's incorrect
+image or something, but you will be charged.
+Moving on we started to look at EC2.
+So we learned that EC2 is a web service that provides resizable
+compute capacity in the cloud.
+It reduces the time required to obtain and boot a new server instance to
+minutes, which allows you to quickly scale capacity,
+both up and down as your computing requirements change,
+we learned about the different pricing models for EC2. So we have on demand.
+This is where you pay by the hour we have reserved.
+This is where you have contract terms of one or three years and the more you pay
+upfront, the bigger discounts you get, we then have spot.
+This allows you to bid whatever price that you want for instance capacity and if
+it hits your spot price, then basically it will provision the EC2 instances.
+If your spot price goes up above your bid price,
+you're going to lose those instances. We have our dedicated hosts.
+These are physical EC2 servers that are dedicated to you.
+These are really useful for server bound software licenses,
+or if you've got regulatory issues,
+basically saying you can't have multitenant virtualization and we also
+learned that if the spot instance is terminated by EC2,
+you're not going to be charged for that partial hour of usage. However,
+if you go in and terminate the instances yourself,
+you are going to be charged for any hour, in which the instance ran.
+So moving onto our different instance types. Do you remember the pneumonic?
+Well, it was F for FPGA, I for IOPS, G for graphics,
+H for high throughput, T for general purpose so think T2 micros, D for density,
+R for RAM, M for main choice for general purpose apps, C for compute,
+P for graphics so think pics, X for extreme memory,
+Z for extreme memory and CPU,
+a for arm-based workloads and U for bare metal and that basically spells
+out fight fight Dr. McPxz au and you can fight to her either in Austin,
+Texas, or in Australia. Now, like I said,
+you don't actually need to remember this going in to the cloud practitioner
+exam. This will really help you later on if you decide to do certified SysOps
+administrator or any of the specialties or any of the professionals,
+it can also help you in job interviews because essentially you basically know
+every single EC2 instance types and where it helps you in the exams is they'll
+often throw in a question where one of the answers is talking about a k
+instance type for example
+and you'll know if you remember this pneumonic going into the exam,
+that there is no K instance types. We then looked at EBS.
+EBS is split into SSD as well as magnetic storage SSD consists of two.
+So we've got general purpose SSD. This is referred to as GP2,
+and we then have provisioned IOPS SSD.
+This is for very high performance SSD volumes.
+So it's often referred to as IO1. Then on our magnetic,
+we have throughput optimized. So we have ST1. This is low cost,
+hard disk volume designed for frequently access throughput,
+intensive workloads. We then have cold hard disk drive.
+This is the lowest cost hard disk drive volumes that are designed for less
+frequently access workloads. So think of file servers,
+and we then also have magnetic,
+which is previous generations and will probably be phased out. At some point,
+you learned that EC2 is compute-based service. It is not serverless.
+It is an actual server.
+you learned that you need to use a private key to connect to EC2.
+We looked at common ports when we were looking at our security groups.
+So Linux operates when you want to administer a Linux server,
+you're going to use SSH. This is on port 22.
+If you're going to operate a Microsoft server,
+you're going to be using remote desktop protocol or RDP.
+This is on port 3389 and then HTTP and HTTPS HTTP
+is on port 80 and HTTPS is on port 443.
+We learnt how a firewall works. So this is an AFA 5505,Cisco
+firewall basically to let everything in, we open up 0.0.0.0/0. If we
+just want one IP address in we're going to do the individual IP address and then
+a slash 32.
+We learned that security groups are basically virtual firewalls in the clouds.
+You need to open up ports in order to use them.
+So popular ports is like what I just said,
+SSH so 22 HTTP 80 and HTTPS 443,
+and then RDP for windows,
+which is 3389 and then finally we learned that we should always design for
+failure.
+So things fail all the time and you should always have one EC2 instance in each
+availability zone. So if there is a failure, you're not going to have an outage.
+So going to end the summary here,
+I want you to go make yourself a break just to have a rest and then go get a cup
+of coffee and come back and then we'll finish off the summary for the rest of
+section two, and then you'll be able to move on to section three.
+So you're almost there. Go and have a break. Thanks.

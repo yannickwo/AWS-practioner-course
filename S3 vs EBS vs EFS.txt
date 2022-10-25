@@ -1,0 +1,81 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture. In this lecture,
+we're going to look at our three different storage options for AWS
+that we've learned about so far. So S3, EBS, and EFS,
+and basically in the exam, you're going to get scenario-based questions,
+which will test you as to what storage medium you should
+use. So we're going to start with just covering what S3 is.
+We'll go through the basics.
+We'll look at EBS and then what EFS is and then we'll look at the key
+differences and we'll move on to our exam tips.
+So you probably remember what S3 is, but if not here is a reminder.
+It provides developers and it teams with a secure, durable,
+and highly scalable object storage.
+It's easy to use with a simple web services interface to store and retrieve any
+amount of data from anywhere on the web.
+So this is a great place to store your objects or store your files.
+That's what you would use S3 for.
+So every time you hear about storing pictures or videos
+or any kind of file storage, you would use S3.
+You can't install an operating system on S3 and you can't install a
+database on S3. That's not what it's used for.
+So this is used for basically it's used for flat objects.
+It's used for static files, things that don't change.
+So that's what S3 is. It's a safe place to store your files.
+It's object based storage,
+and the data is spread across multiple devices and facilities.
+So what's EBS? Well, EBS stands for elastic block store.
+This is where you have storage volumes and think of EBS as just a virtual hard
+disk in the cloud and this is a place where you have persistent block
+storage volumes for use with EC2 instances in the cloud.
+And EBS is perfect for installing operating systems on it's perfect for
+installing databases on et cetera. That's what it's designed for.
+Just think of it, like I said, as a virtual hard disk in the cloud. Yes,
+you can also store files and stuff on EBS.
+but you won't get the same levels of redundancy as with S3,
+and it's a bit harder to make those files publicly accessible than using
+S3. So if you see any question about storing objects,
+I want you to think of S3.
+If you say any question about installing operating systems or databases think
+EBS. The good thing about EBS is it's automatically replicated.
+So each EBS volume is automatically replicated within its availability
+zone to protect you from component failure.
+So you still get some high availability,
+but it's still within one availability zone and EBS, like I said,
+is a virtual hard disk in the cloud. EFS is elastic file system,
+and this is a file storage service for for EC2
+instances. So it's very much the same thing as EBS in that.
+it's a place where you can you know, go in and install a database, for example.
+but it doesn't come as a set size.
+So if you install a database on EFS and it's like 10 gigs,
+and then you start adding more and more data to that EFS will automatically grow
+or resize itself to fit that database.
+That's why it's called elastic file system.
+So this is a great use case for this will be things like content management
+systems,
+file servers and the cool thing about EFS is multiple EC2 instances
+can access the same EFS store. So again,
+if you hear anything setting up a content management system or a centralized
+file server you probably would be using EFS.
+EFS is easy to use.
+It provides you with a simple interface that allows you to create and configure
+file systems quickly and easily.
+So the difference between EFS and EBS is that EFS is elastic.
+It automatically adjust the size as you add to it, or remove files from it.
+So going into the exam,
+just remember that S3 is used for storing flat files like objects.
+So things like pictures, documents, videos, et cetera.
+You do not install an operating system or database on it.
+If you want to do that, you can look at EBS.
+This is a virtual disk that can be attached to an EC2 instance.
+The size of the disc can be changed,
+but it's not done automatically and then EFS is a virtual disk that can be
+attached to EC2 and it can be attached to multiple EC2 instances and the size of
+the disc is elastic.
+Essentially it scales up and down depending on your usage.
+Now you can also attach EBS to multiple EC2 instances as well.
+It used to be that you couldn't, but now you can.
+So the main difference between EBS and EFS is just that EFS
+automatically resizes,
+depending on how much you're using it whereas EBS does not.
+So this is it for this lecture everyone. If you have any questions,
+please let me know. If not, feel free to move on to the next lecture. Thank you.

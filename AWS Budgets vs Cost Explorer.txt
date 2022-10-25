@@ -1,0 +1,48 @@
+(Ryan) Okay, hello Cloud Gurus
+and welcome to this lecture.
+In this lecture we're going to look at the differences
+between AWS Budgets versus AWS Cost Explorer.
+So start with AWS Budgets, basically AWS Budgets
+gives you the ability to set custom budgets
+that alert you when your costs or usages exceed
+or are forecasted to exceed your budgeted amount.
+So essentially you use it to budget costs
+before they have been incurred.
+So that's all AWS Budgets is,
+it's a way of creating a budget for your AWS account
+and it's used to forecast costs
+and to alert you of costs before they have been incurred.
+AWS Cost Explorer is basically the opposite.
+So AWS Cost Explorer is an easy-to-use interface
+that allows you to visualize and understand and manage
+your AWS costs and usage over time
+and it's used to explore costs
+after they have been incurred.
+Let's have a look at these two in the AWS Console.
+So here I am in the AWS Console.
+In order to get to it just click up here
+and go over to your billing dashboard,
+and in here you'll see the two different ones.
+We've got Cost Explorer and we've got Budgets.
+So Budgets, you can go in here and create a budget.
+I'm not going to do it because it's really,
+I mean you can do it in your own account if you want.
+But really going into the exam you only need to know
+the differences between the two different services.
+I just wanted to show you how to find them.
+Cost Explorer is in here.
+You have to enable Cost Explorer in order to start getting
+metrics on it so you can click in there to enable it,
+and it's literally a one click, you know, service,
+and it will start populating data straight away
+but it can take up to 24 hours to populate spend data
+for your AWS account.
+So onto my exam tips, just remember the differences
+between Budgets and Cost Explorer.
+Budgets is used to budget or predict costs
+before they are incurred,
+whereas Cost Explorer is used to explore costs
+after they have been incurred.
+So that is it for this lecture everyone,
+if you have any question please let me know.
+If not feel free to move on to the next lecture. Thank you.

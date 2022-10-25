@@ -1,0 +1,106 @@
+Okay hello Cloud Gurus
+and welcome to this lecture.
+In this lecture we're going
+to build a little web server.
+So we are going to take our EC2 instance
+that we created in the last couple of lectures
+and we're going to turn it into a web server.
+So this is our lab and you will need
+to log into the AWS Console.
+Okay so here I am in the AWS Console.
+If we just go over to services
+and click on EC2 which is under compute.
+What we want to do is
+we want to go ahead and get our IP address.
+You can see your IP address just by clicking up here.
+So IPv4 Public IP and just click
+this little icon which will copy it over to your clipboard.
+Once you've done that you will need to connect in,
+so Windows users go ahead and use your SSH terminal.
+For Mac users I'm just going to switch over to terminal.
+Okay so here I am in my terminal window.
+I'm just going to go to my downloads directory,
+which is where private key is saved.
+You can see it there.
+And then what I'm going to do
+is I'm just going to type in SSH ec2 then -user
+then @ paste in my public IP
+then do -i and then it's MyPrivateKey.pem.
+Go ahead and hit enter.
+And I've now connected to my little EC2 instance.
+Going to elevate my privileges
+to root by typing sudo su.
+Going to clear the screen.
+I might just want to quickly do a yum update
+and see if there's been any new updates.
+There hasn't so that is good.
+And then what I want to do
+is I want to install a program
+to make this EC2 instance a web server.
+And that program in called Apache.
+So all I'm going to do is going to write yum,
+install, httpd which is Apache then -yes.
+That will go ahead and install httpd.
+And then what we need to do is start the Apache service.
+So we just need to turn it on.
+So we just type in service httpd and then start.
+And that has now started the httpd service.
+If we go over to our cd/var/www html directory,
+and type in L S there's nothing in there.
+Now our cd/var/www/html directory
+is our root directory to our website.
+So any files we put in this directory
+will be visible just by going to the public
+IP address of the web server.
+And don't worry if any of this is freaking you out.
+You will not be tested on any
+of this in the Certified Cloud Practitioner exam.
+What you need to understand is things
+like how do load balancers work for example.
+And the way we can learn
+that is just by playing around
+with a few EC2 instances.
+So that's really what we're trying to achieve here.
+So I'm going to clear the screen.
+And what I'm going to do is create a little web page.
+So we're going to type in nano.
+Nano is a text editor that allows you to create files.
+And I'm going to call my file index.html.
+And so this is the little text editor.
+What I'm going to do is make a little web page.
+So we do our open brackets html,
+going to open up our body.
+We're going to put a header in here.
+And it's just going to say, "Hello, Cloud Gurus.
+"This is Web Server" we'll make it one word.
+"Web Server One."
+And then we're going to end our header.
+We're going to end our body.
+And we're going to end our html.
+So it's basically the simplest little web page possible.
+Then what I'm going to do is I'm just going to hold control
+X. It will then say, "Hey do you want to save?"
+Hit yes to save and the hit enter
+to save it as html the index.html.
+If we just type in LS you'll be able to see it there.
+So the next thing we need to do
+is just go over to our web browser.
+Okay so got to little web browser opened up in here.
+If I just paste in my public IP address.
+And there we go.
+Hello Cloud Gurus, this is web server one.
+So we have now created a little html page
+on our EC2 instance.
+We've turned our EC2 instance into a web server.
+And we are now able to go and view that webpage.
+So that is it for this lecture guys.
+In the next lecture what we're going to do
+is we're going to create web server two.
+We're going to do this using a bootstrap script.
+So teach you how to script a list.
+You don't need to keep logging in and doing it yourself.
+And then what we're going to do
+is going to start having a look at
+how we can use load balancers.
+So if you got the time please join me in the next lecture.
+Thank you.

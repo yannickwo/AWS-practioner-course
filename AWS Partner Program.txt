@@ -1,0 +1,41 @@
+Okay. Hello, Cloud Gurus and welcome to this very quick lecture.
+In this lecture we're just going to briefly look over the AWS partner network.
+So there's two different types of partners.
+You've got consulting partners and you've got technology partners.
+Consulting partners generally will provide a service.
+So this could be designing architecting, building, migrating,
+and managing customer workloads and applications on AWS. So it's sort of,
+service-based, it's consulting based.
+We then have technology partners and these partners provide hardware,
+connectivity services,
+or software solutions that are either hosted on or integrated with the
+AWS cloud. Now to be a consulting partner,
+you need a certain number of certified people within your organization,
+and there's three different tiers of consulting partners.
+So you've got Select which is the entry level tier,
+you've got Advanced which is the middle level tier,
+and then you've got Premier which is the top tier
+and essentially let's say for a Premier,
+if you wanted to be a Premier or registered consulting partner with AWS,
+you need to have at least 10 employees who have a certified cloud
+practitioner certificate.
+you must also have employees have at least 10 associate certificates and
+10 professional or specialty certificates. Now,
+an employee who has both the certified cloud practitioner,
+let's say solutions architect, associate,
+and then a solutions architect professional that would take up one of each of
+those different tiers.
+So one employee can have multiple certificates but you need a minimum of
+10 of each certificates in order to reach Premier partner status and the cool
+thing about this is it's really good for you because if you go ahead and get
+your certified cloud practitioner certificate and your organization wants to
+become a consulting partner, your certificate will count towards that.
+So they really incentivize the certification program.
+So you just need to understand going into your exam,
+that there's two different types of partners.
+You've got your consulting partners and your technology partners and in order to
+be a consulting partner,
+you need a certain number of AWS certified people within your
+organization. So that is it for this lecture everyone.
+If you have any questions, please let me know. If not,
+feel free to move on to the next lecture. Thank you.

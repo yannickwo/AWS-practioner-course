@@ -1,0 +1,24 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture.
+This is a very quick lecture on the Service Health Dashboard. Now,
+basically the Service Health Dashboard is exactly what it sounds like.
+It is a way of seeing the health of the different AWS services.
+So it gives you an overview of all regions and it shows you basically every
+single region and the health of all of those AWS services in those regions,
+you can also pull daily historical information,
+so you can review all historical information for each AWS service on a per day
+basis and it also gives you RSS feeds.
+So you can subscribe to RSS feeds and get immediate notifications.
+If a specific service in a particular region goes down.
+So in order to see the Service Health Dashboard,
+you could just type it into Google, or you can go to status.aws.amazon.com,
+and then it will basically bring up a feed like this.
+You can see here for North America there because everything's operating normally
+when I'm recording this and it goes a very, very long way down.
+So you can see all the different historical information for North America,
+South America, Europe, Africa, Asia, Pacific, and the Middle East.
+So going into your exam, all you really need to know is if you've got an outage,
+how can you view it?
+based on the service where you can use this Service Health Dashboard.
+What they also like to try and do is confuse you with the Personal Health
+Dashboard and we'll cover that off in the next lecture.
+So if you've got the time, please join me in the next lecture. Thank you.

@@ -1,0 +1,249 @@
+Okay, hello, Cloud Gurus.
+And welcome to this lecture.
+In this lecture, We're going to look
+at how we can buy a domain name.
+Before we do that though,
+I just want to explain what DNS is.
+So DNS stands for Domain Name System,
+and it works exactly like a phone book.
+It's the process that computers use
+to resolve domain names to IP addresses.
+So if we were to go to, we know computers
+or we www.wkcsv.com, basically what's happening
+is a computer is looking this up
+and it's resolving an IP address.
+And then it's connecting your browser
+to that website using that IP address.
+So that's all that DNS is.
+It's a way for computers to look up IP addresses.
+You can see here, if you want
+to look up Bruce Wayne,
+it's pointing to please consult crime fighters
+in the yellow pages.
+So it doesn't have an IP address.
+This has actually been an example
+of what's called a C name record.
+But we won't get into the individual DNS records
+for the certified cloud practitioner.
+It's not really relevant.
+But you will need to understand
+it inside out for the certified solutions architect,
+associate and any associates going from there.
+So in this lecture, what we're going
+to do is we're going to look at how we
+can buy a domain name.
+We're going to be using Amazon's Route 53,
+which is Amazon's DNS service.
+For those of you that don't know Route 53,
+the reason it's called that is you I'm sure
+you all know Route 66,
+which was the first sort of interstate highway
+across the United States while DNS works on port 53.
+So Amazon called it Route 53 after the famous highway.
+So that's how it gets its name.
+So this is 11, you will need to log into the AWS Console.
+Okay, so here I am in the AWS Management Console.
+I'm going to go down to services.
+Now, Route 53 is under networking,
+so networking and content delivery,
+and you can see it in here.
+So go ahead and click on Route 53.
+Now, if you've never used Route 53 before,
+you're going to get this splash screen,
+you've got four different options available for you.
+DNS management, traffic management,
+availability monitoring, and domain registration.
+We are going to cover off traffic management
+and DNS management in a lot more detail
+in the certified solutions architect associate course.
+At this stage, we're just going to keep
+it high-level, I'm going to show you how
+to register a domain name.
+So let's go ahead and get started.
+And we're going to go and click in here, Register Domain.
+So now you just need to choose a domain name,
+it's entirely up to you, whether
+or not you want to go ahead with this.
+What I would say is if you are going
+to choose a domain name,
+make sure that you've got an S3 Bucket
+that's available with the same name.
+So I'm just going to go and do
+acloudguru2019example.
+Hopefully that's available dot com and that is available.
+And then I'm just going to copy
+and paste this into my clipboard,
+and I'm going to open up S3 in a new tab.
+Okay, so here I am in the S3 console,
+I'm going to go ahead and create a bucket.
+I'm going to call it acloudguru2019example.com.
+And I'm going to go ahead and hit create.
+And so you can see here,
+it's got a dot com rather than just being example.
+And the reason for that I'll show you a little bit later.
+This is actually a really weird bug going
+on right now with my S3 console in
+that I cannot delete this bucket.
+And when I actually go in and click
+on it just as data not found,
+but I'm sure it will fix itself.
+So we've created this bucket.
+If we actually go in and go to our properties,
+what we want to do is enable static website hosting on it.
+So use this bucket to host a website,
+just to type in index.html and error.html,
+and go ahead and hit save.
+Once you've done that,
+what we might want to do is just go over
+to our permissions and we could apply
+a bucket policy before we do that, though,
+if we go back to here,
+then what we want to do is just hit,
+edit public access settings,
+uncheck this box because
+we want our website to be public.
+So we don't want to block
+all public access settings,
+go ahead and hit save,
+and then just type confirm in here.
+Confirm and go ahead and hit that.
+Now, you'll see the access settings canal
+has changed to objects can be public.
+And then if we go back in here and go
+to our permissions and go to our Bucket Policy,
+I want you to open up, download the resource,
+the website in the resources section,
+unzip it and grab the bucket policy.
+So here's where I've unzipped it.
+I'm just going to open this up in a new tab.
+So in text wrangler, and I'm going
+to copy it into my clipboard.
+And then I'm just going to go over to S3 and back in S3,
+I'm going to paste it in here.
+And then the only thing we need
+to update is the Amazon resource name.
+So if we grab this here,
+ARN and just paste it in here,
+that will then make everything in our bucket public.
+So we'll go ahead and hit save,
+and you can see now it's a public bucket.
+So if we go back over to the overview of the bucket,
+we can now add our files.
+So if we just go into upload
+and I'm just gonna add the files,
+index.html, and error.html.
+So I've saved them in here, index and error,
+go ahead and hit open and go ahead and hit upload.
+Okay, so we now have our index
+and our error.html inside our bucket, which is public.
+So if you click on here,
+yours should look exactly like this.
+So it's got your top, the entire DNS name.
+It says that the access is public,
+and we've got our two files in there, index and error.
+Let's go back over to Route 53.
+So I'm going to go ahead and add this to my cart,
+and then I'm going to scroll down and hit continue.
+And then all I need to do is fill in these details
+and go ahead and hit continue.
+So I'm just going to pause the video
+while I fill in this information.
+So if you do go ahead and register a domain name,
+you will get this screen and it
+just says domain registration
+might take up to three days.
+Normally it isn't three days.
+Normally it's just a couple of hours.
+So I'm just gonna wait for a few hours
+for my confirmation email to come through.
+We can click on, go to domains
+and you can just see
+that domain registration is in progress.
+So this is under pending requests,
+but go over to my dashboard.
+I can see it in here but I can't actually see
+it as a hosted zone just yet.
+So I'm just going to pull up the video.
+I'm going to wait for
+this domain registration to take effect.
+Okay, so it's been a couple of hours.
+I've received an email saying that
+my domain has been registered.
+So all I need to do is just hit this little refresh button
+and there you go, domain registration successful.
+So if we go into our hosted zones,
+we'll now be able to see this domain
+in there and a hosted zone is just basically
+the domains that you own.
+And if we click in here,
+we can start configuring out DNS.
+So first thing we would want to do
+is just create a record set.
+In here, you can see all the different types
+of DNS records that you can create.
+Don't worry if this looks a little bit scary,
+we don't need to know it with
+the certified cloud practitioner
+where you will need to understand
+the different record types is
+the certified solutions architect
+and any other sort of associate certs.
+So I won't cover this all off right now.
+The most important one is we want
+this to be an alias record.
+This means means that it's basically going
+to be a naked domain name.
+So there's no like www, it's like,
+it's literally just acloudguru2019example.com.
+And in here you can select your different targets.
+So if we click in here, we can
+now see our S3 website end point.
+So S3 bucket must always have
+the exact same name as our DNS records.
+So as it's got to have the dot com at the end as well.
+So I'm going to point the DNS records
+to my S3 website,
+and then I'm going to go ahead and hit create.
+And that has now created, what's called an A record.
+And essentially if I browse
+to acloudguru2019example.com,
+it's going to redirect me,
+or it's going to serve
+up S3-website-us-east-1.amazon.com,
+and then it will be forward slash and then the bucket name.
+So let's go ahead and browse to that website now.
+So here I'm in my browser,
+I'm just going to type acloudguru
+then 2019example.com and hit enter.
+And there we go.
+We've got my S3 website.
+So hello, Cloud Gurus,
+the serverless, the future of cloud computing.
+So this is a serverless website
+because we're doing it off S3 rather than off EC2.
+And I can go here and just check.
+I can type in a dodgy domain name
+and it should get an error message announced
+serving up our error page as well.
+So onto my exam tips.
+So just to remember that Route 53
+is Amazons DNS Service and DNS service
+is simply a way that computers
+can resolve a domain names to individual IP addresses.
+Route 53 is global, very similar to IAM and S3.
+You don't have to specify a region
+when using a Route 53, but there's three,
+you do specify a region that your bucket is in,
+but you have a global view of it.
+So that's what I mean by S3 being global.
+And just remember with the Route 53,
+you can use it to direct traffic all around the world.
+So you could be directing your domains you know,
+traffic to web servers in Sydney,
+web servers in US-East-1,
+web servers in London, et cetera.
+And you can also use Route 53 to register a domain name.
+So that's it for this lecture, guys,
+if you have any questions, please let me know.
+If not, feel free to move on to the next lecture.
+Thank you.

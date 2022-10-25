@@ -1,0 +1,142 @@
+Okay, hello Cloud Gurus
+and welcome to this lecture.
+In this lecture we're going to look at
+how we can use roles to further secure
+our AWS environment.
+So this is a lab and you will need
+to log in to the AWS Console.
+Okay, so here I am in the AWS Console.
+If I want to build a role, I need to go over
+to Services, and I'm just going to go down
+to Identity Access Management,
+which we all know by now is under
+Security, Identity, and Compliance.
+First thing I'm going to do is just go ahead
+and disable this user, because I have shown you
+all my secret access key and access key IDs.
+So I'm just going to go into my security credentials
+and I'm going to make it inactive,
+then I can also just go ahead and delete it.
+So those credentials now no longer work.
+So in order to do roles, we can see roles
+is here, under users, so let's go ahead and click on roles
+and it will give you a brief
+sort of description of a role.
+The best way to understand what a role is
+is to actually go ahead and create one and use one.
+I've already got some roles here from another,
+some other lectures I've done.
+You probably don't see any just yet,
+just go ahead and hit Create Role,
+so we're going to create a role.
+So first of all, we need to choose the service
+that will use this role, so is it going to be
+EC2, is it going to be Lambda, is it going to be
+a whole bunch of these different services?
+So it is going to be EC2, so go ahead
+and click on EC2 and go and hit Next for permissions.
+The next thing we have to do is
+attach a policy to our role, and what we want
+is S3 admin access, so S3 full access,
+so I want my EC2 instance to have full access to S3.
+So I'm going to go ahead and select that.
+Next we can add our tags, I'm not going to tag
+this role, and now we give our role a name.
+So we're going to call this S3AdminAccess.
+And here's role description, allow EC2 instances
+to call AWS services on your behalf.
+I'll say allow EC2 to use S3 as an admin.
+So that's a good description for this role.
+And we'll go ahead and create our role.
+So that role is now here, it's S3AdminAccess.
+So we've got the role, but our EC2 instance
+does not yet have this role attached to it.
+So that's the very next thing that we're going to go do.
+So if we click on services, we'll go over to EC2
+and it's under Compute, and what we're going to do
+is we're going to attach a role to this instance.
+If we click on our running instances,
+you can see it in here, make sure this check box
+is selected and go to Actions, and we just need to go to
+Instant Settings, and in here you can see
+Attach or Replace Identity Access Management Role.
+Let's go ahead and attach this role
+to our EC2 instance.
+So to S3AdminAccess, and go ahead and hit Apply.
+It says that it has now succeeded.
+I'm going to go ahead and hit Close.
+Now what you want to do is just grab your public IP address,
+copy it to your clipboard, and then you're going to need
+to SSH into your EC2 instance.
+Okay, so here I am in my console, Mac users just go to CD
+downloads if you're not already there.
+And then I'm just going to type in SSH EC2-user and then @
+and then my public IP address then minus i
+and then MyPrivateKey and I'm going to go ahead
+and hit enter, Windows users go ahead
+and use PuTTY and then what I'm going to do
+is elevate my privileges to root, so sudo su
+and I'm going to go ahead and clear the screen.
+Now if you remember, we created a little file
+called Hello.txt.
+What I'm going to do now is I'm going to type
+aws s3 and then ls.
+And because we have credentials saved
+in our AWS directory, it's trying to use those credentials.
+And if you remember in the last lecture,
+I actually gave it some bogus credentials.
+So to fix this, all we need to do is go to
+cd tilde, so we're going to go to our home directory.
+And then you can just type in rm minus rf and then .aws
+and that will remove the AWS directory.
+Now that we've done that, if we type in aws s3 ls,
+it's going to try and connect in using the role,
+it's not using our credentials anymore.
+And the cool thing about this now
+is that there are no credentials saved on my EC2 instance.
+If I was to try and go back into that directory,
+the one that we just deleted, cd.aws,
+it no longer exists.
+So if someone hacks this EC2 instance,
+yes they'll still have administrative access
+from this EC2 instance into S3, but they won't have
+full admin access to my AWS environment,
+and they'll only be able to access S3
+by using this EC2 instance.
+If I was to go in and delete the hacked instance,
+that's it, they've lost access to my AWS environment.
+So roles are a much safer way of being able
+to interact with the AWS environment.
+Rather than saving your credentials on an EC2 instance,
+you should always use roles as a security concern.
+So that is something that you must remember
+going into your exams, so let's go to my exam tips.
+So like I said, roles are much more secure
+than using access key IDs and secret access keys,
+and they're also easier to manage.
+If I go in and add more policies to that role,
+it's going to update instantly.
+So if I was to add in a policy saying hey,
+this role is now allowed to go and create databases,
+or this role is now allowed to go and
+provision other EC2 instances,
+that will be effective immediately.
+So they're much easier to manage
+and they're a lot more secure.
+And you can apply roles to EC2 instances at any time,
+and when you do this, the change
+will take place immediately, there's no waiting.
+It will take place straight away.
+And just remember that roles are universal,
+so you do not need to specify what region that they are in,
+very similar to users.
+Basically roles are universal,
+you create them in IAM, and then you can use them
+in any region around the world.
+So that is it for this lecture, everyone.
+Hopefully, you've had lots of fun using roles.
+In the next lecture we're going to look at
+how we can create a little web server
+using our EC2 instance.
+So if you've got the time, please join me
+in the next lecture, thank you.

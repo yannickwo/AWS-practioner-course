@@ -1,0 +1,318 @@
+Okay, hello, cloud gurus,
+and welcome to this lecture.
+So in this lecture, we're gonna go ahead
+and start getting our hands dirty with S3.
+We'll pass all the boring theory stuff.
+As always, the best way to learn something
+about AWS is to go ahead and get your hands dirty.
+So let's log into the AWS console.
+Okay, so here I am in the AWS console.
+Note up here my region is Northern Virginia.
+If I go down to Services
+I'll be able to see S3,
+which is under Storage.
+Go ahead and click on S3.
+Note that as soon as you do,
+your region has changed to Global.
+So S3 is one of the few services
+that does not require a region selection.
+So whenever you're looking at S3,
+it's a global point of view.
+IAM, which we covered off
+two lectures ago, is similar.
+So is Route 53, which is Amazon's DNS service.
+But almost every other service is regional.
+So you have to select the region that you're in.
+Now I don't have any buckets right now.
+So what I'm gonna go ahead and do
+is I'm gonna go ahead and create a bucket.
+So in here we type our bucket name.
+You see here it says, Enter DNS compliant bucket name.
+So your buckets are always a web address,
+and DNS compliance just means that it's a valid web address.
+So if you try and do an exclamation mark,
+for example, that's not a valid character
+in a web address.
+So I'm just gonna write Ryan
+and Faye as my bucket name.
+And here we specify our region.
+We've got lots of different regions
+that we can deploy buckets into.
+Right now I'm just gonna use US East One,
+so North Virginia, and click in there.
+And in here you can copy settings
+from an existing bucket
+but I have no existing buckets.
+So I'm gonna go ahead and hit Next.
+In here, this is where we can add things
+like versioning, server access logging, et cetera.
+We covered this in a lot more detail
+in the Certified Solutions Architect Associate course.
+So if you do want to learn more about S3,
+check that out.
+It's not really relevant
+for the certified cloud practitioner.
+And here we've got block public access.
+So this is basically ensuring
+that our buckets are always private.
+What you want to do is just uncheck this
+because we want to make objects
+within our bucket public.
+So make sure you uncheck that
+and go ahead and hit Next.
+And in here we just get a summary of our buckets.
+So I'm gonna go ahead and hit Create bucket,
+and we can see our bucket in here,
+and we can see our access objects can be public.
+You can go in and edit the public access settings
+so you can block it if you want.
+I'm not gonna do that
+because I want to be able to share my object.
+So let's go into our bucket.
+Now, our bucket is just, as I said
+in the last lecture, is just a folder name.
+So it's just a name of a folder
+in the cloud that you can access.
+And in here, we've got our overview,
+we've got our properties, permissions, and management.
+The first thing we want to do
+is we want to upload a file to S3.
+So go ahead and hit the upload button
+and go and add files.
+I'm gonna add two files.
+So there's one of me and my brother with Jeff Barr
+and one with me and Faye at RePlay.
+And for those of you that don't know
+RePlay is the biggest tech party on the planet.
+It's the very last night of re:Invent
+and you will have famous DJs like Skrillex.
+It has free food and alcohol
+and it just goes all night
+till about midnight or longer.
+So I would recommend if you do go to re:Invent
+in 2019, checking out RePlay,
+it's the best party on the planet.
+And we go ahead and hit Upload.
+And in here, we can see my two different files.
+So Faye and Ryan at RePlay,
+and then jeffbarr.jpg.
+Now, if I was to click on this file
+and click on the link,
+we're gonna get an error message.
+And you can see here that says
+this XML file does not appear to have
+any style information associated with it error.
+And then the code is access denied.
+Access denied.
+So this file is not public.
+And by default, anything you put into S3
+is not public.
+You have to actually jump through a whole bunch of hoops
+in order to make a file public.
+So I'm just gonna go back to my Ryan and Faye bucket.
+Let's see how I can make this public.
+All I do is click in here and I go to Actions,
+and then we're gonna click Make public.
+And then I'm gonna go ahead and make that public.
+And then when I now click on this link
+I should be able to view it.
+And there we go.
+There's me and Faye at RePlay.
+And we're wearing a cloud guru T-shirts
+that were battery powered and they lit up.
+So we were getting approached by a lot of people.
+It was lots and lots of fun.
+Likewise, if I want to go back in
+and make a photo of me and my brother
+with Jeff Barr public,
+all we need to do is click on here.
+You could go to Actions and go Make public.
+You could also just click on the permissions over here
+and then you just go to public everyone,
+click on there and just go and change
+this read object.
+And I'll give you a big warning here.
+Go ahead and hit Save.
+And then if we click on the file again,
+so I'll click in here
+and click on this link over here,
+that will now make it public.
+So now I can view me and my brother
+with Jeff Barr and that was at re:Invent 2017.
+So we now know how to upload files to S3.
+Remember, every time you upload a file
+you're gonna get an HTTP 200 code.
+That's gonna be sent back to your browser.
+And what we can do now is we can go over
+to Properties and have a look.
+Versioning, like I said, we cover that off
+in Certified Solutions Architect Associate course,
+but in here we can change the properties of our buckets.
+So we can add static website hosting,
+which is what we're going to do
+in the very next lecture.
+If we scroll down, we can do object locking.
+We can do tags on our objects.
+We can enable transfer acceleration.
+We can receive notifications
+when specific events occur in our buckets
+such as uploading new objects.
+We can actually make somebody else
+pay for the objects in our bucket.
+Whenever they do a request,
+they need to have an AWS account.
+Again, it's completely beyond the scope
+of this course for that.
+And here we've got our permissions.
+So this is where we can manage
+our public access settings,
+so whether or not people are able
+to view things in our bucket.
+And here we've got our management
+so we can do life cycle management of our objects.
+So after they get older than 90 days, for example,
+we could archive them off to Glacier.
+In here, we've got replication.
+So we could go ahead and set up cross region replication.
+So every time I upload my bucket to Northern Virginia
+those files are gonna be replicated over to Sydney.
+One of the most important things we can do
+if we just go over to our individual files,
+we can go ahead and we can change
+the properties just by clicking
+on the properties in here.
+So I could go in and change,
+for this individual file
+I could change the storage clause, for example.
+So here we've got Standard, Intelligent Tiering,
+Standard IA, One Zone IA Glacier.
+You will see here Reduced Redundancy,
+which I didn't include in the last lecture.
+This is being phased out
+but this is basically One Zone IA,
+more or less One Zone IA, is actually cheaper.
+But they are eventually phasing out RRS.
+So you won't be asked any questions on that in the exam.
+It's just basically the same thing as One Zone IA.
+So you can change your storage class on demand.
+It doesn't require any kind of reboot
+or anything like that.
+It will just happen instantaneously.
+So this is now One Zone IA
+for the fayeryan-replay object.
+Very last thing I want to show you before we go on
+to how to host static websites with S3.
+So we just go back to the Ryan and Faye bucket.
+In here, if we go down to Properties
+and we go over to Transfer Acceleration,
+you can enable it if you want.
+If you want to actually click
+and compare how transfer acceleration is,
+how it's gonna work for you,
+just go ahead and click on that link.
+That will then start uploading files
+to different regions around the world,
+and you'll be able to see the difference
+that transfer acceleration makes.
+Now this is gonna take about five or 10 minutes.
+So I'm just gonna pause the video
+and wait for this to complete.
+Okay, so hopefully this has finished
+and you can see,
+so I'm based in London right now.
+If I was uploading to Virginia,
+if I was doing it directly,
+this would be my upload speed,
+and this would be my transfer upload speed.
+So it is a lot faster.
+It's 84% faster.
+It should be faster pretty much anywhere you go.
+The further away, the better speeds you get.
+The only one where it's not happening
+to me is Dublin.
+It is actually faster for me to upload it
+directly over the internet right now.
+That really just depends on the time of day
+and network latency.
+And you only find it slower for regions
+that are closest to you, so Dublin,
+and to London itself it's slower.
+Everywhere else in the world it's a lot faster.
+And like looking at Sydney, oh my God,
+315% faster.
+Or going to Singapore, 627% faster
+than if I was doing it directly.
+So that is all S3 transfer acceleration is.
+Let's go on to my exam tips.
+So what are my exam tips?
+Well, as you know, bucket names share a common name space.
+So you cannot have the same bucket name as someone else.
+You cannot get test bucket or a cloud guru.
+So make sure you choose a name that's unique to you.
+When you view your buckets, you view them globally
+but you can have buckets in individual regions.
+So we saw that we had a global view of S3
+but when we actually create our buckets
+they're created in individual regions.
+You can actually replicate the contents
+of one bucket to another bucket automatically
+using cross-region replication.
+So we have our bucket in Northern Virginia.
+We can actually replicate the contents
+of that bucket over to Sydney.
+You can change the storage class
+and encryption of your objects on the fly.
+And just remember the different storage classes.
+So we have S3 Standard, S3 Infrequently Accessed,
+S3 One Zone IA.
+We then have S3 Intelligent Tiering.
+We also did see in the lab that we had S3 RRS
+or Reduced Redundancy Storage,
+but that is being phased out
+and you will not be tested on it
+but just do be aware of it.
+We then have S3 Glacier
+and then S3 Glacier Deep Archive.
+So those are the six different storage classes
+available to your objects using S3.
+And then finally, we looked at transfer acceleration.
+So if we've got our users all around the world
+and they want to upload a file,
+a large file to our bucket in London,
+what they can do is upload it to an edge location,
+and then those edge locations use the Amazon
+backbone networks to bring it into London.
+And it can be a hell of a lot quicker.
+It really just depends on network latency
+and where it is you're uploading your files to.
+And my final exam tip for S3
+is how to restrict bucket access
+or even how to control permissions on buckets.
+And there's three different ways to do this.
+The first is using a bucket policy
+and this is going to apply across the entire bucket.
+And we're gonna look at this in the very next lecture
+when we create a website on S3.
+And the other way we can restrict bucket access
+or grant object access is using object policies.
+And rather than applying this across an entire bucket,
+these are actually applied to individual files
+within your bucket.
+And then finally, we can use IAM policies
+to users and groups within your AWS account
+to control bucket access.
+So maybe you want your HR department
+to be able to access the HR bucket
+but you don't want the finance teams
+or the sales and marketing teams
+to be able to read those confidential informations.
+So you can use identity access management policies
+applying them to individual users
+or to groups which can contain individual users.
+And then they would be able to access that bucket
+or not depending on the policies that you define.
+So please remember those three going into your exam.
+So that's it for this lecture, everyone.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture
+where we're going to create a website using S3.

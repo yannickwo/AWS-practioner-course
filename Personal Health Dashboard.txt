@@ -1,0 +1,26 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture. Another very quick one.
+We're now going to look at Personal Health Dashboard.
+So you saw the Service Health Dashboard.
+It basically showed every AWS service in every region.
+Now you're probably not going to be using every AWS service in every region.
+What would be more pertinent to you is which services do I actually use and
+what is their status? And that's where the Personal Health Dashboard comes in.
+So basically it's a dashboard that's personalized for you.
+It offers an overview of the AWS services that you actually use and whether or
+not they're having any availability issues and it gives you relevant up-to-date
+information of the status of your AWS services and it also provides
+proactive notifications as to any scheduled activities.
+So to get to the Personal Health Dashboard,
+we just click on Services and you can scroll down to Management and Governance,
+and you'll see it in here, Personal Health Dashboard, click on that.
+And that will then show you the your Personal Health Dashboard and go in
+and create rules to set up alerts in case something goes down,
+this is a brand new AWS account,
+so I'm not actually using any services right now.
+Yours might look a little bit different to this. So going into the exam,
+just remember the difference between the service health dashboard and the
+Personal Health Dashboard.
+The service health dashboard will show you all AWS services.
+Whereas the Personal Health Dashboard will show you just the services that you
+use. So that's it for me. If you have any questions, please let me know. If not,
+feel free to move on to the next lecture. Thank you.

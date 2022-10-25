@@ -1,0 +1,142 @@
+Okay, hello, Cloud Gurus,
+and welcome to this lecture.
+In this lecture,
+we're going to look at AWS Organizations.
+We're going to create an organization.
+We're going to add multiple AWS accounts
+to this organization,
+and this is a lab.
+You will need to login to the AWS Console.
+Don't worry if you don't have multiple AWS accounts.
+You can just watch me
+if you don't want to do it yourself.
+So, it's entirely optional,
+but definitely watch this lecture
+because AWS Organizations
+does come up quite a bit
+in the Certified Cloud Practitioner exam.
+Okay, so here I am in the AWS Console.
+And now, to get to AWS Organizations,
+you have to click up here,
+and you need to go to My Organizations.
+Now, note that it's gone global.
+So, AWS Organizations is a global service,
+and what we want to do is go ahead
+and create an organization,
+and we have our two different options here.
+So, we've got this creates an organization
+that gives you single payer
+and centralized cost tracking,
+lets you create and invite accounts,
+lets you apply policy-based controls,
+and helps you simplify organization-wide
+management of AWS services,
+or you can create an organization
+with only consolidated billing features.
+So, I want to do the main one.
+I want to create an organization
+that has full access.
+So, that has now generated an account,
+and it's asking me to verify my email address.
+So, I did just get an email from AWS.
+I'm going to go through and just verify that now,
+and you can see it now says,
+"Your email address has been verified,"
+and what I can now do is go in
+and add additional AWS accounts.
+So, I can either invite an account
+or I can create an account.
+So, I'm going to go ahead and invite an account.
+All you have to do is enter the email
+or account ID in here,
+and then you can enter in a little note
+that will go with your request,
+and then you go ahead and hit Invite.
+So, I'm just going to type this in now,
+and apologies, I am blurring out
+my emails because I don't want to get
+random emails from thousands of different people.
+Okay, so you can see I've got quite a few
+accounts now that have joined this organization.
+So, here we go.
+We can see that I've got no organizational units.
+So, what I might want to do is just create some orgs.
+So, we'll do our developers,
+create organizational unit.
+Going to create one for human resources,
+and then I'm going to create one for sales.
+So, we'll have three different accounts, Sales.
+Go ahead and hit Create.
+So, we've now got three different organizational units
+rather than accounts,
+and what we want to do
+is we're going to put our accounts
+into these organizational units.
+Before we do that though,
+we should apply some policies
+to our organizational unit.
+So, we can click over here on Policies,
+and then you'll see by default
+we have a full AWS access policy that's created,
+and we can go ahead and create our own policies.
+So, I'm going to call this policy LetsGoServerless,
+and this policy blocks EC2.
+So, we're not allowed to use EC2.
+We have to do everything serverlessly.
+So, in here, we could deny specific services.
+So, you could select to deny something,
+or you could select to allow something.
+So, I want to deny,
+and I'm going to go in,
+and I'm going to type in EC2,
+Amazon EC2, and then we can select our actions,
+and you can actually just deny individual actions.
+So, we don't want to allocate IP addresses for example,
+but I'm going to select all.
+So, 274 actions have been denied for EC2.
+And then, just here you click Add statement,
+and then this is effectively
+building a statement out saying Amazon EC2 deny.
+So, let's go ahead and create this policy.
+So, I've created this policy,
+and we can go over to our organizational units.
+So, what I want to do is I want to take this account,
+and I want to move it over to my developers.
+So, I'm going to click on Developers and hit Move.
+So, that is now nested in my Developer account.
+If I click on my Developer account,
+I can see Hello Cloud Gurus in here,
+and then in order to apply
+some service control policies,
+all I need to do is click on here,
+and I'll be able to see the different policies.
+So, these are the policies that are available,
+and these are the policies that are inherited.
+So, I'm going to attached the LetsGoServerless
+into this organizational unit,
+and now this Hello Cloud Gurus account
+will not be able to provision EC2 instances.
+It is being denied by that policy.
+So, that's how AWS Organizations works.
+It is super, super useful,
+especially when you start doing this at scale.
+Do remember, if you do create an organization
+as a root account,
+you can't then invite other organizations
+that have root accounts as well.
+So, root account can't invite another root account.
+So, that's something to bear in mind.
+So, onto my exam tips.
+Well, just remember what an organization is.
+It allows you to create organizational units,
+so developers, human resources, et cetera,
+and then attach accounts to those organizational units,
+and then you can apply policies,
+and policies can be applied
+directly to organizational units,
+and all the accounts in there will inherit it,
+or you can apply a policy
+directly to an AWS account.
+So, if you have any questions,
+please let me know.
+If not, feel free to move onto the next lecture, thank you.

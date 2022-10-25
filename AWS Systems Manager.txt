@@ -1,0 +1,70 @@
+Okay, hello Cloud Gurus,
+and welcome to this lecture.
+In this lecture, we're going to look at AWS Systems Manager.
+So ASW Systems Manager allows you to manage
+your EC2 instances at scale.
+Now I appreciate so far in this course
+we've only really been using one or two EC2 instances.
+But I want you to imagine what would happen
+is if you had this many, or this many,
+or this many, or this many, or this many.
+And basically when you have multiple EC2 instances
+it's called an EC2 fleet.
+And I want you to imagine SSHing into each
+individual EC2 instance and just running an update.
+You run a yum update command.
+It's going to take you an awful lot of time.
+So AWS created AWS Systems Manager,
+and essentially what happens is, is you'll go
+and when you deploy an EC2 instance,
+you install a piece of software on it.
+And the software connects that EC2 instance
+to Systems Manager.
+And then you can use Systems Manager to
+do a run command, so you could run a command
+across all your EC2 instances at once.
+So it could just be yum update.
+So you only need to run that command once,
+and it will be deployed to all of your EC2 instances.
+You can also use it for patching, et cetera, et cetera.
+Let's have a quick look at it in the AWS console.
+Okay, so here I am in the AWS console, and you'll find
+Systems Manager under management and governance,
+and here it is down here.
+So it's under Service Catalog in this current console.
+And you can see here, we're not going to go through
+an install, it's beyond the scope of the
+Certified Cloud Practitioner course.
+We do cover this in greater detail
+in the Certified SysOps Administrator course,
+but down here you can see all the different
+things that you can do.
+So you can use the Run Command,
+or you can use Patch Manager.
+You can also go and create maintenance windows
+across all your EC2 instances.
+And the cool thing about Systems Manager
+is it doesn't just have to work on AWS,
+inside EC2, you can also use it and deploy the software
+on your on premise servers as well.
+And you can use Systems Manager to
+basically manage all your systems
+both inside AWS as well as in your own data centers as well.
+So on to my exam tips.
+As with most of the AWS services,
+you just need to know what this is at a high level
+for the Certified Cloud Practitioner exam.
+So Systems Manager can be used to manage
+fleets of EC2 instances or virtual machines.
+A piece of software is installed on each virtual machine
+and can be both inside AWS as well as on premise.
+And basically you can use the Run Command,
+which can be used to install, patch or uninstall software.
+And then finally Systems Manager
+integrates with CloudWatch to give you
+a dashboard for your entire estate,
+both on-premise and off premise as well.
+So that is it for this lecture everyone.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture.
+Thank you.

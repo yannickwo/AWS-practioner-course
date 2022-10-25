@@ -1,0 +1,344 @@
+Okay. Hello Cloud Gurus and welcome to this lecture. In this lecture,
+we're going to look Elastic Compute Cloud, or EC2,
+because there's two Cs and EC2 is one of the oldest services
+in AWS and for that reason it features very heavily in the certified cloud
+practitioner and in the, all the associates, all the professionals,
+and all the specialties.
+So understanding EC2 is essential for your certification journey to the
+cloud. So what is EC2?
+Well basically it's just a virtual server or servers in the cloud,
+and it reduces the time required to obtain and boot new server instances to
+minutes, allowing you to quickly scale capacity, both up and down,
+and as your computing requirements change.
+So this is a server room and/or a data hall and inside a data center,
+there may be literally hundreds of data halls just filled with endless racks
+of servers and what
+used to happen before AWS and before public cloud providers is if you were as a
+customer, wanted a, let's say two web servers and two database servers,
+you would contact a managed service provider with someone like Rackspace,
+for example, and you place an order with them. They would then go out,
+actually physically acquire the servers and then they would rack and stack them.
+They'd plug them in they'd cable them, give them power.
+Then they'd have to bring them online.
+Then they'd have to bring it up to your specifications.
+So install all the software,
+that sort of thing and you'd have to sign a contract for usually three
+years,
+sometimes up to five years and you would basically be renting that server off
+them and of course the deployment times would be anywhere from two weeks and
+even with some service providers that I worked for,
+if we were doing really complex hundred plus server deals deployment times could
+be at least six months. So take an awful,
+awful long time and then Amazon EC2 came along and just changed
+everything. Suddenly you could go into the web console and you could just say,
+Hey, I want a virtual machine and it would be ready for you
+within seconds,
+definitely within minutes and you would just be instantly available and you no
+longer had these massive wait times and it just changed the whole industry
+overnight. It literally revolutionized tech. So with EC2,
+there's different pricing models and the first one is on demand and this allows
+you to pay a fixed rate by the hour or even by the second with no commitment
+and this is what we're going to be using for the rest of this course.
+So we're going to provision little EC2 instances.
+They're going to be little Linux servers and effectively we're going to be
+paying for them by the second. We then have reserved.
+This gives you a capacity reservation and you get huge discounts on an
+hourly charge. This is where you are locked into a contract.
+So the contract terms are one year or three year terms and depending on how much
+you pay upfront that maximizes your discounts.
+So the more you pay upfront and the longer contract term,
+the better discounts you get. So the best,
+most cost effective way to get an EC2 instance is to sign a three year
+contract and pay that three years all upfront and you'll get the maximum
+discount, but then have spot. This kind of works like the stock market.
+This enables you to bid a price that you want to pay,
+and the price moves around all the time and when it hits your bid price,
+then it provisions the instance and when the spot price drops below your bid
+price it means that you're going to lose that server.
+So it moves around all the time and it's used for applications where you don't
+have to worry about losing your, your servers basically.
+We then have dedicated hosts.
+These are actually physical EC2 servers that are dedicated for you use.
+So very similar to the picture I just showed you in the previous slide,
+this basically helps you reduce your cost by allowing you to use your existing
+server-bound software licenses. Fewer and fewer people do this,
+but sometimes when you use a particular technology,
+you have to have it on dedicated hosts as per the license terms and
+conditions.
+So let's have a look at the different use cases for these four different pricing
+models.
+So we've got on demand pricing and that's useful for users that want the low
+cost and flexibility of EC2,
+without any upfront payment or longterm commitments. So students like us,
+for example and it's good for applications with short terms, spiky,
+or unpredictable workloads that cannot be interrupted and it's also good for
+applications that are being developed or tested on EC2 for the first time.
+So on demand is basically all we're going to use in this course.
+Reserve pricing is well for applications with steady state or predictable use.
+So applications that require reserve capacity and users are able to make upfront
+payments to reduce their total computing costs even further.
+So like I said earlier, the more you pay upfront and the longer the contract,
+the more discounts you get. Reserved has a few different pricing types.
+So we've got standard reserved instances.
+These offer up to 75% off on demand.
+So the more you pay up front and the longer the contract,
+the greater discount that you get. So as we go through the rest of this course,
+you're going to learn that EC2 has a whole bunch of different types of
+instances. One could be used for high performance memory.
+One could be used for high performance compute and the problem with standard
+reserved instances is you can't change between the instance family.
+So you can't go from a high performance memory over to high performance compute,
+and that's why they invented convertible reserved instances.
+So these offer up to 54% of the on demand capability
+and you are able to change the attributes of the reserved instances.
+So you can go from one instance of family class to another
+and so long as you basically the exchange results in the creation of
+reserved instances of equal or greater value and don't worry,
+it's completely beyond the scope of this course and even any of the associates
+to understand that. It's really,
+when you're going into the professional level certs,
+you need to be able to work that but right,
+all you should be aware of is that there are different types of EC2 instances,
+which we're about to cover off and with standard reserved instances,
+you can't convert from one to the other. With convertible reserved instances,
+you can. We then have scheduled reserved instances,
+and these are available to launch within the time windows that you reserve.
+So maybe you have a whole bunch of people coming in at 9:00 AM every morning and
+everyone's firing up some kind of application,
+and it has a heavy toll on your application but maybe they only use the
+application for the first hour in the morning then they all go and have their
+meetings.
+So you can actually schedule a reserved instance from that 9:00 AM to 10:00 AM
+time windows. So that's all scheduled reserved instances are.
+Moving on to spot pricing. So what would spot pricing be useful for? Well,
+this is useful for applications that have flexible start and end times and
+applications that are only feasible at very low compute prices and there's a
+whole bunch of case studies on the AWS website about sort of genomics companies
+and engineering companies who do a lot of computing and they do it in the middle
+of the night.
+To keep their costs low and this last point straight from the documentation
+itself,
+it says it's useful for users with urgent computing needs for large amounts of
+additional capacity. Now, of course,
+that's only true if the spot price is going to be below what it costs for an on
+demand instance.
+If you have an urgent computing need and the spot price is above the
+price of an on demand instance,
+then you probably just want to go ahead and use an on demand instance.
+We then have dedicated hosts and pricing is useful for regulatory requirements
+that may not support multi-tenant virtualization.
+So it might be that you're in a particular government department and there's
+some kind of law that says it must be on dedicated hosts. That does happen.
+So you would need to use dedicated hosts from AWS in order to use
+a public cloud. it's also great for licensing,
+which does not support multitenant virtualization.
+So this could be some Microsoft licensing, Oracle licensing, VMware licensing,
+et cetera.
+So this is where you would use a dedicated host and dedicated hosts can be
+purchased on demand and you pay by an hourly basis and they can also be
+purchased as a reservation for up to 70% off of the
+on demand price.
+So I mentioned earlier when we were talking about convertible instances versus
+just normal reserved instances.
+There's a whole bunch of different EC2 instance types.
+This is a summary of the different EC2 instance types.
+Now I know what you're thinking. Don't freak out.
+You do not need to know all these instance types to do the certified solutions
+architect associate exam, or the certified cloud practitioner exam.
+Where this becomes more useful is if you go on and do the SysOps administrator
+exam or any of the professional or specialty exams.
+Sometimes they'll throw questions out at you and some of those answers will have
+EC2 instances that simply just don't exist.
+So I'm going to show you how to memorize this in a second.
+We're just going to run through the different EC2 instance types first.
+So we'll start with F1. This is a field programmable gate array, or an FPGA,
+essentially,
+this is where you can reconfigure the underlying hardware after the chip has
+been manufactured. Again, we're not going to go into too much detail about it,
+but its use case is for genomics research, financial analytics,
+real time video processing, and big data, et cetera.
+We then have the I instance class. So this is high speed storage.
+So this is for things like no SQL databases, data warehousing, et cetera.
+We've got our G classes,
+which is our graphic intensive class and this is used for things like video
+encoding and 3D applications streaming. We then have our H classes,
+which has high disk throughput and this is used for things like MapReduce based
+workloads, distributed file systems,
+such as HDFS and map RFS and again,
+don't worry if you don't know what any of this means,
+you will not need to know what all these different instances what they are,
+and their use cases going into the certified cloud practitioner or solutions
+architect, associate exam. We'll run through the rest of them, T4.
+So the T classes is what we're going to be using throughout the rest of this
+course and it's basically your lowest cost,
+general purpose instances and we use these for things like web servers and
+small databases. We've got our Ds which is our dense storage. So again,
+this is things like file servers, data warehousing, Hadoop, et cetera.
+We've got our R classes. I remember this just as RAM. R stands for RAM.
+So this is our memory optimize and so it's memory intensive applications and
+databases. We've got our M class, which is our general purpose class. Again,
+this is for things like application servers. We then have our C classes,
+which is compute optimized. So CPU intensive apps and databases.
+We've got our P classes, which is our graphics or general purpose GPU.
+So we use this for things like machine learning or Bitcoin mining or anything in
+cryptocurrency, et cetera. We then have our X1s,
+which is our memory optimize and this is like really extreme memory optimized.
+That's how I remember using the X for extreme so it's things like SAP HANA,
+Apache spark and we're talking in the terabytes of memory here we then have our
+Z1s,
+which has high compute capacity and high memory footprint and this is ideal for
+electronic design automation and certain relational database workloads with a
+high per call licensing costs.
+We then have our A1s which are our arm-based workloads and
+this is for things like scale-out workloads such as web servers and then finally
+we have our U class, which is our bare metal and again,
+this is for things like bare metal capabilities that eliminate the
+virtualization overhead. Now again, I know what you're thinking.
+What the hell is he talking about? I only probably understood like 20% of that.
+Now, the good thing is,
+is basically going ahead in the certified cloud practitioner and certified
+solutions architect associate exam, you do not need to know any of this.
+Where it comes very useful is later on, like I said,
+when you're doing the SysOps administrator associate or any of the specialties
+or any of the professionals,
+they'll often throw out questions and one of the answers wil talk about a K
+class instance and if you know, there's no such thing as a K class instance,
+which today there is not,
+then essentially that that answer is wrong and you can eliminate it. Okay.
+So how can we remember all this? Well,
+this isn't the pneumonic that I've come up with.
+I'm very a pneumonic type of person. I like to learn through visuals.
+So we've got F for F PGA, I for IOPs, G for graphics, H for high disk,
+T for cheap general purpose. So think T2.micro,
+which is what we're going to be using throughout the rest of this course.
+D for density, R for RAM, M for main choice, for general purpose apps,
+C for compute, P for graphics, so think pics expert stream memory,
+Z for extreme memory and CPU,
+A for arm based workloads and U for bare metal. So that spells fight Dr.McPxz
+and then you can choose where you want to fight Dr.McPxz either in
+Austin or Australia. So this is Dr.McPxz. You can see she's a doctor,
+because she's got like a little light on her head. She's got boxing gloves on,
+she's ready to fight.
+She's wearing a doctor's jacket and you're going to remember that she's from
+Scotland because she's wearing a tartan outfit.
+So that's where the mc comes from and she's clearly a pixie because she's got
+wings and then you basically want to fight her in either Austin or in
+Australia and that is the way I remember it and it really does work so fight
+Dr.McPxz au will allow you to learn every single EC2 instance
+type and don't worry if you can't remember what P stands for.
+You simply know that that is a valid instance type going into your exam and that
+will help you eliminate questions and like I said, as well,
+we're just looking at the certified solutions architect associate,
+or the certified cloud practitioner exams. You don't really need to know this.
+It's just, when you go on and do the more advanced exams,
+it's really good to know all your EC2 different instance types and it can also
+come up in job interview questions where they might say, Hey,
+can you name as many different EC2 instance types or instance families as
+possible?
+If you just remember fight Dr.McPxz au then you will remember every single one.
+So that is my silly pneumonic, but it really.
+Does work. So we need to move on now to Amazon EBS.
+So we've been talking about EC2, what's EBS?
+Well EBS is just the virtual hard disks that EC2 users.
+So every server has a disk and every virtual server has a
+virtual disk.
+So Amazon EBS allows you to create storage volumes and attach them to EC2
+instances. Once attached, you can create a file system on top of these volumes,
+you can run a database or you can install an operating system,
+or you can use them in any other way that you would use a block device and by
+block device, we just mean a virtual hard disk or a physical hard disk.
+So Amazon EBS volumes placed in specific availability zones where they are
+automatically replicated to protect you from the failure of a single component.
+So EBS volumes will always be in a particular availability zone.
+Your EC2 instance will always need to be in the same availability zone as your
+EBS volumes. So just think of EBS as a virtual disk in the cloud.
+So just remember that image there, virtual disk in the cloud, that's all EBS is.
+EBS comes in two different types. So we've got SSD and we've got magnetic SSD.
+We've got two different types of SSD. So we've got our general purpose SSD.
+This is sometimes referred to as GP2 and this is what we basically are going to
+use for the rest of the course. We then have provisioned IOPS SSD,
+and this is sometimes referred to as IO1 and these are the highest performance
+SSD volumes where you need really,
+really high performance in terms of IOPS.
+So IOPS just stands for input output per second.
+So basically if you've got a really high performing database,
+you probably want provisioned IOPS rather than GP2 rather than general purpose
+SSD, we then have magnetic. This comes in three different flavors.
+We've got throughput optimized, hard disk drive and this is referred to as ST1.
+So this is a low cost hard disk drive that's designed for frequently accessed
+and throughput intensive workloads, then have a cold, hard disk drive.
+This is SC1. This is basically used for things like file servers.
+So for things that are less frequently access workloads and that way you want to
+save some money, and then you've got magnetic, which has a previous generation,
+and you don't really need to know that going into this certified cloud
+practitioner, you just need to remember really the four of them. So GP2, IO1,
+EC2 so GP2 is general purpose,
+provisioned IOPS is IO1, ST1 is throughput optimized,
+and SC1 is your low cost storage. So your cold, hard disk drive.
+So that is EBS. They're just virtual disks in the cloud.
+So what are my exam tips?
+So Amazon Elastic Compute Cloud is a web service that provides resizable compute
+capacity in the cloud. It's basically a virtual server in the cloud.
+That's all EC2 is.
+EC2 comes in four different pricing models. So we've got on demand.
+We've got reserved. We've got spot. We've got dedicated hosts.
+On demand you pay for by the hour or by the second.
+Reserve you pay up front and for a defined contract term
+could be one year or three years. The more you pay up front,
+the more discount you get. Spot the price moves around all the time,
+like the stock market and then we have dedicated hosts and you'd only use this
+where you've got a regular three requirements or licensing requirements.
+One popular exam topic is what happens if a spot instance
+is terminated by EC2.
+So let's say that the price has gone down because it's gone above what you're
+prepared to pay for it.
+Tthen essentially you're not going to be charged for a partial hour of usage if
+the price goes above what prepared to pay for it. However,
+if you terminate the instance yourself,
+you are going to be charged for that hour in which the instance ran.
+So it's all around who terminates the instance,
+is it because the price has gone above what you're prepared to pay,
+well then you're not going to be charged for that partial hour.
+If you then terminate the instance, however you do it like 58 minutes in,
+you're going to be charged for that full hour. So bear that in mind as well.
+Can you remember all the different, EC2 instance types?
+Can you remember our pneumonic? Well, it's F for FPGA,
+I for IOPS, G for graphics, H for high throughput, T for cheap general purpose.
+So think T2.micro. D for density. R for RAM.
+M for the main choice for general purpose app. C for compute.
+P for graphics so think pics. X for extreme memory.
+Z for extreme memory and CPU.
+A for arm based workloads and U for bare metal and that basically
+equals fight Dr.McPxz au.
+So you're going to fight Dr.McPxz either in Austin or in Australia.
+So it's entirely up to you, which one you pick. I know it's silly,
+but it really does help certainly later on,
+if you do want to pursue the specialty exams or the professional exams.
+This will really help you out because you'll be able to eliminate incorrect
+answers.
+And then finally just remember the different EBS volume type.
+So EBS is just the virtual disk in the cloud that the virtual servers run off
+and there's four different types. Well, there's five,
+but there's four different ones that are really relevant.
+So you've got your two SSDs. So you've got general purpose SSD,
+which we'll be using throughout the rest of this course.
+You've got your provisioned IOPS SSDs.
+This would be useful for things like really high performance database servers,
+et cetera, then have magnetic storage and we've got two different types in here.
+We've got our throughput optimized. So ST1.
+So this could be things for like, you know basically data warehouses,
+for example and then we've got our cold hard disk drive and that's called SC1
+and this could be used for file servers,
+things where you need to store files cheaply
+but you're not going to be accessing them all the time and then we have
+magnetic, which is previous generation.
+So I appreciate this has been a little bit of information overload.
+As always in this course,
+what the best way to learn AWS is to start getting our hands dirty with it,
+start playing with it. So in the next lecture,
+we're going to go ahead and get rid of all the theory,
+and we're going to start provisioning some EC2 instances and this is where it
+starts to become a really, really fun.
+You're going to learn how to build little web servers in the cloud,
+and then you're going to go in and delete them afterwards. It's lots of fun.
+So if you've got the time, please join me in the next lecture. Thank you.

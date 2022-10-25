@@ -1,0 +1,247 @@
+Okay hello, Cloud Gurus,
+and welcome to this lecture.
+This is on the AWS Shared Responsibility Model.
+And this is a super important lecture going
+into your exam.
+You need to understand this model inside out
+if you want to pass the Certified Cloud Practitioner exam.
+So what is it?
+Well, while AWS manages the security of the cloud,
+security in the cloud is the responsibility of the customer.
+And customers retain control of what security they choose
+to implement to protect their own content,
+platform, applications, systems and network,
+no differently than you would in an on-site data center.
+So, The Shared Responsibility Model is basically saying
+AWS are responsible for some things
+in terms of security of the cloud.
+For example, their data centers,
+they're completely responsible for the security
+of their data centers, you don't want anyone
+just being able to walk into the data center
+and take out a hard disk,
+that may have your valuable information on it.
+So that is what Amazon are responsible for.
+But likewise, you're responsible for your EC2 instances.
+If you forget to update them with security patches
+and you then get hacked, that's not Amazon's fault,
+that's your fault for not updating your EC2 instances.
+So the Shared Responsibility Model is talking
+about who is responsible for what in cloud.
+And this is a really good diagram
+of who is responsible for what
+under the Shared Responsibility Model.
+So let's start with AWS.
+AWS are going to be responsible for the regions,
+for the availability zones, for the edge locations.
+They're going to be responsible for all the hardware
+of the assets that sit inside these availability zones
+and edge locations and regions.
+They're going to be responsible for the compute,
+the storage, the databases, and the networking.
+And databases here would be the databases
+that store your information.
+So Amazon use DynamoDB for most
+of their database technology.
+And then we've got the software.
+So AWS are responsible for things like the hypervisor.
+In some cases, this will go all the way up to
+the operating system.
+So like with RDS, you cannot log into
+RDS's operating system.
+so Amazon are responsible for patching RDS.
+So they're responsible for patching MySQL, for example,
+or SQL server.
+They're responsible for patching the operating system
+that these things run on.
+So if you're running SQL server
+and it's running on Windows, Amazon are responsible
+for patching that, you know that up to Windows.
+Then when we move to the customer,
+this is where you're responsible.
+So you're going to be responsible for your client side data.
+So you're going to encrypt everything.
+You're also going to be responsible
+for the server side data.
+So you're going to have things in S3 encrypted by default.
+You're going to be responsible for things like networking.
+So are you going to be communicating over HTTPS
+or over a VPN, or something like that?
+You're responsible for your operating systems.
+Now an operating system here would be EC2.
+Amazon would be responsible for the operating system
+with RDS.
+But Amazon can't log into your EC2 instances.
+So that is your responsibility.
+You're responsible for your network
+and firewall configurations.
+You're responsible for the platform, the applications
+for IAM.
+if you create a user with God Mode access,
+and then publish these access key ID
+and secret access key on GitHub.
+That's not Amazon's fault, that's your fault
+and you're responsible for your customer data.
+Now, I want you to go over to aws.amazon.com/compliance.
+Okay, so here I am in aws.amazon.com/compliance.
+We saw this in the last lecture.
+If you scroll down,
+you'll be able to see here shared responsibility.
+So go ahead and click on that.
+And this will give you the Shared Responsibility Model.
+And you should really, really, really read this
+before you go into your exams.
+And as an overview, basically, security and compliance
+is a shared responsibility between AWS and the customer.
+This shared model can help relieve
+a customer's operational burden
+as AWS operates, manages and controls
+the components from the host operating system
+and virtualization layer, down to the physical security
+of the facilities in which the service operates.
+And the customer assumes responsibility and management
+of the guest operating systems.
+And this includes updates and security patches
+and other associated application software.
+So such as MySQL or any database technology running.
+Maybe exchange or whatever it is you install
+on your servers, as well as the configuration
+of the AWS provided security group firewall.
+So basically, Amazon's responsible for everything up
+to the guest operating system, and then you're responsible
+from the guest operating system upwards.
+Now, we are only talking about EC2 here.
+So you are responsible for patching EC2.
+For things like RDS or any S3 is going to run
+on an operating system.
+That's always going to be Amazon's responsibility
+because you don't get access to the operating system
+which S3 runs on.
+You don't get access to the operating system
+which RDS runs on or DynamoDB, etc.
+So when they're talking about operating system here,
+in this particular context,
+they're talking about EC2 and you are responsible
+for patching EC2.
+So AWS' responsibility is security of the cloud
+and a customer's responsibility is security in the cloud.
+So try and remember that going into your exams.
+It's quite a short page, I would just go ahead
+and read it yourself and make sure you understand it.
+Where you're going to be tested on this is particularly
+those examples about where should you be doing
+your security patches?
+Well you should be doing that with EC2.
+What responsibilities does Amazon have?
+Well, they have the responsibilities
+of securing data centers, for example,
+or they have the responsibility
+of securing the operating systems
+on which RDS runs or on which S3 runs.
+But the data you put into S3,
+or into RDS is your responsibility.
+And when you transmit that data out to other applications,
+you should be doing that through HTTPS,
+which is encrypted not using HTTP.
+And there's actually an amusing song
+on the shared responsibility model
+and it's sung by Kate Turchin.
+And so check out this YouTube link.
+Kate sings lots of songs about AWS,
+so subscribe to her channel.
+It's actually quite fun.
+So on to my exam tips.
+My first exam tip, is go ahead and read
+the Shared Responsibility Model.
+And you can do that by going to
+aws.amazon.com/compliance/shared-responsibility-model.
+And make sure you read it, understand it.
+And then also try and remember this diagram.
+So AWS are going to be responsible
+for the security of the cloud.
+So this is all the hardware spread across the regions,
+availability zones, edge locations.
+They're responsible for the compute, the storage,
+the database technology, the networking technology,
+and then any software that's sitting on those stacks.
+So that could be virtualization software that could be
+application software such as RDS,
+or such a SQL server for example, etc, etc.
+The customer is responsible for security in the cloud.
+So you're responsible for encrypting your data
+both at rest and in transit.
+You're responsible for your own operating systems
+when it comes to EC2.
+You're responsible for your security groups.
+Your responsible for your network,
+your firewall configurations, etc, etc.
+You're responsible for IAM.
+You're responsible for your customer data.
+So honestly, the Shared Responsibility Model will probably
+come up four or five times on your exam so you can get
+some easy marks if you do learn this inside out.
+And I want you when you're looking at an exam question
+to visualize what the question is asking you.
+So can you yourself do this in the AWS console
+or inside EC2?
+This could be things like security groups,
+for example, you are in control of what ports are open
+on your security group.
+You are in control of provisioning
+your identity access management users
+and giving them permissions.
+You are in control of patching your
+EC2 operating systems or patching the databases
+that are running on EC2.
+So if you can see yourself doing this task,
+then you're likely responsible.
+If however, the question's around like data center security
+or security cameras or cabling,
+or even patching RDS operating systems, etc,
+then it's likely that AWS are responsible.
+If you see a question in the exam and you're like,
+"Well, I don't know how I would do this"
+then it's probably going to be AWS
+who are responsible for that.
+So do go ahead and read the Shared Responsibility Model.
+Encryption is actually a really interesting
+shared responsibility, because if it's an object
+on S3, and Amazon's doing all the encrypting for you,
+then they're responsible for the encryption of that,
+as well as the keys.
+But you're the one responsible for turning on encryption
+in the first place.
+You're the one who's responsible for making sure
+that when you send stuff to S3,
+it's being encrypted in transit.
+So it's using HTTPS, that sort of thing.
+So encryption is definitely a shared responsibility.
+Mostly, it's a combination of both yours
+and Amazon's responsibility.
+If you're providing your own key,
+then it's your responsibility.
+encryption is definitely your responsibility
+if you're providing your own key.
+So like I said, just remember, as you go into the exam,
+I want you to visualize what the questions asking you.
+If it's asking you about, physical security
+around the data center, then it's going to be AWS
+who are responsible for that.
+If it's asking you about your EC2 operating systems
+and patching it, or databases running on EC2,
+then that's going to be your responsibility.
+Do not confuse that with the operating system of RDS,
+however, because you have no visibility
+into the operating system of RDS.
+You can't log into Windows or Linux instances
+that are running your database technology.
+So patching RDS operating systems
+is definitely Amazon's responsibility.
+So hopefully that clears it up.
+Like I said, probably five or six questions
+on this in the exam.
+Make sure you go ahead and read that link that
+I had in the earlier slide.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture.
+Thank you.

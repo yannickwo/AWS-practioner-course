@@ -1,0 +1,50 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture.
+In this lecture we're going to look at how we can connect our on premise
+environments into AWS. So this could be your own data center.
+It could be your head office,
+et cetera and there's two different ways that we can do this and there's even a
+way that we can combine these two different methodologies.
+So let's start with a VPN.
+So you can create a hardware virtual private network connection between your
+corporate data center and your VPC leveraging the AWS cloud as
+an extension of your corporate network and data center.
+So I'm sure you've all used VPNs before. When you have to work from home,
+typically, if you're going to connect into the office network,
+you would do that over a VPN.
+You can also buy access to retail VPN services,
+such as BIFA VPN or Nord VPN.
+A lot of people will do this if they want to watch TV shows in other countries
+that might be GR restricted. so I'm sure you've all used VPNs before,
+and it's just a way of extending a network out to a remote
+location.
+So you have essentially have the same IP address range at home as you would do
+in your office. So that's all a VPN is.
+We can also connect in to AWS using Direct Connect.
+So AWS Direct Connect is a cloud service solution that makes it easier to
+establish a dedicated network connection from your premises to AWS.
+It is a physical line that goes into AWS.
+So with using Direct Connect,
+you can establish private connectivity between AWS and your data center or
+office or co-location environment,
+which in many cases can reduce your network costs,
+increase bandwidth throughput,
+and provide a more consistent network experience than internet based
+connections.
+So if you see any kind of scenario based question where it's talking about
+having a more reliable connection into AWS,
+or it's talking about bandwidth throughput, being able to increase it,
+I want you to immediately think of Direct Connect and it does come up an awful
+lot in the exam and what you can do is you can do a VPN over
+Direct Connect, and this gives you the ultimate security.
+This means that you not only do you have a dedicated line into AWS,
+but also that all your traffic to and from AWS is encrypted over the
+Direct Connect connection using a VPN.
+So if you do again see a scenario based question where you've got,
+let's say a VPN connection keeps dropping out, you need a much more reliable,
+you know,
+method of connecting into AWS then you want to use Direct Connect,
+but if you need encryption across Direct Connect,
+then you use a VPN over Direct Connect. So that's a really quick lecture.
+Hopefully you all understand what it is I'm talking about.
+If you have any questions, please let me know. If not,
+feel free to move on to the next lecture. Thank you.

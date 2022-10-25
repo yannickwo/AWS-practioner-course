@@ -1,0 +1,84 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture. In this lecture,
+we're going to look at S3 versioning. So in the last lecture,
+we created a serverless website on S3.
+I want you to go to where you downloaded your index.html and your error.html.
+I want you to go ahead and open up index.html. So here's where I downloaded it.
+I'm going to go ahead and open this up in my favorite text editor,
+which is a BB Editor or BB Edit and we can see in here,
+this is a pitch, or this is basically the HTML of my website and it says, hello,
+Cloud Gurus.
+So what I'm going to do is I'm just going to change this header to hello Cloud
+Gurus. This is version two,
+and I'm going to go ahead and save that and then we're going to go over to the
+AWS console some back in the AWS console.
+Let's go ahead and click on S3. You can get to S3 by the way,
+as always by clicking on Storage, S3 is under storage,
+that will load up S3, and then we're going to go over to our website.
+So we're going to go into the bucket with our website on there.
+So I'm in my S3 website bucket.
+I'm going to go over to Properties and the very first one is object versioning.
+So what we're going to do is enable versioning and this basically allows you to
+keep multiple variants of an object in the same bucket.
+You can preserve versions too. You can use versioning to preserve,
+retrieve and restore different versions of your bucket.
+So go ahead and hit Edit,
+and we're going to go ahead and enable it once it's enabled,
+you can only suspend it. You can't delete a versioning. So bear that in mind.
+Let's go ahead and hit save and we have now turned versioning on so we can see
+it in him. We click on our objects. We can see that in here,
+we've got now got this little tab and it says List Versions.
+So right now I've only got one version of my index.html.
+Let's go ahead and upload that file that we just changed.
+So go in and go to add files and we'll go over to my downloads
+directory and it's in here and um index.html
+and then I'm going to go ahead and hit Open that has now opened it,
+and we are now ready to upload it.
+So I'm going to go ahead and upload it that has now been successful.
+If we click on Exit, we should be able to see if we go to list versions.
+We've got two different versions. Now we've got the null version.
+This was the default version. You can see the timestamp here,
+and then we've got the newest version, our index.html.
+If we go ahead and click on that and click on the URL,
+we'll be able to see this is version two. So that's really cool.
+If we go back to our bucket,
+what we're going to do is we're going to go back to our bucket and we'll go and
+look at our versions and then we'll try and roll this version back.
+So what we can do is go ahead and click in here and then what we can do is we
+can go ahead and delete it and this is going to just delete this version of the
+object, or at least it will be a specifically, it will be undone.
+So what we're going to do is go ahead and delete.
+It says permanently delete objects, and you can write in here permanently
+delete, go ahead and hit Delete.
+There we go. That has now deleted that object. So we can. Now,
+if we click in here, we can see that there's only one version of the object.
+This is the original version,
+not version two and if we were to click on that and go ahead and click on the
+URL, you can see we've now lost version two.
+So we've rolled back our object to the original version and that's what
+versioning is really good for is you can go in you can delete versions,
+you can roll things back,
+but you can also just go ahead and have a look at the original version than
+version one, version two. You don't have to necessarily go in and delete it.
+So that's all that versioning is. Let's go onto my exam tips.
+So onto my exam tips, using versioning with S3,
+it stores all versions of an object, and this includes all writes.
+Even if you delete an object,
+it's a great backup tool and versioning cannot be disabled.
+Once versioning is enabled,
+it can only be dis suspended and not disabled and it also
+integrates with lifecycle rules.
+So you can actually go in there and if a version is getting old,
+it hasn't been changed in like 30 days.
+You can then archive that off to Glacier,
+for example so you can integrate it or you can even move it onto different you
+know,
+S3 storage mediums who might want to move it onto Infrequently Access and then
+off to Glacier at some point in time and then finally you can use versioning
+with MFA delete capabilities.
+So this is multifactorial authentication delete.
+So essentially it means that people can't go in and delete an object unless
+they have two factor authentication.
+So versioning does come up a little bit in the exam. Not very much though.
+Really you just need to know what it is and what it does.
+So if you have any questions, please let me know. If not,
+feel free to move on to the next lecture. Thank you.

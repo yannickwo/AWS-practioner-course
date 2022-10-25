@@ -1,0 +1,216 @@
+Okay, hello Cloud Gurus
+and welcome to this lecture.
+In this lecture, we're going to look at autoscaling.
+So let's have a look at what our environment
+looks like right now.
+So right, here we've got our Application Load Balancer
+and by default, our Application Load Balancers
+are redundant.
+So they are spread across multiple availability zones.
+Look at our single EC2 instance,
+which is inside a single availability zone,
+it is connecting to our primary database,
+but we have a RDS Multi-AZ turned on.
+So we've also got a secondary database
+in another availability zone.
+So right now, this is a single point of failure.
+What we're going to go in and do
+is to terminate this instance.
+We're then going to create an autoscaling group
+using that AMI that we just created,
+and the AMI just means Amazon Machine Image.
+It's literally a photograph of your machine.
+And then, that way, we're going to use autoscaling
+to deploy two EC2 instances across two availability zones.
+And then we've got a fault-tolerant website.
+So if you've got the time,
+please join me in the AWS console.
+Okay, so here I am in the AWS console.
+We'll just go over to EC2
+and we'll just double check that our image
+is now being created.
+So click on AMI, as you can see, it is now available.
+So let's go over to our instance. I'm going
+to go in and we're going to terminate this instance.
+Now, don't worry too much.
+We are going to bring in this backup online,
+but this instance has now been terminated.
+Now the next thing we're going to do,
+is we're going to go over and scroll all the way down,
+and you'll be able to see autoscaling.
+And there's two things to autoscaling;
+there's launch configurations,
+and then autoscaling groups.
+Basically, you have to create a launch configuration first.
+A launch configuration is just how to configure
+the launch of your EC2 instances,
+and then we're going to create an autoscaling group.
+So we can click on launch configuration. We're going
+to go ahead and click create launch configuration.
+Now, we could use the Amazon Linux 2 AMI,
+but we'd have to run a big bootstrap script
+to install WordPress all over again,
+and we really don't want to do that.
+We can just use our my AMI.
+And here it is, My WordPress Gold Template.
+So go ahead and select that.
+I'm going to just do it as a t2.micro.
+I'm not going to do, change anything,
+but in here, we could just do a simple bootstrap script.
+So to do that, we do a number sign (#),
+and then our exclamation mark (!), which means our shebang
+And then it's /bin/bash,
+so there's a path to our interpreter.
+Our interpreter just basically takes any commands
+that we write underneath this,
+and then runs them at root level.
+And then what we're going to do is just run
+a yum update -yes.
+So all our EC2 instances
+will automatically update themselves
+as soon as they are first brought up online.
+Next, we're going to add our storage.
+We need to give our launch configuration group a name,
+so I'm going to call it A Cloud Guru
+launch configuration group.
+And I'm going to go ahead and hit next.
+Storage I'm going to just leave as default.
+In here, we're going to do our existing security groups.
+We're going to use our WebDMZ.
+I'm going to hit review,
+and then we're going to go ahead
+and create our launch configuration,
+and I'm going to use my existing private key.
+So that has now created our launch configuration. In here,
+it says create an autoscaling group
+using this launch configuration.
+So let's click on that.
+The group name, we're going to call it acloudguruASG,
+autoscaling group.
+I'm going to start the group with two instances.
+I'm going to do it in our default VPC
+and you can basically put in here
+the subnets that you want to use.
+I'm actually going to add them all in
+and the way autoscaling works is, it will know
+that if it launches one EC2 instance
+in one subnet or one availability zone,
+it's automatically going to launch the second one
+in a completely different one.
+So it is already pre-configured
+that it spreads the EC2 instances
+across multiple availability zones.
+So here we've got our advanced details.
+What we can do is we can do
+receive traffic from one of our load balancers.
+Going to do my target groups.
+It's going to be MyWebServers, so in there,
+so we're going to say that this is behind a load balancer.
+In here we've got our health check type,
+so we can have our Elastic Load Balancer
+health check on EC2.
+I'm going to do an Elastic Load Balancer health check.
+So just leave this as three hundred seconds.
+In here, you've got our service-linked role.
+So we're actually going to create a role
+and if you click on view role in IAM,
+it's going to give you an autoscaling service role.
+So basically, autoscaling will create this role
+automatically for you.
+If you click on roles, you should be able
+to see it in there.
+So come back over here, and I'm going to go over
+to configure my scaling policies.
+I'm going to use scaling policies
+to adjust the capacity of this group.
+So I'm going to say scale between two and three,
+let's just say three instances, not 32 instances.
+And I'm going to say scale the group size
+based on average CPU utilization.
+So let's say if the CPU goes above 90 percent,
+then we're going to add an additional instance.
+We're going to keep going until we hit a maximum of three.
+Let's go ahead and configure notifications.
+I don't really want a notification for this.
+We can go ahead and configure our tags.
+We don't really need any tags.
+I'm just going to go ahead and hit review,
+and now I'm going to go ahead
+and hit create autoscaling group.
+And this will now create my autoscaling group,
+and we can go and view our autoscaling groups in here.
+You can go view the activity history.
+Right now, it says not yet in service.
+If we go back up to our EC2 dashboard,
+hopefully we'll be able to see
+some running instances coming up, and there they are.
+So we've got one in us-east-1a,
+and one in us-east-1d.
+And in theory, what we should be able to do,
+is if we go and grab the address for our load balancer,
+so just click on your load balancers in here,
+grab the DNS address in here,
+and just hit copy to your clipboard.
+Go back to your EC2 dashboard,
+have a look at your instances.
+It says they're up and running.
+You might want to give it a couple of minutes.
+I'm going to be a bit brave and just open up a new tab.
+So I've opened up a new tab, and here I'm going to paste it
+in, hit enter, and there we go,
+my WordPress site is now up and running.
+It's behind an Application Load Balancer,
+and we've got two EC2 instances,
+which are in multiple availability zones.
+So we have a fault tolerant website in the cloud.
+I'm just going to make this full screen.
+So now what you might want to do
+is go through and delete everything.
+Remember you are going to go out of free tier
+if you leave this up and running.
+To delete everything, what we would need to do
+is just go over to our autoscaling group,
+go in and delete it first.
+So go to actions and hit delete, and hit yes delete.
+That would delete our autoscaling group.
+Once that's done, we want to just go back over to services.
+Let's go over to RDS and delete our RDS instances.
+So we click in DB instances in here.
+We can click on this one.
+You can go to actions, delete,
+and then it will always ask us if we want a final snapshot.
+I don't really want a final snapshot
+or I don't want any automated backups.
+And then just type in delete me in here.
+It won't let you click on this until you hit
+the I acknowledge that upon instance deletion,
+automatic backups, including system snapshots,
+will no longer be available.
+Going to go and delete that.
+One thing you should always delete as well,
+and this catches a lot of people out,
+is your Application Load Balancers.
+Your Application Load Balancers cost you money
+and people forget about them,
+and they're not very visible in the console,
+so people forget about them and they incur charges.
+So I'm just going to go in and delete this target group,
+and hit yes.
+And there we go, it says it's in use at the moment.
+So what we can do is just click on our load balancer,
+go in here and just go actions, delete,
+and go ahead and delete.
+And then you'll be able to go in
+and delete your target groups from there.
+Go to actions, delete, and hit yes.
+There we go.
+So now I've cleaned up, I no longer have my EC2 instances
+and I no longer have my RDS instances.
+I no longer have my load balancer.
+And you've done really really well.
+You've created a fault-tolerant WordPress site in the cloud.
+So congratulations everyone.
+So hopefully that's been lots of fun.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture.
+Thank you.

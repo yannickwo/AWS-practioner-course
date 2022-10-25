@@ -1,0 +1,513 @@
+Okay, hello Cloud Gurus,
+and welcome to this lecture.
+In this lecture, we're going
+to get our hands dirty with RDS.
+So we're gonna go in and provision an RDS instance.
+So in terms of what we're going to do,
+just see if you can follow along.
+So we're gonna provision an RDS instance.
+What we're then going to do is open
+up MySQL Port to our Web-DMZ security group.
+This essentially just allows our web server to talk
+to our database server via the port number 3306,
+which is the MySQL Port.
+And essentially, you're just basically
+opening up a firewall,
+allowing your web server to talk to your database server.
+We're then gonna go ahead and create that web service.
+So we're gonna create an EC2 instance.
+We're then going to install WordPress
+using a Boot Strap script.
+So a Boot Strap script is just going to automate
+the entire installation of WordPress.
+You don't have to type it all out manually.
+And then going to register the EC2 instance
+to a target group.
+This will allow us to put our EC2 instance
+behind an application load balancer.
+And when you create an application load balancer,
+instead of having an IP address for your EC2 instance,
+you get a DNS name,
+and that DNS name just maps
+the application load balancer back to your EC2 instance.
+Now, the reason we're doing this is 'cause what we want
+to do is create multiple EC2 instances
+and be able to go in and terminate them.
+And when you install WordPress, by default,
+what it will do is just look at the IP address
+that was provisioned when you set up that EC2 instance,
+but you don't want that,
+because the IP address is going to change all the time
+when you delete, you know, different EC2 instances
+or when you add another EC2 instance.
+So you don't want to go off an IP address.
+You want to go off a website name.
+And you could go and set this up in route 53,
+but we're just going to use the application load balancer's
+website name or DNS name.
+So what we're gonna do is just go into WordPress
+and update the IP address to use
+the application load balancer's DNS name.
+And then finally, we're gonna take a snapshot
+of our EC2 instance.
+So this is just like taking a photo,
+and we're going to use that snapshot later on
+to create an auto-scaling group.
+An auto-scaling group will just scale
+out automatically based on load
+and other requirements that we set.
+And essentially, this will allow us to have a fault tolerant
+WordPress site in the cloud.
+So that's what we're gonna do in this lab.
+If you do get stuck for some reason,
+and it doesn't work, don't freak out.
+You're not gonna be tested on any of this
+in the certified cloud practitioner exam.
+This lab is just designed to give you some hands on
+experience with RDS.
+And essentially, it's basically, you know,
+you might want to run your own blog site
+at the end of this course.
+A lot of students have gone on and done that
+once they've learned how to install WordPress, et cetera.
+But if for some reason you can't get the lab to work,
+don't worry.
+Like I said, you're never gonna be tested on this
+in the certified cloud practitioner exam.
+So this is a lab,
+and you will need to log into the AWS console.
+Okay, so here I am in the AWS management console.
+The first thing I want to do is just go over to EC2,
+and we're gonna go ahead and delete that web server
+that we set up a few lectures ago.
+It's called WebServer01.
+So just go in and go to your actions
+and go ahead and hit terminate
+and go ahead and hit yes terminate.
+That is now terminating that EC2 instance.
+Next thing we're gonna do is we're gonna go
+over to services, I'm gonna go ahead and click on RDS.
+And what we're going to do is provision an RDS instance.
+What I'm gonna do is just close this little window here,
+and I'm gonna go ahead and hit create database.
+Now you can see here that Amazon
+will push Aurora straightaway.
+It's the default option.
+Amazon Aurora is Amazon's own proprietary database.
+It basically has six copies of your data spread
+across three availability zones.
+It is complete overkill for what we want.
+We're just gonna go ahead and do MySQL.
+And then what we're gonna do is we're going to scroll down,
+and we're going to use the template production.
+Now you may just want to use free tier.
+It's completely up to you.
+But production will give us a high availability,
+so we'll be able to deploy this
+across multiple availability zones.
+I'm gonna scroll down, database instance identifier,
+I'm just going to change this to acloudguru,
+and I'm gonna paste that into my clipboard,
+so I can paste it everywhere.
+So this is the DB instance identifier.
+So this is what you'll see in RDS.
+Then we would need to go ahead
+and create our usernames.
+So instead of admin, I'm just gonna do acloudguru.
+My master password, you can generate,
+auto generate a password, we don't need to do that.
+I'm just gonna do my master password
+as acloudguru and then acloudguru.
+I've got our DB instance size,
+that's currently set to standard classes,
+but these are very large ones.
+What we want to do is just go over
+to our (indistinct) classes,
+and you want basically the smallest one possible.
+So we're going to do it db.t2.micro.
+So go ahead and click on that.
+Let's scroll down,
+and then what we're going to do is instead
+of provision to IOPS, we're just gonna do
+general purpose SSD to keep it cheap and cheerful.
+We don't really need storage auto-scaling,
+but you can leave it on if you want.
+I'm gonna scroll down,
+and we're gonna have a multi-AZ deployment,
+so we're gonna create a standard standby instance.
+Scrolling down, we're going to deploy it
+into our default VPC.
+And here it's a bit tricky.
+They've changed the UI.
+So you need to click in additional configuration.
+We need to give our database a name.
+So again, I'm just gonna paste in acloudguru.
+If you don't do this, essentially,
+it won't create the first database,
+and then WordPress won't be able to connect to it.
+So make sure you paste in or give this a name, acloudguru.
+You can call it anything you want,
+but just I'd keep it as acloudguru,
+'cause it makes our lives a lot easier.
+And then we'll scroll all the way down,
+leave everything else as is,
+and then what we want to do is go ahead
+and hit create database.
+Now this will cost us $27 a month if we leave it running.
+You probably only want to leave this up
+for, you know, an hour or two,
+just so you can see how it all works.
+Let's go ahead and hit create database.
+And that is now creating our database.
+This can take some time.
+It can take up to 10 or 15 minutes
+to create an RDS instance, so just be patient.
+What I'm gonna do is I'm just gonna go ahead
+and pause the video while we wait
+for this to go live.
+So the status will change.
+Right now, you can see it's creating.
+I'm just gonna pause the video here
+and wait for this RDS instance to come back up.
+Okay, so that RDS database is now available.
+You can see it in here.
+And if we click on it, we'll be able to see a summary.
+So we can see in here, we've got things
+like our CPU utilization, the current activity,
+so how many connections it has.
+If we actually click on monitoring in here,
+we'll be able to see all our different CloudWatch metrics,
+so things like CPU utilization, memory,
+write IOPS, et cetera, et cetera.
+We click back on connectivity and security,
+we'll get our database end point.
+And we're gonna have to basically tell WordPress
+this address, and then WordPress will connect
+to this database and start writing files to it.
+Before we do that though, there's a couple of things
+that we do need to do.
+We need to go to our VPC security groups,
+so just click in here.
+And what we want to do is we want to open
+up a port for MySQL traffic.
+So if we just go to edit, and we're gonna add a role,
+and we're gonna do a custom TCP rule,
+and the port range is in here.
+If you do ever forget your ports,
+you can just scroll down in here,
+you can see MySQL and Aurora,
+so that will automatically populate
+the port range with 3306.
+And then what we want to do is we want to open this
+up to our Web-DMZ security groups.
+So if you type in SG or just type in S,
+you'll be able to see your Web-DMZ security group,
+and this Web-DMZ is the one
+that has port 80 open to the world.
+And that's where our little EC2 instance is going to sit
+when we provision it in a second.
+So go ahead and click on that,
+and let's go ahead and hit save.
+Now that we've done that,
+we are automatically back in EC2,
+so let's click on the EC2 dashboard,
+and we're gonna go ahead and launch an instance.
+And this instance, we're gonna use the Amazon_Linux_2_AMI.
+I'm gonna use general purpose,
+and we are going to leave everything as default,
+except we're going to scroll down,
+we're going to go to advanced details,
+and in here we're going to pass it a Boot Strap script.
+Now this is the Boot Strap script in here.
+It is way beyond the scope of the certified cloud
+practitioner to understand what it's doing,
+but essentially, it's just installing Apache,
+PHP, and PHP MySQL, and then essentially,
+it's going in, and it's downloading WordPress.
+It's doing a whole bunch of permissions changes,
+and essentially it's extracting WordPress
+and then copying it, installing it,
+then removing the zip file.
+And then here it's changing the permissions,
+and then it's starting the Apache service.
+And it's making sure that if our EC2 instance comes,
+you know, if it restarts,
+that the Apache service will come back on.
+So this is available in the resources section of the course.
+Just copy that into your clipboard.
+And then we just want to scroll back down here
+and paste that in.
+And next, we're gonna go ahead and add our storage.
+Gonna leave everything else as default.
+Our tags, you might just want to give it a name.
+So give this a name WebServer01.
+And we'll go ahead and hit next.
+And in here, I'm going to select
+an existing security group,
+so I'm gonna put this in my Web-DMZ security group.
+And we, if you remember,
+our default security group now allows MySQL traffic into,
+from our Web-DMZ security group.
+So next go ahead and hit review and launch
+and go ahead and launch,
+and then select a key pair that you have.
+So I'm gonna do a second key pair that I've got,
+and there we go.
+We're just going to launch our EC2 instance.
+So if we go in and view our instances, you can see it here.
+It is installing.
+I'm just going to pause the video
+and wait for this to come up,
+but you should be able to go to that public IP address
+and see the WordPress installation page.
+So let's just go ahead and pause the video.
+So that EC2 instance is now available.
+We're just going to go and copy our public IP address
+into our clipboard.
+And if you just open up another tab and paste that in,
+you should be able to get this screen.
+So this is the WordPress installation screen,
+and all we need to do is go ahead and hit let's go.
+If for some reason it is timing out,
+just check your security group rules
+and make sure that port 80 is open.
+In here, we've got to give it our database name.
+So if you remember, we just did acloudguru
+for everything to keep it simple.
+So acloudguru, acloudguru, and then the database hosts,
+now when you see local hosts,
+that means it's hosted locally on your EC2 instance.
+Ours is not, ours is hosted on RDS.
+So we need to go back over to the RDS screen.
+So I'm back over in the console.
+I'm just gonna go down to RDS under databases.
+And what I'm gonna do is I need to get
+my database end point.
+So if we click on DB instances and then our database,
+and we go to connectivity and security,
+we've got our end point here.
+So this is our end point in here.
+Copy that into your clipboard.
+And then what we want to do is just paste it in here.
+And then we're gonna go ahead and hit submit.
+So you'll see this screen.
+It says, "Sorry, but I can't write the wp-config.php.file."
+So what we're gonna need to do is we're going to need
+to SSH into our EC2 instance
+and write this out manually.
+So go ahead and open up your terminal window.
+So let's just quickly go back over
+to our AWS console in here,
+and we're gonna go and grab our public IP address.
+So go over to EC2, one, running instance,
+and in here, we're going to grab the public IP address.
+If you just click down here, you get the copy to clipboard.
+Now I'm in my terminal window.
+So just gonna type SSH and then ec2-user.
+So ec2-user, and then at,
+and then paste in your public IP address there.
+And then minus I, and then the name of your key,
+so mine was called MyKP1.pem.
+Yours will be called something different, no doubt.
+And there we go with SSH in,
+and then we just want to do sudo su
+to get our privileges to route.
+Just gonna clear the screen.
+And I'm gonna go over to my /var/www/html directory.
+And in here, what we need to do is we're going to do nano
+and then wp-config.php.
+So this is going to create our wp-config.php file.
+And if you go back over to your browser
+and just copy this into your clipboard,
+gonna paste it in here, you might get this error message,
+just go ahead and hit paste.
+And then I'm going to do control X
+and hit yes to save and then hit enter.
+And if we then just cat our wp-config,
+so cat basically is command to read that file.
+You'll be able to see that it has now saved that file.
+So we should be all good to go.
+Let's go back over to our browser.
+So I'm back in the browser,
+and I'm gonna go ahead and hit run the installation.
+And in here, we're ready to go.
+So I'm gonna do the site title as A Cloud Guru.
+My username is just going to be acloudguru
+to keep everything simple.
+And likewise, my password.
+I'm going to use a weak password, just acloudguru.
+And then in here you can do your email.
+I'm just gonna do test@test.com,
+but you might want to use a real email.
+And go ahead and hit install WordPress.
+Now, hopefully this will go ahead and install,
+and there you go.
+You can see success.
+So WordPress has been installed.
+Now what that's actually done is it started
+to write files to our RDS instance.
+And if we go in here, we can click log in.
+This will take us over to the login page,
+and then I can type in acloudguru and then acloudguru,
+and go ahead and hit login.
+And there we go.
+We are now in the administrative section of WordPress.
+Now if we go over to our settings
+and just click on settings,
+you'll be able to see the URL here is our public IP address.
+Now, the issue with that is that public IP address
+is tied to our EC2 instance.
+So if we were to terminate that EC2 instance,
+we'd get a new public IP address.
+And WordPress, this is actually saved in the database.
+And WordPress would, basically will stop working,
+because it saved this public IP address in the database.
+So we need it not to be a public IP
+that changes all the time.
+What we need it is to be a DNS address.
+And our DNS address will stay fixed to something.
+So it might be a URL name.
+It might be hellocloudgurus.com.
+You might want to go to, you know,
+route 53 and register one,
+or the other alternative is you set
+up an application load balancer
+and get the DNS address of that.
+And that's exactly what we're gonna do now.
+So I'm back in the AWS console.
+Let's go over to EC2,
+and we're gonna go down to our target groups,
+and in here, we've got our target group that was associated
+with our load balancer, MyALB.
+And so what we want to do is we want to go in
+and to click on targets,
+and then we're gonna go ahead and register a target.
+So if we go in here and click to this one,
+this is our web server with WordPress installed,
+I'm gonna go ahead and add it to our registered targets.
+And we're gonna go ahead and hit save.
+Now this will take a little bit of time,
+because it's got to pass the health check.
+So I'm just gonna pause the video
+and wait for this instance to come up.
+So if you actually scroll up,
+you can actually make this a bit bigger
+so you can see it better.
+And then what I'm gonna do is just hit
+the refresh button up here,
+and we can now see that that's healthy.
+So the next thing we need to do is go
+and grab our load balancer.
+So its DNS name is in here, or alternatively,
+you can make this a bit bigger
+and then just grab its DNS name in there.
+And you can click on this icon
+and copy it into your clipboard.
+Now we'll go back over to WordPress.
+So I'm back in WordPress,
+and I just want to delete this IP address,
+and I'm gonna paste in the DNS name.
+So again, delete the IP address.
+Make sure you keep the HTTP though.
+And then scroll down,
+and we'll be able to go and save the changes.
+Now that's actually saving to your RDS database,
+and you can see that that has now saved in here.
+So that has saved to RDS.
+So if we lose our EC2 instance now,
+the great thing is we're no longer tied to that IP address.
+We can just go to this DNS name,
+and we'll be able to, you know,
+access our WordPress site.
+We go over to our posts,
+let's just go and create a new post.
+So I'm gonna add new.
+And what I'm gonna do is just write something like
+hello cloud gurus as my new post.
+So this is how you do it.
+You just click up here, add a block.
+You might want to add a heading,
+and it just be, "Hello Cloud Gurus!"
+And I'm gonna go ahead and hit preview.
+And then we can go ahead
+and go ahead and publish that.
+We just go into edit post,
+and we'll go ahead and hit publish
+and hit publish again.
+And it's now publishing.
+So let's test this by changing the domain name.
+So if I come back up here,
+I'm going to just paste in our DNS name.
+So you can see it in there, hit enter.
+And there we go.
+We can see our post hello cloud gurus.
+That has now saved, and we're connecting to the DNS name
+of the elastic load balancer instead of connecting
+into the IP address of our EC2 instance.
+Okay, so the very last thing we're gonna do is create
+an image of our EC2 instance.
+We're gonna use this image when we are using auto-scaling,
+and it means we don't need to run
+that Boot Strap script anymore.
+We don't need to go in and,
+you know, install WordPress again.
+And so the way we do it is we just click in
+our one running instance, click on actions,
+go to image, and go ahead and create our image.
+We're gonna need to give it a name,
+so call it MyWordPressGoldTemplate.
+So we're gonna use this as our gold template
+for our auto-scaling groups.
+And what we're gonna do is go ahead and hit create image.
+Now creating an image can take some time.
+You can see your images in here under AMIs,
+so this is going to go from pending to active.
+And that is it really.
+In the next lecture,
+what we're gonna do is look
+at how we can set up auto-scaling groups.
+And essentially what we're gonna do is deploy
+our EC2 instance across two availability zones.
+Right now, EC2 instance is just in one availability zone,
+but there are RDS instances across two.
+So we're gonna make this completely multi-AZ
+and fault tolerant as well.
+So let's just recap what we did in this lecture.
+So what we did in this lab was we provisioned
+our RDS instance.
+We then opened up MySQL port
+to our Web-DMZ security group,
+and that was on port 3306.
+We then created an EC2 instance,
+and we installed WordPress using a Boot Strap script.
+We then registered the EC2 instance to a target group,
+so essentially we put it behind
+our application load balancer,
+and then we updated WordPress to the DNS name
+of our application load balancer.
+And then we took a snapshot of that EC2 instance.
+So always remember, my exam tips going into your exam,
+RDS has two key features.
+We've got multi-AZ for disaster recovery,
+and then we've got read replicas for performance.
+And also just remember things like SQL server, MySQL,
+just remember the different database technologies
+that are available under RDS.
+You can also install MySQL or SQL server
+locally on your EC2 instance.
+You can run databases on your EC2 instances,
+but they won't be multi-AZ
+unless you do some kind of, you know,
+basically a replication between them.
+So that is it for this lecture.
+Hopefully you've learned an awful lot.
+Don't worry if you did get stuck.
+This is just a proof of concept.
+It's just important that you understand the concepts
+behind what it is we're doing.
+If for some reason it didn't work,
+don't beat yourself up,
+and we'll try and help you on the discussion forums.
+So if you have any questions, please let us know.
+If not, feel free to move on to the next lecture.
+Thank you.

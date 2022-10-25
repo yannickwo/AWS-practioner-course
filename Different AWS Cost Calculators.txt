@@ -1,0 +1,241 @@
+Okay, hello Cloud Gurus
+and welcome to this lecture.
+In this lecture, we're going to look at
+two of Amazon's calculators,
+and this is actually a huge part
+of the Certified Cloud Practitioner exam.
+So I want you by the end of this lecture,
+to go away and use these two calculators,
+get really comfortable with them,
+and make sure you understand
+the differences between the two,
+because you are going to be quizzed on it
+in the Certified Cloud Practitioner exam.
+So, AWS help you calculate your costs
+by using a couple of different calculators.
+And these are available in two feature sets.
+The first one is the AWS Simple Monthly Calculator,
+and what this does,
+this is actually hosted on S3 by the way
+it's a static website on S3,
+and what it does is it allows you to say,
+okay if I've got an EC2 instance
+that's of this particular class,
+so let's say it's like a GPU instance,
+or it's like a a memory optimized instance,
+so something like that.
+And let's say I've got five of them,
+and let's say it's this particular size,
+how much is that going to cost me on a monthly basis?
+So it allows you to go in and build out
+your own AWS environment,
+and it all then estimates the costs.
+And you can say whether it's on demand,
+or whether you're doing reserve pricing,
+et cetera et cetera.
+So that's what the Simple Monthly Calculator does,
+it just simply calculates your cost on AWS.
+We then have the Total Cost of Ownership Calculator.
+Now what this does,
+is it says okay what is it costing you
+to have your servers on-premise,
+or in a colocation for example,
+versus putting them up on the Cloud.
+And what you do is you go in, and you enter,
+say I've got two web servers and two data base servers,
+and 500 gigs of SAN storage for example,
+what is that?
+What is my total cost of ownership?
+And so it's basically saying
+it's comparing the cost of,
+if you do it yourself, in-house, or on premise,
+versus the cost of doing it with AWS.
+So that's the differences between the two,
+one will just simply calculate your monthly costs on AWS,
+the second one, the Total Cost of Ownership Calculator
+cost how much,
+basically it calculates how much
+it's going to cost you to do things yourself,
+verses doing it with AWS.
+So you must have a clear understanding
+of those two calculators going into the exam.
+Let's go ahead and check both these calculators out.
+So let's start with the Simple Monthly Calculator,
+and you can get to it
+by going to calculator.s3.amazonaws.com/index.html.
+That's pretty cool because we know that
+this is hosted in S3,
+and the bucket's name is calculator,
+so Amazon own this bucket.
+And this is a static web page which allows us
+to calculate our running cost on AWS.
+So just switching over to full screen
+so you can see it better.
+So let's go ahead and have a look at
+what we can do with this.
+So compute, we can add some resources,
+let's say this is our web servers,
+and in here we're going to have, let's say,
+24 of them.
+Our usage will be 100% utilization,
+our type, we can actually click in here
+and change the type.
+So we can go over and get like some super cool ones.
+Let's do z1d.12extralarge,
+we'll just go all out for our web servers
+and hit close, and then in here,
+our billing is on demand or we could go three years,
+All Upfront Convertible,
+three years All Upfront Reserved,
+so something like that.
+And then go ahead and hit Close,
+and then this will give me my Monthly Cost.
+So this is going to cost me $5,846 per month.
+Not sure why it's gone back to on demand,
+maybe if I quickly just go and change that
+to three-year All Upfront Reserves and hit Close and Save,
+you can now see that it's going to have a zero monthly cost,
+but that's because I'm paying for everything upfront.
+So that's all the Simple Monthly Calculator does,
+you've got all the various difference AWS services in here,
+you can go ahead and change your region,
+these currently do have the Stockholm region in here
+which is good.
+So this calculator is kept up-to-date.
+Let's move on to the AWS Total Cost of Ownership Calculator,
+and you can get to it
+by going to aws.amazon.com/tco-calculator.
+And it says here AWS helps you reduce
+your total cost of ownership by reducing the need
+to invest in large capital expenditures
+and providing a pay-as-you-go model
+that empowers you to invest in the capacity you need
+and use it only when the business requires it.
+Our TCO calculators allow you
+to estimate the cost savings when using AWS
+and provide reports that can be used
+in executive presentations.
+The calculators also give you the option
+to modify assumptions that best meet your business needs.
+So basically this is creating a report
+that you can take to your CTO and say,
+"Hey look this is how much it's costing us right now,
+"this is what it would cost us on the AWS Cloud,
+"we could save 69% a year
+"by moving our infrastructure to AWS,
+"and our three-year total savings would be this amount."
+So basically this is a way
+of convincing your executives to move to the cloud,
+and you can click on here,
+Launch the TCO Calculator,
+definitely do use this before going into your exam,
+because the TCO Calculator
+and the other, the Simple Monthly calculator do come up
+an awful lot.
+So you can see in here we can select our currency,
+so I can say United States Dollars,
+I can say On-Prem or Colocation.
+So On-Prem is where you do it yourself,
+Colocation is where you're renting a rack in
+a data center somewhere.
+In here we can go Physical Servers,
+or Virtual Machines,
+I'm just going to do US East, Northern Virginia,
+not all regions are here just yet.
+Stockholm is missing for example,
+but most regions are here.
+So I'm just going to go in and put my App Name in,
+so the server type is a Non Database Server,
+my App Name is going to be WebServer,
+let's say I want four processors with four cores,
+and I'm going to have 50 servers, Physical Servers,
+and I'm going to have 32 gigs of RAM, something like that,
+and then in here my storage,
+let's go for 500,
+or 400 terabytes of SAN SSD.
+So what I can do is I can click down and hit
+Calculate Total Cost of Ownership.
+There we go we can see that we've got my On-Premise
+versus AWS summary.
+So I'm going to save 70% a year
+by moving my infrastructure to AWS,
+and then my three-year total savings would be 1,605,000.
+You can see down here it breaks it down
+into four different layers,
+so we've got server, storage,
+network, and then IT-labor and it will show me
+what it is that,
+what it would cost for me to do this On-Premise,
+versus what it is to do with AWS.
+And then you can scroll down,
+it'll give you the environment details,
+this is what we just configured,
+and then what the AWS environment will look like,
+so this is an m4 extra large with eight vCPUs
+and 32 gigs of ram,
+and then it will give me a cost breakdown.
+So my On-Premises breakdown,
+versus my AWS cost breakdown.
+And then you can actually go in and have a look at
+the calculations, you can go and have a look at
+the different methodologies,
+the different assumptions,
+and you can even, if you go up here,
+you can modify the assumptions,
+so you can change this
+and then you can go ahead and download the report,
+and then you would basically take this report
+and give it to your C-level exec.
+And you'd be able to try and convince them
+to move to AWS.
+So this calculator always compares
+with doing things yourself versus doing things on AWS.
+It's just, it's a comparison calculator.
+Whereas the Simple calculator
+literally is just comparing what you're running cost
+will be on AWS.
+So it's fundamental that you have an understanding
+of that going into your exam.
+And the way the calculator works is
+it basically breaks it down into the four different areas,
+like I just said, so server costs,
+storage costs, networking costs, and your IT labor costs,
+and that takes into account things like
+in the server costs, you know,
+what kind of hardware you're going to need,
+what sort of rack infrastructure you're going to need,
+what kind of power units you're going to need,
+what kind of maintenance,
+what kind of switches,
+then what kind of operating system,
+what kind of virtualization if you're using it at all,
+and then all your other overheads.
+So this is how the calculator works,
+and then with labor costs, for example,
+it basically just estimates how much server admin time
+you're going to have,
+as to how much you're going to have to pay
+your system administrators.
+So onto my exam tips.
+So AWS Simple Monthly calculator is used
+to calculate your running costs on AWS
+on a per month basis.
+It is not a comparison tool.
+Whereas AWS Total Cost of Ownership calculator
+is used to compare the cost of running your infrastructure
+on premise versus in the AWS Cloud.
+And it's going to generate reports
+that you can give your C-level execs
+to make business case to them to move to the cloud.
+So understand the two,
+the differences between those two calculators,
+and these do come up an awful lot
+in the Certified Cloud Practitioner exam.
+So I want you to go and play with both calculators
+until you're comfortable with them.
+So that is it for this lecture guys,
+and that is it for this section of the course,
+in the next lecture we're just going to summarize
+everything that we've learned in this section of the course,
+so if you've got the time,
+please join me in the next lecture, thank you.

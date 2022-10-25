@@ -1,0 +1,211 @@
+Hello, Cloud Gurus
+and welcome to this lecture.
+In this lecture, we're going to look at
+Architecting for the Cloud - Best Practices Part 2.
+So we're on databases
+and we're going to start with relational databases.
+And Aurora is Amazon's production, a relational database.
+It's the one that they want to push the most.
+It is an amazing technology.
+They built this from the ground up.
+It's compatible with MySQL and PostgreSQL.
+It's incredibly scalable.
+You're always going to have 6 copies of your data
+spread across 3 availability zones or more.
+It has very high availability.
+So like I said,
+it's spread across 3 availability zones or more.
+So in terms of anti-patterns,
+anti-patterns are just where you
+wouldn't use a particular technology.
+So you wouldn't use Aurora
+if you've got no need for joins or complex transactions,
+instead you should be using a NoSQL database.
+So what is a NoSQL database or non-relational database?
+So DynamoDB, we have covered that off.
+DynamoDB is incredibly scalable.
+It's got push buttons scalability.
+It also has auto scaling built into it now.
+It's got high availability.
+It's spread across multiple availability zones.
+Where you wouldn't use DynamoDB
+is where you've got joins or complex transactions.
+You should really be using relational database.
+So things like Aurora or others
+or if you have large binary files like audio, video,
+images, that sort of thing,
+you should actually consider
+storing those files in Amazon's S3.
+Moving onto data warehouses.
+So straightaway, I want you to think of Redshift.
+It's incredibly scalable.
+It's got high availability.
+It's across multiple availability zones.
+And then in terms of its anti-patterns,
+you wouldn't want to use Redshift
+as a production database for things like
+online transaction processing.
+The white paper then talks about
+the different search capabilities of AWS.
+So we've got Cloud Search
+and we've got Amazon Elasticsearch,
+both are search services that you can leverage.
+To be honest, they don't come up in any of the exams
+that I've ever seen whether it be solutions architect,
+associate or professional, but you should just be aware
+that there are 2 search services available with AWS.
+And as you can imagine,
+they're highly scalable and highly available.
+They're always spread across 2 or more availability zones.
+Then have graph databases.
+These are relatively new.
+A good example of a graph database is Amazon Neptune.
+So this is a fully managed graph database.
+This does come up
+actually in the Certified Cloud Practitioner.
+It will ask you to basically--give you a scenario
+where you need to use a graph database
+and then ask you what service to use.
+So the only thing you really need to understand
+is that Amazon Neptune is Amazon's graph database.
+And they actually trolled us a little bit,
+sometimes in my office we invent services.
+So we will say, hey, Amazon's released a new service
+called Amazon Neptune.
+And that was one of our invented services
+and then they actually released a service
+called Neptune at re:Invent in 2017
+and it just blew my mind.
+I was like, oh my God,
+that was one of our make-believe services
+and they've actually used the name.
+So just associate graph databases with Amazon Neptune.
+If you want to learn more about graph databases,
+just check out Amazon's Neptune FAQ.
+But like I said, for the Certified Cloud Practitioner,
+you just need to understand that
+any kind of graph database,
+you're going to be using Neptune.
+The white paper then goes on to talk about
+managing increasing volumes of data
+and it suggests building a data lake.
+What's a data lake?
+Well, it's just an architectural approach
+to allow you to store massive amounts of data
+in a centralized location
+so that it's readily available to be categorized,
+processed, analyzed, and consumed
+by a whole bunch of different diverse groups
+within your organization.
+And since data can be stored as-is,
+you don't have to convert it to a predefined schema
+and you no longer have to need to know what questions to ask
+about your data beforehand.
+So great place to store, to create data lakes,
+is of course S3 because that's a perfect place to store it.
+You can then use things like Athena to go in
+and run a SQL queries on your database,
+so do bear that in mind as well.
+The white paper goes on to talk about
+removing single points of failure,
+so you should always be introducing redundancy.
+You should introduce a mechanism to detect failure.
+You should have durable data storage.
+So if you've got really important data,
+you probably don't want it on S3 OneZone availability
+in terms of its storage class.
+You want to have it on normal S3.
+You should automate multi-data center resilience.
+So basically automate it so that
+if one availability zone goes down,
+it's automatically failed over to another.
+And to be honest,
+you should probably do this on a region basis as well.
+And then it goes on to talk about a fault isolation
+and traditional horizontal scaling.
+So if you do have a fault,
+how do you go and isolate that?
+And then horizontal scaling is basically scaling out
+whereas vertical scaling is scaling up.
+So scaling out is where you have multiple EC2 instances
+behind an elastic load balancer.
+And then you can also do things like with elastic MapReduce,
+where you shard your data.
+Sharding just means you split it across multiple shards.
+And then essentially you can process your data a lot faster.
+Should always optimize for costs.
+This means choosing the right size.
+So maybe the right size EC2 instance,
+you should also have less elasticity.
+So maybe your application is going to be heavily utilized
+for Black Friday.
+So you want to have the elasticity built in
+so that it will basically expand for the Black Friday sales
+and then shrink back after Black Friday is over.
+And you should take advantage
+of the variety of purchasing options.
+So this could be Spot instances.
+This could be On-Demand instances.
+This could be the Reserved instances.
+So look at Reserved capacity, Spot instances, etc.
+Moving onto caching.
+So we have 2 types of caching.
+We have application caching and we have edge caching.
+Your application caching is going to be things like
+using Elasticache.
+Your edge caching will be using CDN networks
+like CloudFront.
+The white paper then goes on to discuss security in AWS
+so you should use AWS features for defense in depth.
+So things like web application firewalls, etc.
+You also share security responsibility with AWS.
+We are going to cover this off in the security section.
+Shared responsibility model comes up an awful lot
+in the Certified Cloud Practitioner.
+But essentially,
+it's where you're responsible for some things,
+AWS are responsible for other things
+and it's you both share security responsibility.
+Can't just rely a 100% on AWS.
+Should always reduce privileged access.
+So you shouldn't give full admin access to your users.
+You should basically give them least privilege.
+So give your developers enough privileges to do their job,
+but don't give them overkill.
+Don't give them God mode.
+So security as code.
+This is basically where you create a golden environment.
+So you could be using hardened EC2 instances.
+So these are EC2 instances with a whole bunch
+of security patches on them
+and then you basically reference these
+using a CloudFormation template.
+And essentially, you can deploy these golden environments
+across many regions around the world
+using the same CloudFormation template.
+Real-time auditing, this talks about AWS Inspector
+and a bunch of other AWS security services.
+And we're going to cover them all off
+in the security section of the course.
+I really don't want to go into a lot of detail
+about them just yet,
+but you should always have the ability
+to audit in real-time your AWS environment.
+One way you could do this is by using AWS CloudTrail.
+And again, we're going to cover this
+off in the security section of the course.
+So that is it for this white paper.
+I would highly recommend that you read this white paper
+the day before the exam, the link is below and that's it.
+So we've got a few more lectures to cover off.
+We need to know which AWS services are global,
+we also need to know which AWS services
+can be deployed on premise.
+You need to know what CloudWatch is
+and you also need to know what AWS Systems Manager is.
+Once we have learned all that,
+we're just going to go through and review everything
+that we've learned in this section of the course
+and then we're going to move on to billing and pricing.
+So if you've got the time,
+please join me in the next lecture. Thank you.

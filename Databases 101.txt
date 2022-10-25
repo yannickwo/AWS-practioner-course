@@ -1,0 +1,330 @@
+Okay, hello Cloud Gurus
+and welcome to this lecture.
+In this lecture we're going to learn
+all there is about databases.
+And this is a very high level lecture,
+so it's Databases 101.
+So, if you've never used a database before,
+chances are you probably have,
+you just weren't aware of it.
+And I want you to think of a database just as a spreadsheet.
+We're going to start with Relational Databases.
+And Relational Databases have been around since the 70s,
+it's something that we're very used to.
+So, think of a traditional spreadsheet.
+So, the actual file that you have
+your spreadsheet saved in is the database
+and then the file will consist of
+a number of different tables or worksheets,
+if you're used to using Excel.
+And each table will consist of a number of rows
+and then a number of fields or number of columns.
+So here's a really good example
+of a table inside a database.
+So we've got our ID, we've got our first name, our surname
+and our gender.
+We've got these different rows.
+So, row number one is Ryan Kroonenbrg, who's male.
+Row number two is John Adams, who's male.
+Row number three, Julia Clark, female.
+Row number four, Danielle Dustagheer, female etc.
+So that's all a Relational Database is.
+It's got a fixed number of columns
+and you can add columns, but, if, when you do add columns,
+of course that's going to affect every single row,
+because you're going to have to add columns to every single
+row and, that's what a Relational Database is. So, chances
+are, you have used them before.
+If you've used a spreadsheet before,
+you've used a relational database.
+So, Relational Databases on AWS is called RDS.
+And it comes in a number of flavors.
+It comes with six different database engines.
+So, we've got Microsoft SQL Server,
+we've got Oracle, we've got MySQL Server,
+which is an open-source platform.
+Along with PostgreSQL, which is also open-sourced.
+We've got Amazon Aurora, which is
+Amazon's own proprietary database technology
+that they've built from the ground up.
+Then we've got MariaDB,
+which is another open source database as well.
+So, there are six different types of database technologies
+that you can use with Amazon's RDS.
+So, RDS has two key features;
+you can have multiple Availability Zones,
+just like what we had in EC2.
+You can deploy your RDS instance across
+multiple Availability Zones.
+This is designed for Disaster Recovery.
+If you lose one Availability Zone,
+RDS will automatically fail over
+to the other Availability Zone.
+And then we have the Read Replicas
+and Read Replicas are literally copies
+of your production database.
+And, basically, you send your EC2 instances
+to read traffic from your Read Replicas
+rather than from your production database
+and this freezes your production database up,
+so that it doesn't have a performance hit.
+So, Read Replicas are for performance
+and Multi-AZ is for Disaster Recovery.
+I want us to have look at how it works.
+So, up here we've got our EC2 instance,
+this is our connection string to connect to our RDS database
+and Amazon automatically point this connection string
+to your primary database.
+Now, in the event that you lose your primary database,
+what will happen is Amazon will automatically fail
+the connection over to your secondary database
+in another Availability Zone.
+You don't need to go in and change anything,
+it will detect it automatically
+and this DNS string or this connection string
+will automatically fail over to the secondary database.
+That's all Multi-AZ is.
+With Read Replicas, what happens is,
+you've got your EC2 instances
+and what they're doing is,
+they're writing to your Primary database.
+Those writes are then replicated over
+to all your Read Replicas.
+And if, for some reason,
+you were to lose your primary database,
+there's no automatic fail over to your Read Replica.
+Basically, your system's just going to go down
+because your EC2 instances won't be able
+to write to your primary database.
+What does happen is you can set it up
+so that your EC2 instances
+do all their writes to their primary database
+and then they do all their reads from their Read Replicas
+and you can actually have five copies
+of your Primary database.
+And what this does is it increases performance
+because you now got all your EC2 instances,
+doing all their reads from five different copies
+of the database that are identical to the primary database.
+For when they go and their writes,
+they just do their writes to the primary database here.
+So, this gives you a much better increase in performance.
+So that's the only difference between
+Multi-AZ and Read Replicas.
+Multi-AZ is for Disaster Recovery,
+Read Replicas is for for performance.
+And you are going to be tested on that
+inside these Certified Cloud Practitioner exam.
+Non-Relational Database are a little bit different.
+They've only been around for about 10 years or so.
+But they consist of a collection,
+and a collection is just a table.
+And then inside your collection, you have a document
+and document is just basically a row of data.
+And inside you have your Key Value Pairs
+and these are basically fields.
+So, yes, it does look exactly like a Relational Database
+and that you've got tables, rows and fields.
+So what is the difference?
+Well, here are our Key Value Pairs.
+So this will be sitting inside our NoSQL database.
+And so, we've got ID, and then here's our ID.
+First name, surname, age, and then we've got address
+and you can see in here, we're actually nesting fields
+inside our address.
+So, we're saying hey there's the street 21 Jump Street.
+We've got suburb, Richmond.
+And you can continue to add more and more fields,
+you just add Key Value Pairs,
+and they can be nested or they can be flat
+but this won't affect the next record on.
+So, you can have as many different columns as you want
+and it won't have an impact on the next record
+and that gives you a lot more flexibility.
+So, Non-Relational Databases are as follows,
+the columns in the table can vary
+and this will not affect the other rows in the database.
+So you may have student one
+where you've just got their address,
+you may have student two
+where you've got their address,
+you've got their telephone number,
+their email and what grades they've got.
+And that won't,
+those columns won't automatically be for student one.
+You can have many different fields
+for as many different students as possible.
+So, you get a lot more flexibility
+with Non-Relational Databases.
+And Amazon's Non-Relational Database technology
+is called DynamoDB.
+So you just really need to know
+what it is to do your certified cloud practitioner exam.
+If they're talking about NoSQL or Non-relational Databases
+that you need performance,
+just go straight for DynamoDB.
+So, I want to talk a little bit about
+the differences between Online Transaction Processing
+versus Online Analytics Processing.
+So, Online Transaction Processing is pretty easy,
+it's just like, you know,
+it's just the standards sort of queries that you run.
+So, we've got an example here.
+"Hey I want to do see order 2120121."
+So you do that query to a database
+and it's going to bring up everything on that row of data.
+So, it might bring up the name, the date the order was made,
+the address it was delivered to,
+whether or not the order has been delivered.
+So, its delivery status,
+what the order was or what was the object.
+So, it's literally just taking a row of data
+from a database.
+So, it might be inserting a row of data into a database.
+That's all Online Transaction Processing is.
+Now, Online Analytics Processing is a lot more complicated
+and this could be used by a management
+who want to understand the net profit for EMEA,
+Europe, Middle East and Africa,
+as well as the Pacific for, let's say,
+a digital radio product.
+And this is going to pull in huge numbers of records.
+It's not going to just pull in one record,
+like an order number.
+It's going to, actually, go through an add up,
+all the radios that were sold
+in Europe, Middle East and Africa,
+all the radios that were sold in the Pacific.
+Still going to add up the unit cost
+of the radios in each region,
+it's going to add up the sales price
+of each radio in the region,
+then it's going to take the sales price,
+take away the unit cost.
+When you think about the actual software doing this,
+in querying the database,
+it's going to have a massive
+performance hit on your database.
+And that's why data warehousing was invented.
+Data warehousing was invented
+so you can do Online Analytics Processing
+away from your production database,
+so when you're running
+these really complex queries for management,
+it's not impacting your primary database,
+it's actually impacting the secondary database
+that's actually built for this kind of queries.
+And so, data warehousing is used for Business Intelligence,
+tools like Jaspersoft, SQL Sever Reporting Services,
+Oracle Hyperion, SAP NetWeaver, just a few BI tools
+that are out in the market today.
+And they pull in very large and complex databases
+and is usually used by management to do queries on data
+such as current performance versus targets et cetera.
+Data warehousing databases use a different type
+of architecture both from a database perspective
+as well as, even from an infrastructure layer.
+So they're built from the ground up
+to these really complicated, you know, analytics.
+And Amazon's Data Warehousing solution is called Redshift.
+And then, finally, we have Amazon's last database product,
+ElastiCache.
+And this is basically a web service that makes it easy
+to deploy, operate and scale an in-memory caching solution
+in the cloud.
+And this basically improves the performance
+of your web applications by allowing them
+to retrieve information from fast, managed, in-memory caches
+instead of relying on entirely slower disk-based databases.
+So what does that actually mean?
+Well, I want to think about when you go to amazon.com,
+and you've got all these different apartments.
+You've got kitchen, you've got cooking,
+you've got baby, children's wear, whatever.
+It will always show you some of the popular products.
+Now, if you think about how many people
+are actually on amazon.com,
+on the main landing page, at any given time,
+let's say it's a hundred thousand people a second
+who are just going to amazon.com
+and doing shopping from around the world.
+It doesn't make a lot of sense for those web servers
+to be querying the same database a hundred thousand times
+because it's just looking at for the same information.
+Hey, what are the top 10 products in kitchen?
+What are the top 10 products in kids wear? Etc.
+So what it actually does is, it goes and queries ElastiCache
+and ElastiCache just caches these most common queries
+inside its, you know, inside its servers.
+And, it returns them a lot faster
+than what a database would do.
+So, ElasiCache is just a way caching
+your most common queries,
+and it takes a massive load off your production database
+because, when, basically, the most common queries
+are always going to be held in your ElastiCache,
+and the uncommon queries are then made to your database.
+So, it frees up your primary databases
+and gives a much better performance.
+And ElastiCache comes in two different caching engines.
+So, we've got Memcached, and we've got Redis.
+But, for the certified cloud practitioner,
+you don't need to understand
+the differences between the two.
+You, literally, just have to understand
+what ElastiCache is and what it does.
+It's a caching engine in the cloud
+viewing most common queries and it's
+going to take a big load off your production database
+because your web servers are querying ElastiCache
+rather than querying your production databases.
+So, we've learnt a whole bunch.
+We've learnt what RDS is,
+for Relational Databases and this is for SQL
+or Online Transaction Processing queries.
+And it consists of Microsoft SQL Server,
+MySQL, PostgreSQL, Oracle, Aurora, MariaDB,
+then that's it.
+So those six engines.
+We then learnt about DynamoDB.
+This is Amazon's NoSQL solution. So if you have
+a NoSQL requirement, you want to use DynamoDB.
+We then learnt about Redshift.
+Redshift is Amazon's Data Warehousing solution.
+This is used for Online Analytics Processing
+and this is basically if you got Business Intelligence tools
+or you've got management wanting to make
+really complex queries.
+You want them to be querying Redshift,
+you don't want them to be querying RDS,
+so, you don't want them to be querying MySQL
+or MariaDB or PostgreSQL.
+It's much better to do it on Redshift
+because Redshift is literally built for this,
+from the infrastructure layer upwards.
+We then learnt about ElastiCache.
+It consists of Memcached and Redis.
+ElastiCache is an in-memory caching engine
+in the cloud
+and it takes a lot of weight off your production databases.
+So, just remember, as well,
+if you have any Business Intelligence
+or Data Warehousing solutions or questions,
+you want to go for Redshift.
+And, if you want to speed up your performance
+of your existing databases,
+you want to be using ElastiCache.
+This, basically, is used for frequently identical queries.
+So that is it for this lecture everyone.
+We're ready to now go ahead
+and start getting our hands dirty.
+For the Certified Cloud Practitioner,
+you don't really need to know about DynamoDB,
+ElastiCache or Redshift
+other than what they are and what their use cases are.
+With RDS, you are expected to know a little bit more.
+So, on the next lecture, what we're going to do is,
+we're going to go and provision our very first RDS Server
+and we're going to get our EC2 instance to talk to it.
+So, if you've got the time,
+please join me in the next lecture. Thank you.

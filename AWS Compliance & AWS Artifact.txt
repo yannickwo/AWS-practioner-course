@@ -1,0 +1,83 @@
+Okay hello, Cloud Gurus,
+and welcome to this section of the course.
+This is where we're going to cover
+security and compliance on AWS.
+I'm going to start out with compliance
+and a service called AWS Artifact.
+So how do you know that Amazon
+is actually compliant with anything?
+How do you know that it's safe
+to take credit card transactions on the AWS platform?
+How do you know that it's safe
+to store healthcare information?
+Well, Amazon go out and get tested
+by a lot of different compliance programs.
+It might be PCI DSS.
+It might be HIPAA, et cetera, et cetera.
+And to view all these different compliance reports,
+you can go to aws.amazon.com/compliance.
+So I want you to go there now.
+That's aws.amazon.com/compliance.
+Okay, so here I am on the compliance landing page,
+and if we click on View our Compliance Programs,
+you can have a look at all the different compliance programs
+that AWS follows.
+So ones to note here globally is ISO 27001.
+We've also got SOC 1, SOC 2, and SOC 3,
+and then we've also got PCI DSS.
+PCI DSS is an online payment standard,
+and essentially, if you are taking online payments,
+you have to PCI DSS compliant.
+Now, Amazon, or AWS, is PCI DSS compliant
+up to the infrastructure layer.
+That does not mean that you're
+automatically PCI DSS compliant.
+You have these things called gap audits,
+and essentially what they do is, they'll go in,
+and they'll look at your EC2 instances.
+Do you have your security groups open?
+Have you secured your RDS instances?
+That sort of thing.
+So AWS has some responsibilities,
+and you have some responsibilities,
+and we're going to cover that
+off in the Shared Responsibility Model,
+which is later on in this section of the course.
+But for now, I just want you to know
+that AWS go through a lot of different compliance programs.
+These can be global.
+These can be based in the United States.
+So FISMA is one, Federal Information Security Management.
+HIPAA is another very popular one.
+This is for healthcare information.
+And then if we go down,
+we've got different ones across the Asia Pacific,
+and then different ones across Europe, as well.
+So AWS have a whole bunch of different compliance programs
+that they're basically members of,
+that they've been attested to.
+You can go through and read them.
+Basically, for the exam, just understand
+that compliance on AWS is,
+you can go through and get copies of these reports,
+and you can then give those to your auditors.
+You can also do this in the AWS console.
+If you go over to Services and you go down
+to Security, Identity, &amp; Compliance
+and go all the way to the bottom, we've got AWS Artifact,
+and AWS Artifact basically features a comprehensive list
+of access-controlled documents relevant to
+compliance and security in the AWS cloud.
+So you can go through and get basically compliance documents
+for, let's say, the AWS Workbook
+for Korean Financial Services Institute,
+et cetera, et cetera, and there's a ton
+of different documents through here.
+Feel free to go and randomly explore them,
+but if you do see AWS Artifact come up in the exam,
+just remember it's to do with compliance
+and getting documentation around compliance.
+So that is it for this lecture, everyone.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture.
+Thank you.

@@ -1,0 +1,318 @@
+Okay, hello Cloud Gurus.
+And welcome to this lecture.
+This lecture is called let's start to cloud
+Identity Access Management.
+And Identity Access Management is often referred
+to as just IAM.
+And IAM allows you to create users,
+it allows you to create groups
+and it allows you to create roles.
+And basically it's a way of you being able
+to give access to AWS to your different users and groups.
+So this is a lab, you will need to log in to the AWS console
+just head on over to aws.amazon.com.
+Okay, so here I am in the AWS console.
+Now, the first thing I want you to notice is if we just go
+up to the different regions, we looked at this a couple
+of lectures ago that you can change your regions.
+I would recommend as I said before
+you should use the US East Northern Virginia region.
+And the reason for that
+is that it has the most services available.
+So what we're gonna do is we're gonna click
+up here on services.
+We're going to find IAM Identity Access Management.
+It's under security, identity and compliance.
+And go ahead and click on there.
+Now the goal of this lecture,
+is to make these all have five green ticks.
+So we're going to turn on multi-factor authentication.
+We're gonna start creating identity
+access management users,
+gonna start creating groups
+and then we're gonna apply an IAM password policy.
+So the first thing we want to do
+is activate MFA on your root account.
+Let's go ahead and click on manage MFA.
+Your root account by the way is simply the email address
+that you used to sign up to the AWS console with.
+So if you ever see the root user or root account
+it's literally that email address.
+Now as best practices
+you shouldn't use that to use the AWS console.
+You should be using users but root level account
+has full access to all the AWS platform.
+They can go in and do anything.
+So what a lot of companies do is they'll set up an account,
+and they'll set up a root account credentials
+they'll turn on MFA.
+And then basically they will,
+lock that MFA token away
+and then just create a whole bunch of users.
+So what we want to do is we want to turn on MFA.
+What we do is just go ahead
+and hit continue to security credentials.
+And in here, what we will need to do is click
+on multi-factor authentication and click activate MFA.
+And we have three different options here,
+we've got a virtual MFA device,
+we've got a U2F security key
+which is a YubiKey or any other U2F device
+or we've got other hardware MFA device tokens.
+This could be like an RSA token or a GML token et cetera.
+We're gonna use a virtual MFA device.
+What I want you to do
+is either go to the Apple App Store or the Google Play Store
+on your smartphone and download Google Authenticator.
+So it's called Google Authenticator.
+Then go ahead and hit continue.
+When you've got Google Authenticator,
+all you need to do is basically open it up
+and hit the little plus button
+that will allow you to add QR codes.
+So I'm gonna add this QR code.
+I will go ahead and delete this after this lecture.
+So don't steal my QR code
+and then what you need to do
+is just in Google authenticator hit that little plus sign
+and then scan the QR code.
+And then it will give you a code.
+So I'm just doing mine right now
+and it's given me a code and my code is two six nine.
+So you type in here two six nine seven three two.
+And then I'm just gonna wait for that to change.
+So it can take a couple of minutes
+I'm just gonna pause the video.
+Okay, that is now changed.
+So I'm gonna enter in the new codes.
+So mine's eight two three six five seven.
+And I'm gonna go ahead and hit assign MFA.
+And that has now been assigned.
+So this virtual MFA will be required during sign-in.
+If we go back to our dashboard
+you'll be able to see in here, I now have two green ticks.
+So that is really, really good.
+So the next thing we're going to do before we create our IAM
+users is we're just going to alter this link up in here.
+And you can see that I've blacked this bit out
+because that contains my account number.
+So if you need to log into your AWS console,
+you can use your account number dot sign-in
+dot aws.amazon.com forward slash console.
+We can make that a bit more human friendly,
+just by clicking on customize.
+And your account alias in here is the alias that you use
+to sign in at.
+It needs to be a unique.
+So if I just did A Cloud Guru
+someone has probably already got it.
+It's definitely not me.
+It might be our production developers.
+So A Cloud Guru,
+I'm gonna put in here CCP 2019 and go ahead and hit create.
+And you can see that has now changed.
+So I can now use this link to sign-in
+and I can send this to all my users to sign in as well.
+So let's go ahead and create our individual IAM users.
+We'll click on here and go manage users.
+And you see, I don't have any users in here.
+So I'm gonna go ahead and add my users.
+And you can select any username in here,
+do be aware that if you do a space, so our Ryan Kroonenburg.
+You can see that I can't use a space.
+It has to be alphanumeric only so you can use underscores.
+So I'm gonna go ahead and do Ryan underscore Kroonenburg.
+And I'm gonna go ahead and click in here.
+And these are the different access types.
+So there's three ways you can access the AWS console.
+You can do it programatically.
+And for this you need an access key ID
+and secret access key.
+And these are basically like a username and a password.
+And so I'm gonna click programatic access,
+and then we can also access it using the AWS
+management console.
+Which is what you're in right now.
+So I'm gonna click in here as well.
+And then you can also do it using the Amazon SDKs.
+And we'll cover that off later.
+But it's important to know going into your exam,
+that there's three different ways to access.
+Its programatic access, console access,
+and then using the SDKs.
+For my console password,
+I'm gonna do an automatic auto-generated password
+and I'm gonna require that my users when they first log in,
+to create their own passwords.
+So this will email them the auto-generated password
+or you'll email it to them.
+And then when they first sign in
+they need to change their password.
+Next let's go over to our permissions.
+So our user does not have any permissions right now.
+We can do three different things.
+We can add this user to a group,
+we can copy permissions from an existing user
+or we can attach existing policies directly to this user.
+Let's go ahead and add this user to a group.
+So I'm gonna go ahead and hit create group.
+And my group I can have like administrator access,
+I could have developer access,
+I could have a whole bunch of different accesses.
+So in here we've got all our different policies.
+And basically if Amazon manage the policy
+you have the little Amazon logo next to the policy name.
+So this is administrator access.
+This could be Alexa for business device setup.
+And you got a whole bunch of different policy names.
+And if you scroll down you can actually see
+currently there's 404 policies.
+There will be a lot more in 2019 as well.
+If you wanna filter your policies
+you can actually filter it based on job function
+that can make things a lot easier.
+So you've got an administrator access
+who has full access to the platform.
+You could then have power use access.
+And if you click over here which is over your mouse it say
+what that is.
+So it provides full access to AWS services and resources
+but does not allow management of users and groups.
+So this might be a really good one
+for your AWS administrators,
+so they can go in and access all of the AWS platform
+but they can't go in and create new users or groups.
+I'm gonna create an administrator access group.
+And I'm just going to call my group admin hyphen access.
+So before we go ahead and hit create group
+I just wanna show you the actual policy itself.
+So if you click down here you'll be able to see the policy.
+And policies always come in a JSON format.
+So JSON just stands for Java Script Object Notation
+and that's always key value pairs.
+So this is the key version and then this is the value
+and this is the version date.
+And then we've got statement and inside statement
+we've got a whole bunch of different key value pairs.
+Basically we've got effect, allow, action
+and then wildcard, results, wildcard.
+So effectively what this is saying is we're going to allow
+the action of everything with the results of everything.
+So this is administrator access.
+So just bear that in mind for your exam.
+You just need to understand that policies are always
+in Java Script Object Notation, or otherwise known as JSON.
+So let's go ahead and hit create groups.
+That now creates my group
+and we're going to add our user to this group.
+As soon as you add any user to the group
+they will inherit all the rights of that group.
+So this group has admin access.
+By adding my user Ryan Kroonenburg to this group
+I'm going to make it so that they have full admin access.
+You can also add tags
+so we could say like Employee underscore ID
+and it could be one, two, three, four, five.
+We could add another tag in here,
+so department and this could be SysAdmins et cetera.
+So you can tag your users and this can be useful later on.
+So let's go ahead and create our user,
+that has now created my user.
+In here we are given our access key ID and secret access key
+as well as our auto-generated password.
+You can download this as a CSV file.
+You can send this as an email to your users.
+This is the only time you're ever gonna see
+your secret access key and your password.
+So do bear that in mind.
+You definitely do wanna download it as a CSV file
+and you can click in here to show it.
+I am going to delete this so don't bother
+trynna take my usernames and passwords.
+Your access key ID and secret access key
+you need when you set up programatic access
+we're gonna do that later on.
+This password here is the password to log into the console.
+So I'm gonna go ahead and hit close.
+Like now I've got this user Ryan Kroonenburg.
+If I go back to my dashboard we have now created
+an individual IAM user
+and we've also created a group.
+So we've got our four green ticks.
+The very last one,
+that we need to do is apply an IAM password policy.
+We're clicking here and go manage password policy.
+We can say our minimum password length must be 12.
+We can require at least one uppercase letter,
+lowercase letter, at least one number
+at least one non-alphanumeric.
+You can allow users to change their passwords.
+We can enable the passwords to expire.
+Let's say every 180 days, every six months roughly.
+And prevent password reuse.
+So we don't want the user to reuse the passwords
+over and over again.
+So we're gonna say number of passwords to remember is three.
+So if they then go change their password
+and then try and change it again
+back to the original password, they can't do that.
+And password expiration requires administrator reset.
+If you don't know what that means,
+it just basically means if a user's password expires
+the user must contact an administrator reset the password.
+That can be quite annoying.
+So I'm not going to click on that.
+And then we can go in and just hit apply password policy.
+And that has now applied my password policy.
+And if we go back to our dashboard
+we now have five green ticks.
+So this is our Identity Access Management.
+Let's go ahead and have a look at my exam tips.
+So onto my exam tips.
+So what is IAM?
+Well, IAM stands for Identity Access Management
+and it's really important to remember that it's global.
+You don't need to specify a region
+when you're dealing with IAM.
+When you create a user or a group, this is created globally.
+It's not on a per region basis.
+And just remember that you can access the AWS platform
+in three different ways,
+via the console,
+which is what we were just doing.
+Programatically,
+which is using the command line
+and we'll do that a little bit later on.
+And then also using the software developer kits or SDKs.
+Remember that a root account is the email address
+that you use to set up your AWS account.
+The root account always has full administrator access.
+You should not give these account credentials
+away to anyone.
+Instead you should be creating a user for each individual
+within the organization.
+And you should always secure this root account
+using multi-factor authentication.
+And we use the Google Authenticator app in which to do that.
+Remember the group is simply a place to store your users.
+Your users will automatically inherit all permissions
+that, that group has.
+An example of groups might be developers,
+system administrators, human resources, finance, et cetera.
+And then finally just remember, in order to give permissions
+to any group, you're going to need to apply a policy
+to the group.
+Policies consist of Java Script Object Notation or JSON.
+And these are referred to as key value pairs.
+And you can have your key such as the name
+and then the value.
+So for example name and then A Cloud Guru.
+So that is it for this lecture guys,
+you've learned an awful lot about IAM.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture
+where we're gonna cover S3.
+S3 is one of AWS's oldest services.
+And for that reason it's tested very, very heavily.
+So if you've got the time,
+please join me in the next lecture, thank you.

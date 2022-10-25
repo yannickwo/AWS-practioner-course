@@ -1,0 +1,375 @@
+Okay.
+Hello Cloud Gurus and welcome to section two.
+In this lecture we're going to look at
+cloud computing and AWS.
+We're going to explore what it is at a high level.
+And we're going to cover off the six advantages
+of cloud computing, the three different types of
+cloud computing and three different deployment
+types of cloud computing.
+So, what is cloud computing?
+Well it's the on demand delivery of compute, database
+storage, applications and other IT resources through
+cloud services platform, like Amazon for example via
+the internet with pay-as-you-go pricing.
+So I want you to think of it simply as
+renting someone else's computer.
+So you can rent it to do computations, you can rent it
+to store your files, you can rent it to send text messages,
+et cetera et cetera.
+So cloud is just a way of using somebody else's computing
+capacity and your going to rent it by paying either
+by the minute or by the hour or even by the second.
+That is all that cloud is.
+It's just renting someone else's computer.
+So what are the six advantages of cloud computing?
+Well this is actually discussed in the first whitepaper,
+which is an overview of Amazon Web Services.
+It's the very first one that's mentioned
+in the exam blueprint.
+So if you do get the chance I would recommend that you
+go ahead and read that.
+I'll link to it in the resources section of the course.
+We're going to cover it very quick, sort of high level.
+So the first advantage of cloud computing is you can
+trade capital expense for variable expense.
+So instead of having to invest heavily in data centers
+and servers before you're even going to know how to use
+them with Amazon Web Services or with other cloud computing
+providers, you can pay only when you consume computing
+resources and pay only for how much you consume.
+So basically you're going to pay for only what you use.
+You don't have to sign three or five year contracts.
+You don't have to go out and buy physical servers,
+networking gear, et cetera.
+That's the great thing about cloud computing.
+You can spin up a little server, can have it running for
+60 seconds, then decide you don't want to use it that way.
+Go ahead and terminate it and you've only paid
+for that 60 seconds worth of server time.
+The second advantage is you can benefit
+from massive economies of scale.
+So you're never going to have the same
+purchasing power as Amazon.
+Amazon will literally go out and build their own physical
+servers, their networking gear,
+their own storage arrays, et cetera.
+Amazon is going to do this much better than you.
+This is a meme that I made which is a South Park meme.
+I don't know if you guys watch South Park but
+the skiing instructor would always say
+if you do this, you're going to have a bad time.
+So if you try and compete with Amazon
+you're going to have a bad time.
+You're never going to compete with a company that has
+that level of purchasing power.
+And they pass those cost savings on to you.
+The third advantage is you stop guessing about capacity.
+So you're probably going to buy too much or too little.
+You might have ten web servers when you only need four.
+Or you might only have two when you need six.
+In that scenario if you buy too much you've wasted money,
+and if you too little you're going to have down time.
+Now cloud can scale with your business needs with
+no long term contracts. We're going
+to cover that off as we go throughout this course.
+We're going to look at autoscaling.
+But essentially we can set up metrics and say
+when my website gets this busy then add additional
+web servers and it will scale automatically in line
+with your capacity needs.
+The fourth advantage to cloud computing is you can
+increase your speed and agility.
+And A Cloud Guru is a perfect example of that.
+So my brother Sam built the platform in three weeks.
+He went and took three weeks off of work, and he went and
+locked himself away in a bedroom.
+Basically used up all his annual leave and he built our
+entire learning management system in three weeks.
+And it was designed using a new type of architecture
+called serverless architecture.
+We're going to explore serverless later on
+in this section of the course.
+But essentially it means you've got no virtual machines,
+or physical machines.
+It scales infinitely with demand.
+And if we were to start this business 15 years ago,
+we probably would have had to go out and buy servers
+and rent data center space.
+And we probably honestly never would have
+gotten off the ground.
+We would had to have a large amount of capital.
+I literally started this business by buying a 15 pound
+microphone and using a really really old laptop.
+And because we had the advantage of being able to use
+Amazon Web Services and actually knowing the services
+inside-out, we were able to build our own school.
+And the way we designed it, didn't use any servers and as
+effectively basically free hosting for two years.
+It was only when we started getting really really big is
+when we started incurring a bill.
+And even now our compute bill is about 500 dollars a month.
+Which is just amazing when you think
+that we are getting close to a million students.
+So the great thing about cloud computing is you can increase
+your speed and agility in moving into the cloud.
+Number five, stop spending money running and
+maintaining data centers.
+Focus on what you're good at, not managing infrastructure.
+Let someone else manage that for you.
+Number six is go global in minutes.
+So easily deploy your applications in multiple regions
+around the world with just a few clicks.
+And this means you can provide lower latency and better
+experience for your customers at a minimal cost.
+So there's three different types of cloud computing.
+We've got infrastructure as a service,
+pLatform as a service, software as a service.
+Infrastructure as a service is basically AWS.
+This is where you manage the server it can be physical or
+virtual as well as the operating system.
+Usually the data center provider will have
+no access to your server.
+So a good example of this would be EC2.
+AWS actually goes up into all three layers
+but infrastructure as a service is EC2.
+Which we're going to cover off in a couple of
+lectures from now.
+We then have platform as a service.
+I want you to think of Go Daddy as a good example for this.
+At Go Daddy you can just upload a bunch of website code and
+basically point your domain name to it.
+And then it will show up.
+You don't have to worry about managing the underlying
+hardware and operating systems.
+You just focus on your applications and somebody else
+worries about security patching, updates and maintenance.
+Amazon do this as well, through Elastic Beanstalk or
+through Amazon Lightsail.
+So they do provide platform as a service as well.
+Then we have software as a service.
+The easiest one to think of for this one is Gmail.
+So all you do is manage your inbox or the software
+provided to you by Google.
+Then Google takes care of things like the data centers, the
+servers, the network, the storage, the maintenance,
+the patching and all you have to do is worry about
+the software itself and how you want to use it.
+I'm terrible at Gmail.
+I've got at least 30 thousand unread emails right now.
+It's sort of a running joke in my company.
+But yeah, hopefully you guys can manage your email
+a lot better than I can.
+And then we've got the three different types
+of cloud computing deployment.
+So we've got public cloud, this is the big three.
+So we've got AWS, we've got Azure, we've got GCP.
+We then have hybrid.
+This is a mixture of public and private.
+So you might have your websites out on the public cloud,
+but might have all your confidential employee information
+on your own servers that you host and you don't really
+want anyone to be able to access that.
+So that's a mixture of public and private.
+And then we have private cloud or on-premise.
+And this is where you manage it in your data center.
+Common deployments this would be Openstack or VMware
+or Microsoft's Hyper-V.
+And most organizations do either private cloud or hybrid
+cloud, a mixture of public and private.
+But a lot of big enterprises now are just
+going all in on the public cloud.
+Capital One is a very good example.
+They wanted to get rid of all their data centers and let
+Amazon worry about managing all the data centers.
+Capital One wanted to go out and build their own
+applications and just become more of a...
+A lot of people think of Capital One as a bank,
+but they're more of a tech company than a bank.
+So that's a good example of people who have
+gone all in on public cloud.
+So this is an actual photo.
+This is a Tesla Roadster in orbit of the Earth on the
+sixth of February 2018.
+Elon Musk sent his Tesla Roadster on the way to Mars
+using the Falcon Heavy.
+And you can see here on the screen is says "don't panic."
+Now as we go through and look at all the different
+AWS services you're going to get a little bit overwhelmed.
+You're going to start to panic but don't worry
+you don't need to know all these services in order to
+pass your Certified Cloud Practitioner.
+To be honest, I've got a lot of certs
+and I still don't know all the services.
+I doubt there's any one person in the world now who
+knows all the AWS services inside-out.
+Basically, a lot of people just specialize
+in particular areas.
+So lets have a look at the high level services.
+And we'll start with the AWS Global Infrastructure.
+So these are the data centers spread all throughout
+the world in which Amazon Web Services has
+all their different services.
+And their services consist of things like compute,
+storage, databases, migration and transfer,
+network and content delivery, developer tools.
+They have robotics, they have blockchain,
+they have satellite.
+They have management and governance, they media services,
+machine learning, analytics,
+security, identity and compliance, mobile, AR and VR.
+So augmented reality and virtual reality,
+application integration.
+We then have AWS cost management, customer engagement,
+business applications, and then we have our desktop
+and apps streaming.
+We then have IoT, and we then have game development.
+And these are all the high level services.
+Under these individual sections there's a whole bunch of
+different services, so compute might have five different
+services available to it.
+Robotics currently just has one.
+Application integration might have ten.
+So there's an awful lot of services.
+So you might be wondering what is actually applicable to the
+Certified Cloud Practitioner exam.
+Well its just these services.
+So compute; storage; databases; migration and transfer;
+network and content delivery; security, identity,
+and compliance; and then AWS cost management.
+And that's all you really need to know to pass your
+Certified Cloud Practitioner exam.
+We're going to cover this off in a lot of detail
+in the rest of the course.
+And to be honest, you could probably lose those
+two service as well.
+So really the core fundamental service are compute,
+storage, databases, security identity and compliance,
+and AWS cost management.
+That's really what you need to know to pass your Certified
+Cloud Practitioner exam.
+So what will you learn in this course?
+Well under compute, you're going to learn about EC2
+and you're going to learn about Lambda.
+So EC2 is just virtual machines in the cloud.
+Lambda is the next, sort of, level up.
+Where you don't have to worry about virtual machines at all.
+All you'll worry about is your code.
+Then have databases.
+We're going to learn about relational databases, so RDS.
+As well as DynamoDB, which is Amazon's
+nonrelational database.
+Then going to look at storage.
+So we're going to start with S3, which is know as simple
+storage service, going to look at Glacier.
+And we're also going to look at networks.
+So going to look at VPCs at a very high level.
+You don't really need to know them in a lot of depth until
+you go on to do your associate exams.
+And we're also going to look at Route 53, which is
+Amazons DNS service.
+So when you type in hellocloudgurus.com, how does that
+connect up to a web server.
+And don't worry if you do not come from a tech background,
+I like to quote myself here but, seriously
+anyone can learn AWS.
+I myself started out as an immigration lawyer.
+I was not in tech at all.
+I went and learned, I went to night school
+and got my Microsoft and Cisco certifications.
+Off the back of that I got a job at a Rackspace, and
+that's where I learned to become a solutions architect.
+And at the time we were at war with Amazon to dominate
+the public cloud.
+So I learned an awful lot of AWS stuff while working in
+the industry, but I did not come from a tech background.
+I do not have a software engineering degree, I do not have
+a computer science degree.
+I only learned to program when I was like 27-28 years old.
+So, anyone can learn AWS.
+You do not have to have a tech background and anyone
+can pass the Certified Cloud Practitioner exam.
+And I've taught this to over 750,000 people.
+So trust me I do know what I'm talking about.
+Don't worry if you don't have any, sort of,
+technical background we will have
+an explain-it-like-I'm-five approach.
+We're going to take all the concepts and just
+start you out slowly and just build on the different
+sort of concepts as we go.
+And then by the end of this course you should be ready
+to pass the Certified Cloud Practitioner exam.
+So why should you learn AWS?
+So this is cloud as a portion
+of total potential market spent.
+So in this graph, basically what they're saying is
+in 2015 out of all the IT spend the organizations had
+4.3% of that was spent on cloud computing.
+By 2016 it was 6.1%.
+We go up to 2019 we're at 11.3% and they are predicting it
+to increase by 50% by 2021 all the way up to 15.3%.
+So you can imagine how much further this has to go.
+Eventually, we're going to get in this, sort of,
+high 70s or 80s percent.
+And this is the public cloud as market share.
+So basically, in 2016 Amazon had 35% of the market share.
+Microsoft had 8%.
+And then Google and Ali Baba basically made up 2%.
+And you had all the other cloud providers.
+So this could be Kohler, this could people like Rackspace,
+et cetera, at 52%.
+And then as you can see as we go toward 2019, the other
+providers are dropping off.
+Microsoft is managing to sort of keep pace with Amazon.
+Google is slowly getting there as well.
+As well as Ali Baba.
+But Amazon are the clear market leaders.
+So what I'm trying to show you from these two graphs is
+that this is an incredible industry to get into because
+its got an awful long way to grow.
+Companies are spending more and more on public cloud.
+And once you get certified you're going to have
+really good job security.
+Getting AWS certified is a fantastic move for your future.
+There are very few people out there who are AWS certified.
+And the more certs you get the more,
+sort of, unique you are.
+So I would encourage you to go on and do
+at least some associate courses.
+Preferably the Certified Solutions Architect Associate.
+And if you really want to get into it, go and do the
+professional level courses.
+So what are my exam tips?
+Well you'll need to know the
+six advantages of cloud.
+So they are, trade capital expense for variable expense,
+benefit from massive economies of scale,
+stop guessing about capacity,
+increase speed and agility,
+stop spending your money running and maintaining
+data centers, and you can go global in minutes.
+Also know the three different types of cloud computing.
+So, we looked at infrastructure as a service,
+platform as a service and then software as a service.
+Infrastructure as a service is just like EC2.
+Platform as a service will be things like Go Daddy or
+Elastic Beanstalk where you upload your code and they will
+go in and provision the underlying resources for you.
+And then we have software as a service, which is
+just very similar to Gmail.
+Don't worry if you don't know what EC2 and Elastic Beanstalk
+and that sort of stuff is, we will cover that off later
+on in this section of the course.
+And then finally know the three different types
+of cloud computing deployments.
+So we've got public cloud, which is AWS,
+Azure, GCP, Ali Baba.
+Then have hybrid, which is a mixture
+of public and private cloud.
+And then we have private cloud itself,
+which is on premise where you manage it in your data center.
+So it's Openstack, VMware or even Hyper-V.
+So that is it for this lecture.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture.
+Thank you.

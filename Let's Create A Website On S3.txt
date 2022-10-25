@@ -1,0 +1,126 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture. In this lecture,
+we're going to look at how we can create a website using S3.
+So this will be a serverless website because S3 doesn't consist of any
+service and essentially what we're going to do is we're going to put a
+index.html file and an error.html file into our bucket.
+We're going to use a bucket policy to make our bucket public we're then going to
+enable our bucket to become a website. So if you've got the time,
+please join me in the AWS console. Okay.
+So here I am in the AWS Management Console, as always,
+I'm going to go over to S3, which is under Storage,
+and we're going to go ahead and create a new bucket for this website.
+As you remember,
+all buckets need a unique name because it gives them a DNS name or a
+website address. So I'm going to call it acloudgurumywebsiteryan123456.
+Hopefully that will be available.
+I'm going to deploy this into USA East Northern Virginia and
+instead, I'm going to leave this as block all public access.
+So we'll just cover off how to turn that off as well. in here,
+we could go down to our advanced settings and this is where we enable object
+lock and not, we're not going to do that though.
+Let's just go ahead and create this bucket and that bucket has now been
+created. Now note the difference straight away.
+We've got acloudgurumywebsite123456
+and you can see that the bucket and objects are not public. So really, I mean,
+we can go through it and try and you know, break it again.
+We might as well actually.
+So if we just go over to upload and we're going to add our files.
+Now these are available in the downloads section of the course.
+So I'm just going to go ahead and upload two files, our index.html,
+and our error.html and I'm going to go in and just hit Upload leaving everything
+else as default and we can see them in here.
+So index.html this is going to be our main index page or our main webpage and if
+we click in here and we go over to our actions and we try and make it public,
+we know exactly what's going to happen. It's not going to work.
+because we've got public access settings disabled on our
+bucket.
+So what we want to do is we want to go over to our Permissions and we're going
+to go Edit, I'm going to unclick this, go ahead and hit Save
+and in here we just type confirm. If I could actually type,
+confirm and go ahead and hit enter
+and that has now basically gone in and blocked unblocked
+public access.
+So what we'll do now is we will go back into our our
+bucket. So if we just go up here,
+click on S3 and then click on our bucket note that it has now changed,
+that objects can be public and if we go down and we go and click on index,
+we can now go ahead and hit Actions and make public,
+and then go ahead and make this public that has now been made public and we
+click on the object itself by going in here and actually just clicking on the
+URL and then clicking in here, we'll be able to see our websites that says,
+hello, Cloud Gurus and we've made a serverless website because this is hosted on
+S3 and there's no servers to manage.
+So we don't need to worry about servers or EC2 or anything like that,
+which we'll cover off later on in the course.
+So that's how we've made this particular object public. Now,
+the issue here is that our error.html for example,
+is not public and we don't want to have to go in and make every single
+object public by clicking on it and then hitting actions make public.
+We want the whole bucket to be public. So to do that,
+what we can do is we can go over to our permissions and we can scroll down and
+we're going to do this using a bucket policy and our bucket policies
+directly under our block public access settings and what we can do is just go in
+and hit Edit,
+and we've got policy examples in here but what I want you to do is just go down
+to where you downloaded the resources section.
+So here's where I downloaded my files and unzipped them and what I want to do is
+just open up this bucket policy.
+So that's this file in here and essentially all this does is it allows
+everyone the ability to get the object to this resource name,
+and we're going to need to update this resource name with our actual bucket
+name. So what I want you to do is just copy this into your clipboard,
+make sure you get the whole thing and then go over to here and just hit Paste
+and that will essentially allow us to paste the JSON in there and then
+we just need to update this with the correct ARN so you can copy the ARN and by
+clicking on that, and then what I would do is just delete this out,
+make sure you leave the forward slash and the wild card and just paste that in.
+So we've updated the ARN to this bucket,
+and then we'll scroll down and we'll go ahead and hit Save Changes and that has
+now saved out change, and it has made everything inside our bucket public.
+So if we go actually back over to S3,
+you can see this access level has now changed.
+It's gone from objects can be public to, you know, alert this,
+everything in this object or everything in this bucket is public and we can
+actually test this by going onto the error page and if we click on the error
+page and click on the URL,
+we won't get that typical XML error message.
+We're getting our own custom error message,
+which is actually displaying that file.
+So this is just the HTML inside error.html and it's displaying
+the files.
+We didn't need to go in and make that public because we've applied a bucket
+policy and the bucket policy has made all our objects in that bucket public.
+Now, we still haven't actually configured this as a website.
+We've just been making our buckets-sorry,
+objects inside this bucket public to make it a actual website.
+We can click in here and we can go over to properties and we scroll all the way
+to the bottom.
+We've got static website hosting and if we click in here and go edit,
+we can now enable static website hosting.
+We're going to host a static website.
+So our we're going to set our index or our homepage as index.html and in
+here, our error document is going to be error .HTML.
+So what I'm going to do now is go ahead and hit save changes and that has now
+created it as a website. So we actually click on this link.
+This is our new domain names that's the name of Al
+bucket .S3-website- and then the region. So US East 1
+then .Amazonaws.com and if I click on that,
+it's going to go to our index or our landing page and if I then change the URL,
+we'll make up some bogus URL. It's going to go to our error page.
+So we have now gone ahead and created our own static website using
+S3 and it's a serverless website. So congratulations.
+If you've never made a website before, you've just created one.
+So what are my exam tips?
+Well you can use bucket policies to make entire S3 buckets public,
+but first you need to uncheck those four boxes before you can do anything.
+So do remember that for the real world as well as for the exam and then
+you can use S3 to host static websites, such as .HTML websites,
+websites that require database connections, such as WordPress, et cetera,
+cannot be hosted on S3. So often they'll refer to it as static versus dynamic.
+Static websites can be hosted on S3.
+Dynamic websites cannot be hosted on S3 and then just remember the S3
+scales automatically to meet your demand.
+Many enterprises will put static websites on S3 when they think there's going to
+be a large number of requests such as for a movie preview, for example.
+So that is it for this lecture. Everyone, if you have any questions,
+please let me know. If not, feel free to move on to the next lecture. Thank you.

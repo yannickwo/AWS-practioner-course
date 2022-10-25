@@ -1,0 +1,97 @@
+Okay, hello Cloud Gurus,
+and welcome to this lecture.
+So, this is a really, really quick lecture,
+on the different AWS Support plans.
+If you remember when we went through the exam blueprint,
+it actually specifically calls this out,
+and we also, when we created our AWS Free Tier Account,
+we selected our Support plan,
+which was just the very basic.
+So, there was four different types of Support plans.
+We have our Basic, our Developer,
+our Business, and our Enterprise.
+In terms of the basic, we don't have any tech support,
+we basically use the AWS forums.
+Actually, a lot of what I always find interesting
+is sometimes if I'm looking for a question
+and type it into Google,
+I get really proud when it's
+an A Cloud Guru forum question coming up,
+rather than the AWS Support forums, as well.
+So, you can use our forums
+to get tech support on AWS, as well.
+With Developer, we have tech support,
+which is business hour access via email.
+Developer is $29 a month,
+and you can have one person open cases
+and have an unlimited number of cases.
+Business starts at a $100 a month.
+Don't forget this scales depending on usage,
+so it can be more.
+Business you get 24 by seven email, chat, and phone.
+You don't get a Technical Account Manager,
+but you do get unlimited contacts,
+as well as unlimited cases.
+And Enterprise starts at $15,000 a month,
+it varies on usage.
+You get 24 by seven email, chat and phone,
+and you get a Technical Account Manager.
+A Technical Account Manager is someone that's dedicated
+at AWS for your business.
+And a big shout-out to all our TAMs
+who may be watching this course.
+And then in terms of the Support plans,
+we have different case severity response times.
+So Basic, you don't get anything.
+With Developer, you get general guidance
+within 24 business hours.
+And then if your system is impaired, it can be,
+you'll get a response within 12 business hours.
+With Business, it starts to scale a lot better,
+so you get general guidance within 24 hours,
+system impaired is 12 hours,
+production system impaired is less than four hours,
+production system down is less than one hour.
+So, to be honest,
+it probably is just worth paying
+that $100 a month to get on Business,
+just because you get very good response times.
+And then with Enterprise, you get really,
+really, really good response times.
+So, general guidance, 24 hours.
+System impaired, 12 hours.
+Production system impaired, four hours.
+Production system down,
+then you're going to have
+a response time in less than an hour.
+And if it's business-critical system that's down,
+it's going to be less than 15 minutes.
+And so, onto my exam tips.
+So, what level of Support do you need
+if you want to have a Technical Account Manager?
+Do you know the answer to that?
+Well, of course, you need Enterprise level support,
+so do remember that going into your exam.
+And a big shout-out to all the TAMs who are watching this.
+You guys are fantastic, you do a great job.
+And then finally,
+I would just know the different response times,
+especially around things like
+your production system being down.
+So, if your production system goes down,
+and you want, let's say,
+one hour or less for a response time,
+you either need Business or Enterprise level support.
+So, if you have a production system and it goes down,
+and you need to get that system back up,
+or you need AWS to respond within an hour,
+then you're going to either need Business or Enterprise.
+If you want a TAM and that one-hour support,
+you'd choose Enterprise.
+If you don't want a TAM,
+but you still need that one-hour response time,
+then you choose Business.
+So, that is it for this lecture, everyone.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture.
+Thank you.

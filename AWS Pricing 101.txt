@@ -1,0 +1,495 @@
+Okay, hello Cloud Gurus and welcome to section three
+of the Certified Cloud Practitioner course.
+In this section we're going to look at billing and pricing.
+According to the exam blueprint, it's worth about 12%.
+I personally think it's worth more like 25 to 30%,
+because it does come up an awful lot.
+In the very first lecture, we're going to look at
+how AWS pricing works, we're going to look at
+the Whitepaper, this Whitepaper is a must read,
+if you're going to have a good chance
+of passing your exam on the first attempt.
+So I would recommend you go check it out.
+You can check it out by using this link,
+which I'll put in the resources section.
+And if we actually skip to the conclusion
+of the Whitepaper, it says, "While the number and types
+"of services offered by AWS have increased dramatically,
+"our philosophy on pricing has not changed.
+"You pay as you go, pay for what you use,
+"pay less as you use more,
+"and pay even less when you reserve capacity."
+And I want you to remember those fundamental principles
+going into the exam, because if you go back
+to those fundamental principles, and you're looking
+at a scenario based question, if you're reserving capacity,
+for example you're going to get the maximum,
+amount of discount or savings.
+So just remember those principles going into the exam.
+Now you're going to get multiple questions
+talking about CapEx versus OpEx.
+And if you haven't heard of it before,
+CapEx basically just stands for capital expenditure,
+which is where you pay up front, and it's fix sunk costs.
+So it's like buying a server up front, or buying
+a whole bunch of servers, or buying network,
+switches or firewalls, or load balancers, et cetera.
+And if you think about a startup, for example A Cloud Guru,
+we wouldn't have been able to afford buying physical servers
+and storage and all of that, as an upfront cost
+because we didn't have any money when we're a startup.
+And that's why prior to public cloud,
+people would have to go out and raise capital
+and get investors on board to even get the ball rolling.
+So that was the old way that it was done.
+OpEx stands for operational expenditure,
+which is where you pay for what you use.
+And I want you to think of utility billing.
+So things like electricity, or gas, or water.
+This is where you're paying for things as you use them.
+And that was the great thing about us, is we started out
+just paying for what our customers were using.
+We started out with a service learning management system,
+so we had no servers at all.
+We'd only incur a cost when someone actually went
+to our website and started watching content.
+So it's a great way of scaling our business very early on.
+Now in the Certified Cloud Practitioner exam,
+you are going to get a whole bunch of different
+scenario questions and they're going to be using the term
+CapEx versus OpEx, you just need to understand
+the difference between capital expenditure
+and operational expenditure.
+Now that you know that let's move on to the Whitepaper.
+So there are five basic pricing policies
+which are as follows.
+So the first is pay as you go.
+So you literally pay as an when you need the resource.
+We then have paid less when you reserve and remember
+that the longer you have a contract term,
+and the more you pay, the more you save.
+So pay less when you reserve.
+And then you pay even less per unit when using more.
+So the more AWS resources you use,
+the less you're going to pay.
+And you're going to pay even less as AWS grows.
+And then the final one is custom pricing.
+So while the pricing models vary
+across the various different AWS services,
+it's worthwhile to review key principles
+and best practices that are broadly applicable.
+So the first one of four
+is understand the fundamentals of pricing.
+We then have start early with cost optimization.
+We then have maximize the power of flexibility,
+and we then have used the right pricing model for the job.
+So let's go and start with understanding
+the fundamentals of pricing.
+So there are three fundamental drivers of cost with AWS
+and these are compute, storage, and then data outbound.
+So data leaving your AWS environment,
+not data entering in, so data outbound.
+And if you remember these three fundamental
+drivers of cost, you're always going to do well on the exam.
+So compute, storage, and data outbound.
+So now that we understand the fundamentals of pricing,
+it's time to move on to start early with cost optimization.
+And basically, it says in the Whitepaper
+that adopting cloud services is not just a technical
+evolution, it also requires change
+to how organizations operate.
+As you move from IT being treated as a capital investment
+that happens periodically, to a world where pricing
+is closely tied to the efficient use of resources,
+it pays to understand what drives cloud pricing,
+so you can build a strategy for optimizing it.
+And when it comes to understanding pricing and optimizing
+your costs, it's never too early to start.
+That's really what this is getting at,
+start early with cost optimization.
+And it's easiest to put cost visibility
+and control mechanisms in place before
+the environment grows large and complex.
+So you basically you want to put your cost controls
+in place before you get these massive AWS environments,
+because then costs can actually just start
+spiraling out of control.
+And managing cost effectively from the start ensures
+that managing cloud investments doesn't become
+an obstruction as you grow and scale.
+So then moving on to maximize the power of flexibility.
+And the Whitepaper goes on to say that,
+"AWS services are priced independently and transparently,
+"so you can choose and pay for exactly
+"what you need and no more.
+"There's no minimum commitments or long term contracts
+"required, unless you choose to save money
+"through a reservation model.
+"And by paying for services on an as needed basis,
+"you can redirect your focus to innovation and invention,
+"reducing procurement complexity,
+"and enabling your business to be fully elastic."
+So basically, it's saying that as you're paying
+for something as you need it, you can focus on
+the actual environment itself rather than having
+to think about procurement processes, et cetera.
+One of the key advantages of cloud based resources
+is that you don't pay for them when they're not running.
+And by turning off instances you don't use you can reduce
+your costs by 70% or more compared to using them 24-7.
+And this enables you to be cost efficient,
+and at the same time have all the powers you need
+when workloads are active.
+So that's maximizing the power of flexibility,
+being able to only basically use your environment
+when you need it.
+So moving on to using the right pricing model
+for the job, the final one.
+AWS offers several pricing models depending on products,
+and these include on demand, dedicated instances,
+spot instances and reservations.
+We covered this all off in the last section of the course.
+Also, you are all signed up to AWS by now.
+We've all been using a free tier account,
+so to help new AWS customers get started in the cloud,
+AWS offers a free usage tier which is what you're using.
+And if you're a new AWS customer,
+you can run a free Amazon EC2 Micro Instance for one year,
+while also leveraging a free usage tier for S3,
+elastic block storage and elastic load balancing
+as well as AWS transfer and other AWS services.
+And this is actually a really, really important exam topic.
+What services in AWS are free?
+What are the free services by default?
+Well whenever we provisioned an EC2 Instance
+that was always sitting inside our VPC.
+Now for the Certified Cloud Practitioner,
+you just have to understand that a VPC is essentially
+a virtual data center in the cloud.
+That's where your little virtual machines live.
+When we go on to do the Certified Solutions Architect
+associate, we're going to deep dive into VPC
+as you start building them out yourselves.
+But Amazon VPC itself is free, Elastic Beanstalk,
+which we looked at in the last section that's also free.
+But remember the resources that Beanstalks
+provisioned by itself is not free.
+So when it provisions like EC2 Instances
+or RDS Instances, those aren't free.
+But Elastic Beanstalk itself is free.
+Similarly, CloudFormation is completely free
+but the resources it provisions you will pay for.
+Identity Access Management is free.
+So when we're creating users, groups, roles, et cetera,
+We're not paying for them, they're all free service.
+Auto Scaling itself is free
+the actual autoscaling mechanisms.
+But don't forget the EC2 Instances it provisions
+you will pay for.
+Opsworks we haven't really covered off in the last section,
+but it's very similar to Elastic Beanstalk.
+It's more a DevOps product that that itself is free.
+And likewise, similarly to Elastic Beanstalk
+and CloudFormation, the resources which are provisions
+underneath you will pay for.
+And then Consolidated Billing is free.
+And we're going to look at that in a little bit later on
+in this section of the course.
+So EC2 pricing, we're going to look at all the different
+AWS services, and we're going to look at what determines
+Price. So with EC2 it's determined by a number of different
+things. So the clock hours of server time, so depending
+on the incidence type,
+you're either paying by the second or by the hour.
+Then the instance type itself, so whether it's
+a t1.micro or four or whatever.
+So the different Instance families,
+and then have the different pricing models,
+so things like reserved, spot, on demand, et cetera.
+Then the number of Instances.
+So the more Instances you have,
+the more you're going to be paying.
+And then what type of load balancing that you're doing.
+So if you doing network load balancing,
+that's going to be a lot more expensive
+than using classic load balancing.
+Then we have monitoring.
+So by default, when we provision, EC2 Instances,
+we just have standard monitoring,
+and that's every five minutes.
+And we can actually turn on detailed monitoring,
+and that will be monitoring
+our EC2 resources every one minute.
+So detailed monitoring can also drive price for EC2.
+Auto scaling that we can drive price
+because the more EC2 Instances you have, the more you pay.
+And then elastic IP addresses and we had this turned on
+by default, every time we provision to our EC2 Instance,
+in the last section of the course,
+so it would get an IP address.
+That's called an elastic IP address
+and you do pay for these as well.
+And then finally, the different operating systems
+and software packages.
+So if you're using Windows,
+that's going to be slightly more expensive
+than using an open-source operating system like Linux.
+Now in the last section, we covered off the four
+different EC2 pricing models.
+But I just want to remind you of it again
+in this section because it definitely comes up in the exam.
+And it's probably worth about four marks.
+So you just need to know the four different pricing models.
+So we have on demand, which allows you to pay a fixed rate
+by the hour or by the second with no commitment.
+We've got reserved, which basically provides you
+with a capacity reservation and offers significant discount
+on the hourly charge for an instance,
+and your contract terms of one or three years.
+And we'll cover that off in more detail in a second.
+We've got spot and this enables you to bid whatever price
+you want, for Instance capacity,
+which gives you a great amount of savings,
+but only if your application
+has a flexible start and end time.
+If your application always needs to be on always running,
+then you don't want spots.
+So it's where you might be doing things like
+batch processing or you can have the application run
+in the middle of the night when the prices of the cheapest.
+But then as soon as it comes 9 a.m.
+on a Monday morning, it's stops.
+So just bear that in mind going into your exam,
+that's where you would use spot.
+And then finally, we have dedicated host.
+This is a physical EC2 server that's dedicated for your use.
+And dedicated host can help you reduce costs by allowing you
+to use your existing server bound software licenses.
+So these could be VMware licenses,
+or Oracle licenses, et cetera, et cetera.
+So I want to dive into reserved instances a little bit more.
+So you can use EC2 reserved instances to reserve capacity
+and receive discounts on your instance usage,
+compared to running on-demand instances.
+And the more you pay up front,
+and the longer the contract term,
+the more you're going to save.
+And let's have a look at this.
+So this is a standard one year term.
+So this is where we pay either upfront or monthly,
+and what the effective hourly cost is here,
+and then this is the savings over on demand.
+So if you don't pay anything up front,
+you're going to get a 36% discount for one year contract.
+You have a partial upfront, let's say of $256,
+you're going to get a 39% discount.
+And if you pay everything up front, so you're
+paying the $501, you're going to get a 40% discount,
+compared to using an on-demand instance.
+And likewise, if we had a look at the standard
+three year term, so no upfront, and we're looking at 56%,
+partial up front of 515, we're looking at 59%.
+And if we pay it all up front for a three year term
+we're going to save 62% compared to on demand.
+So again, the longer the contract term that you sign,
+and the more money you pay up front to AWS,
+the more you're going to save versus on demand.
+Now we haven't really covered off Lambda too much
+in this course, it is quite a technical thing,
+but it is a service way of doing compute.
+So we did build a serverless website on S3.
+So S3 itself is serverless.
+Lambda is also serverless and this can be a popular
+exam topic as well is knowing different
+serverless features inside AWS.
+So Lambda we do explore in an awful lot of detail
+in the Certified Solutions Architect Associate course.
+We'll even teach you how to build Alexa skills.
+But when you actually talk to Alexa,
+you're speaking to Lambda, that is Lambda interpreting
+what it is that you are saying.
+And then it is reacting to that based on its programming.
+And then these Lambda functions will only last
+for like half a second or something like that.
+And then they return a result.
+So you don't have to pay for an entire EC2 Instance,
+all the time, you are literally paying the execution time.
+So that is a perfect segue
+into what determines the price for Lambda.
+It's broken up into three areas.
+So the first is the number of requests.
+And in free tier you actually get 1 million requests
+per month as part of free tier.
+And at A Cloud Guru we did not have a compute bill
+for Lambda, up until probably almost two years
+into being on AWS.
+We weren't doing more than 1 million requests
+per month until we're two years into our business.
+So it is an awfully generous pricing structure.
+And then after you go over the 1 million requests,
+you're going to be paying $0.2
+per 1 million requests thereafter.
+So 20 cent per million requests thereafter.
+And then you also pay for duration pricing.
+So how long are your Lambda functions executing for.
+And you actually get 400,000 gigabytes seconds
+per month free, and then up to 3.2 million seconds
+worth of computer time.
+And then after that, I'm not even going to pretend
+to pronounce that number.
+But that's the cost of every gigabyte second use thereafter.
+And then we also have additional charges.
+So you may incur additional charges if your Lambda function
+uses other AWS services, or transfers data.
+So for example, if your Lambda function reads and writes
+data to or from S3, you're going to be billed
+for the read and write requests
+for the data stored in Amazon S3.
+So bear that in mind.
+Essentially, there's three mechanisms that drive price
+for Lambda, or what determines the price for EBS.
+If you remember, EBS is just a virtual hard disk
+in the cloud that's attached to EC2.
+And basically, you're paying for three different things,
+volumes, snapshots and data transfer volumes and snapshots.
+This is on a per gig basis,
+and then data transfers into EBS as well
+you're going to be paying for.
+We then have what determines price for S3.
+So this really depends on the different storage classes.
+So whether using standard or infrequently accessed,
+or one availability zone infrequently access, et cetera.
+Then there's the storage itself.
+So how much data are you storing?
+And then the number of requests and these get, put
+or copies, and then data transfer as well.
+Moving on to Glacier, if you remember from the last section
+of the course, Glacier is Amazon's data archival service.
+And this is basically driven by two factors.
+We've got storage and then data retrieval times.
+And we've got this data down here.
+And you can see that the data retrieval times
+varies from one to five minutes,
+to three to five hours, to five to 12 hours.
+And basically, the longer the retrieval time,
+the greater cost savings that you're going to have.
+So that's the way Glacier works.
+Now we didn't cover off Snowball in the last section,
+but you do need to understand what Snowball is,
+and how it's priced going into your exam.
+So Snowball is basically a petabyte scale data transport
+solution that uses secure appliances to transfer
+large amounts of data in and out of the AWS Cloud.
+And I want you to think of it as a gigantic disk
+that you use to move your data into the AWS Cloud.
+So basically, when you're transferring thousands of gigs,
+it's much more efficient to put it on a device locally
+and have that device then shipped to an AWS data center.
+Then it would be to upload it especially
+if your broadband speeds are pretty slow.
+And that's my beautiful daughter Ava.
+She is riding a Snowball.
+So we got a Snowball out last year, and in one of
+my courses, Certified Solutions Architect Associate course,
+I showed people how to transfer files to a Snowball.
+And we literally just transferred a text file
+that said hello Cloud Gurus and then sent it off.
+Which I think had some people
+at Amazon scratching their heads.
+So that's what Snowball is, it's just a gigantic disk
+to move your data into the AWS Cloud.
+And what determines the price for Snowball?
+Well, it depends on a number of factors.
+So there's a service fee per job.
+So Snowball comes in two different sizes,
+we've got the 50 terabyte and the 80 terabyte.
+50 terabytes it's going to be a one off of charge of $200.
+80 terabyte is $250, you then get a daily charge
+but the first 10 days are free
+and then after that you're paying $15
+a day. And then data transfer:
+So data transfer into S3 is free,
+but data transfer out from S3 onto a Snowball is not.
+And that kind of makes sense.
+Basically Amazon is going to charge you if you're moving
+your data out of S3 and you're migrating it somewhere else,
+they want to encourage you to stay on the AWS Cloud.
+Moving on to RDS, what determines the pricing for RDS?
+It's a really long list of things.
+So it's clock hours of server times.
+So how long your RDS instances run.
+Your database characteristics.
+So what type of database it is.
+Whether it's SQL server, et cetera.
+Database purchase types of the different instance types.
+So how large the database is, for example,
+the number of database instances.
+The more you use, the more you pay.
+The provisioned storage.
+So how big your database is going to be in gigs.
+And then any additional storage.
+And then you also charge on requests,
+deployment types and data transfers.
+So RDS is driven by an awful number of different factors.
+Moving on to DynamoDB,
+there's really three drivers of costs.
+That's provision throughput in terms of write,
+provision throughput in terms of read,
+and then the actual amount of data
+that you're storing inside of DynamoDB.
+And if you remember from the last section,
+DynamoDB is just Amazon's no SQL offering.
+Then finally moving on to CloudFront.
+So what determines price for CloudFront?
+It's traffic distribution, the number of requests
+and then data transfer out.
+So that is it for this lecture guys,
+you've done really, really well.
+I would recommend going and having a read
+of this Whitepaper and just remember the conclusion
+it says that while the number of types of services offered
+by AWS has increased dramatically,
+our philosophy on pricing has not changed.
+You pay as you go pay for what you use,
+pay less as you use more
+and even less when you reserve capacity.
+So remember that going into your exams.
+Remember what CapEx versus OpEx is.
+The CapEx stands for capital expenditure,
+which is where you're going to pay up front,
+whereas OpEx is operational expenditure,
+which is like utility billing.
+So think of things like electricity, gas, water,
+you're basically paying for what you use.
+Then remember the four different EC2 pricing models.
+So we've got on demand,
+which is you pay by the hour, or by the second.
+We've got reserved, which is the basically
+where you pay up front that you've got
+a one or three year contract term.
+And the more you pay up front, the more you save.
+We then have spot, this is where you have applications
+with flexible starting and ending times.
+And then we have dedicated host
+and this is good for where you're going to try
+and save costs on licensing because you've got
+existing server bound licenses.
+And this is a dedicated EC2 host or physical server
+that's dedicated to you.
+Also really important is to remember the free services.
+So Amazon VPC, Elastic Beanstalk, CloudFormation,
+Identity Access Management, Auto Scaling,
+Opsworks and Consolidated Billing.
+Remember where you've got these provisioning engines
+like Elastic Beanstalk or CloudFormation or Opsworks,
+or Auto Scaling, the services themselves are free
+but the resources that they provision or not.
+So you still going to pay for the EC2 Instances
+that these ones create.
+And then finally, I would highly recommend
+that you go and read the "How AWS Pricing Works" Whitepaper.
+Again the link will be in the resources section below.
+So that is it for this lecture.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture.
+Thank you.

@@ -1,0 +1,176 @@
+Okay, hello Cloud Gurus and welcome to the very
+last theoretical lecture of the course.
+So AWS like to basically confuse you
+with these three different services
+so you need to understand the difference between
+AWS Inspector, AWS Trusted Advisor,
+and then CloudTrail.
+We did cover CloudTrail briefly
+in the last section of the course.
+So why don't we start with Inspector,
+Inspector basically is an automated security
+assessment service that helps you improve
+the security and compliance of your
+applications deployed on AWS.
+Inspector basically automatically assesses applications
+for vulnerabilities or deviations from best practices.
+And after performing an assessment
+Amazon Inspector produces a detailed list of findings
+prioritized by a level of severity.
+And these findings can be reviewed directly
+or as part of detailed assessment reports
+which are available via the Amazon Inspector console or API.
+So what does that actually mean?
+Well basically Inspector is an agent
+that you install on your EC2 instances,
+and it will go through and look for common vulnerabilities.
+And it could be using some assessment rules from
+the Center for Internet Security for example.
+And it will go through and say hey
+you've left this port open or you've done this wrong,
+or you haven't patched this vulnerability
+you need to apply the latest Windows patches,
+or the latest Linux patches.
+And it will basically produce a report telling
+you all about what's wrong with your EC2 instances.
+So I want you to associate Inspector with EC2,
+it's something you install on your EC2 instance
+and it will inspect the environment.
+What's Trusted Advisor?
+Well Trusted Advisor is not just a security service
+it actually does a whole bunch of things.
+So it's an online resource to help you reduce your cost,
+increase your performance, and improve security
+by optimizing your AWS environment.
+Trusted Advisor provides real time guidance
+to help you provision your resources
+following AWS best practices.
+And Advisor will advise you on cost optimization,
+performance, security, and fault tolerance.
+So it's a way of basically
+you use a Trusted Advisor to have a look at
+your entire AWS environment,
+it's not about EC2
+it will actually go through and have a look
+at your entire AWS account and then give you
+basically a report on it.
+And it comes in two flavors,
+So you've got your core checks
+and recommendations which are free.
+And then you've got full Trusted Advisor
+and this is for business and enterprise companies only.
+And then finally if you remember in the last section
+of the course we were looking at CloudWatch
+and CloudWatch monitors performance.
+CloudTrail monitors API calls in the AWS platform.
+So CloudTrail is basically like a CCTV camera,
+it's going to record everything that's going on
+in your AWS environment.
+And it gives you increased visibility into your AWS
+environment by recording AWS Management Console
+actions and API calls.
+So if someone goes in and creates a new user,
+or a group, or a role, or an EC2 instance, or an S3 bucket,
+AWS CloudTrail is going to record that
+and you can identify which users and which accounts
+called AWS, the source IP address from which
+the calls were made and when the calls were made.
+And it's all saved into S3.
+So let's go and have a quick look at these three
+different services in the AWS console.
+Okay so here I am in the AWS console,
+and if we just go over to services we will be able
+to see our different services.
+So, CloudTrail is under management and governance.
+And you can go ahead and click on CloudTrail.
+And so like I said just earlier CloudTrail is a way
+of recording what's going on in your AWS environment.
+I'm not going to do that, we do cover this off
+in the Certified Security Specialty
+in a lot of detail though.
+If we click on services we can go down to
+security, identity, and compliance,
+and in here we can see our two other services.
+So we've got AWS Inspector
+and then if we go over here you can see Trusted Advisor.
+Trusted Advisor is under management and governance,
+so there's Trusted Advisor there.
+Let's start with Trusted Advisor
+and I'm going to go ahead and ask it for some advice.
+Right now it's actually already given me
+some recommended actions.
+So as soon as you open this up it'll start to scan
+your different environment.
+This is global service, do bear that in mind.
+So right now it's checking all the different
+security groups I've got around the world
+and it's seeing if certain ports are open to all traffic.
+And then it will give me a warning about that.
+And you can see right here security groups
+specific ports are unrestricted.
+Four of my six security group rules allow
+unrestricted access to a specific port.
+So that's actually really, really good.
+In here it's looking at S3 bucket permissions
+and it's saying that one of my buckets
+has global access so I should go in and fix that.
+And if we scroll down it's not just
+going to give me security information,
+it's also going to give me things like,
+I'll just scroll back up.
+So here we've got the four different security ones.
+If we go over to cost optimization we'll be able to see
+what cost optimizations it's going to give me.
+Likewise we've got performance, security, et cetera.
+If we actually just go back to the dashboard
+and you scroll all the way down you'll see that
+you can upgrade your support plan
+to unlock all of Trusted Advisor.
+So you need to go in there and hit upgrade.
+Let's go back over to Inspector.
+So Inspector is in here,
+so just remember sorry with Trusted Advisor
+that this is looking at your entire AWS ecosystem.
+It's looking at your entire account and giving you advice,
+and it's not just security advice
+it's things on like how you can save money as well.
+Where as Inspector, if we click on Inspector
+is a security service that we actually
+go and install on our EC2 instances.
+And effectively Inspector is going to go ahead
+and run assessments on the actual individual host.
+So it's going to run host level assessments
+on our EC2 instances.
+And again I'm not going to do this
+we do cover this off in the Certified Security Specialty
+course however, how to setup Inspector.
+But it's just important to remember that Inspector
+runs at an operating system level inside EC2,
+whereas Trusted Advisor looks at your entire AWS account.
+And then whereas CloudTrail basically operates
+as a CCTV camera and it's recording all of your
+AWS account and what people are doing inside it.
+So really those are my exam tips.
+AWS Inspector is used for inspecting
+EC2 instances for vulnerabilities.
+AWS Trusted Advisor is not just security
+but it inspects your entire AWS account,
+not just EC2 and it does more than security checks
+it also does cost optimization checks
+as well as performance and fault tolerance.
+And then finally CloudTrail increases the visibility
+into your user and resource activity
+by recording AWS Management Console actions and API calls.
+And you can identify which users and accounts called AWS,
+the source IP address from which the calls were made,
+and when the calls occurred.
+So that is it, think of CloudTrail as a CCTV inside AWS.
+So that is it for this lecture guys
+you've done fantastically well,
+you are almost at the end of the course.
+In the next lecture we're just going to review
+everything we've learnt from a security perspective,
+and then in the next section we'll look at how
+you can go ahead and book your exam.
+So if you've got the time
+please join me in the next lecture, thank you.

@@ -1,0 +1,44 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture. In this lecture,
+we're going to look at Trusted Advisor and the different key services that is
+provided by Trusted Advisor. So what is Trusted Advisor? Well,
+it's an online tool that provides real-time guidance to help you provision your
+resources following AWS best practices and Trusted Advisor checks
+help optimize your AWS infrastructure, increased security and performance,
+and reduce your overall cost and monitor your service limits.
+So probably the best way to understand what Trusted Advisor is,
+is by going in and having a look at it. So if we go over to Services,
+we go down to Management and Governance.
+You'll be able to see a Trusted Advisor in here.
+So it's just there and go ahead and click on it and basically going into your
+exam, what you need to understand is what Trusted Advisor can check for.
+And it's really these five pillars, cost optimization, performance,
+security, fault tolerance, and service limits.
+So cost optimization will basically tell you you know,
+how to best optimize your costs. We actually click in here.
+You'll be able to see that it's all locked right now.
+So you can't do any cost optimization by default.
+What you need to do is upgrade your support package to business.
+So in order to unlock all of Trusted Advisor,
+you need to upgrade your support package to business.
+You do get a free-you do get some free ones though, like security.
+You can see we've got two free ones here,
+so it can have a look at your EBS public snaps and your RDS public snaps.
+If we go back to Dashboard,
+we can scroll down and just have a look at all the ones that is provided for
+free. And if you want to check something,
+you just hit the little refresh button and that will be Trusted Advisor going
+in. So in this one,
+it's basically looking at your security groups and it's seeing if you've got any
+specific ports unrestricted on your security group.
+So maybe you've left port 22, the SSH port,
+open to the world.
+Trusted Advisor will go in and tell you whether or not you've done that and you
+can see because this is a new account, I don't have any ports open at all.
+so that's all Trusted Advisor is. So, like I said, going into the exam,
+you need to know the default services that are available to you.
+To have Trusted Advisor unlocked,
+you must upgrade your support plans to Business and just basically remember
+this, it does cost optimization. It does performance. It does security.
+It does fault tolerance and it does service limits as well.
+So that is it for this lecture everyone. If you have any questions,
+please let me know. If not, feel free to move on to the next lecture. Thank you.

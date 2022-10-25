@@ -1,0 +1,55 @@
+Okay. Hello, Cloud Gurus, and welcome to this lecture. So in this lecture,
+we're going to look at VPCs. Now you have actually already used a VPC.
+You just weren't aware of it.
+When we provisioned our very first EC2 instance that was done in a default
+VPC and every region that exists in the AWS world
+you get-when you open up a new account-you get a default of VPC in that
+region. So you might be wondering, well, what is a VPC?
+Well VPC stands for Amazon virtual private cloud or VPC and it
+lets you provision a logically isolated section of the AWS cloud,
+where you can launch AWS resources in a virtual network that you define.
+So essentially it's a place where you can launch EC2 instances,
+for example just keeping it really simple,
+but we can have other things in our VPC as well such as S3 buckets,
+we can connect our S3 buckets to our VPC, DynamoDB,
+et cetera,
+et cetera but I just want you to think of it basically as a place where it's a
+logically isolated place of the AWS cloud,
+where you basically define your own network settings.
+So you can control the IP address ranges, for example,
+you can control what subnets are created,
+whether those subnets are public or private, et cetera.
+So I want you to think of a VPC,
+basically as a virtual data center in the cloud,
+that's all a VPC it's your own data center and you make the rules and
+you control what goes in and out of that data center.
+So that's all a VPC is, and it gives you customizable configuration.
+So you can easily customize the network configuration of your VPC. For example,
+like I said,
+you can create public facing network zones for your web servers that have access
+to the internet
+and then you can place your backend systems such as databases or applications
+servers in a private network that has no internet access
+and then you can connect your VPC using a VPN to your existing
+corporate data center,
+as well as your headquarters and basically you leverage the AWS cloud as an
+extension of your own corporate data center.
+So VPCs we just covered as a high level.
+All you need to know going into your exam is what a VPC is.
+It's just a virtual data center in the cloud that's dedicated to you.
+You set all the networking rules. So you control all the IP addresses,
+what subnets there are, whether they're private or public, et cetera, et cetera,
+you control your own you know,
+virtual firewalls using security groups and don't worry too much about
+VPCs at this stage, you just need to know what they are.
+In the Certified Solutions Architect Associate, we start deep diving into VPCs,
+you'll go in and create your own VPC and then you basically have to
+learn how to do that from memory and then with advanced networking we go even
+further. So you there's a lot more to learn about VPCs.
+It does get very complicated and technical.
+So I don't want to scare you off at this stage. At this stage,
+just for the cloud practitioner all you need to know is what a VPC is,
+and it's just a virtual data center in the AWS cloud,
+and you can make your own rules for that data center.
+So that is it for this lecture everyone. If you have any questions,
+please let me know. If not, feel free to move on to the next lecture. Thank you.

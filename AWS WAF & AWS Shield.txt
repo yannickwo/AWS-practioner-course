@@ -1,0 +1,156 @@
+Okay, hello Cloud Gurus
+and welcome to this lecture.
+In this lecture we're going to
+look at two different services at AWS WAF or
+Web Application File,
+and AWS Shield.
+And it's important to understand the differences
+between these two services going into
+your Certified Cloud Practitioner exam.
+So why don't we start with WAF.
+What is an AWS WAF?
+So like I said,
+WAF stands for Web Application Firewall
+and this is basically a device that
+helps you protect your web applications from
+common web exploits that could
+affect application availability,
+or compromise security,
+or consume excessive resources.
+So what do we mean by that?
+Well in technology there's this thing,
+there's a model,
+it's called the OSI layers,
+and there's basically seven different layers
+going all the way up the stack,
+and you start at layer one,
+which is the hardware or physical layer,
+and it goes all the way up to
+the application layer which is at layer seven.
+And a WAF is a Web Application Firewall.
+So basically it's a firewall that's going to
+inspect your web traffic and look for
+someone doing malicious things.
+So it can actually see what it is,
+what's going on.
+So normal hardware firewalls all work at layer four.
+And a web application firewall is
+sometimes referred to as a layer seven firewall
+and it can actually see
+the traffic from the application layer.
+So to help make sense of this,
+I'll give you a practical example.
+So we've got our attacker
+and our attacker decides to
+hack our WordPress site and
+basically you can do this yourself if
+you Google it.
+Essentially you can get the scripts and
+basically they're WordPress of vulnerabilities.
+So someone has figured out,
+oh look here's a common WordPress vulnerability that's
+associated with this version of
+WordPress so I'm going to do some cross-site scripting,
+or I'm going to do a SQL injection and
+a SQL injection is basically you're sending
+basically a database command and
+you're telling the database to drop all the tables
+so you're essentially deleting all the
+tables in a database.
+Now if your attacker had found a SQL injection that
+works with a vulnerable,
+you know version of WordPress,
+they would then send this to
+let's say your load balancer.
+Your load balancer would then pass it on to
+your EC2 instance and that would go down.
+However if you have a web application firewall in front of
+your load balancer,
+essentially what's going to happen is it
+will not send that SQL injection on to
+your EC2 instances,
+it's going to look at the code and
+say hey this is definitely a SQL injection.
+I'm not going to pass that on to my EC2 instances.
+So it operates at layer seven,
+at the application layer and it's designed to
+stop attackers from doing things like
+cross-site scripting or SQL injections etc.
+It's basically designed to
+stop people from hacking your website.
+So that is what WAF is,
+what is AWS Shield?
+And how's it different from WAF?
+So AWS Shield is a managed Distributed Denial of Service or
+DDoS protection service that
+safeguards web applications running on AWS.
+So what does that actually mean? Well essentially
+WAF is going to protect you against hackers,
+Shield is going to protect you against DDoS attacks and
+a DDoS attack is simply where
+someone basically maliciously sends you a lot of traffic,
+so much traffic that
+your web servers grind to a halt,
+and they stop responding.
+Now Shield is turned on automatically,
+with all new AWS accounts but
+it does come in two different flavors.
+So standard is the one that
+comes automatically with all AWS accounts,
+and then we also have advance.
+Let's go over to the AWS Console and
+have a look at AWS Shield.
+Okay so here I am in the AWS Console,
+if I click on services you'll be able to
+see Shield and WAF down here or WAF and Shield,
+so it's under security, identity and compliance.
+Going to go ahead and click on that
+we've got WAF here and
+we've also got AWS Firewall Manager.
+This actually allows you to
+manage your WAFs across multiple accounts,
+but it's beyond the scope of
+the Certified Cloud Practitioner course.
+In WAF as well this is the
+web application firewall service,
+so you can go in and configure that,
+again that's beyond the
+scope for this course we do cover this off in the
+Certified Security Specialty course however,
+and then in here we have Shield.
+So if we go to AWS Shield,
+you'll be able to compare the
+two different standards.
+So we've got AWS Shield standard and
+AWF Shield advanced,
+and advanced gives you a lot more features.
+The thing that you should notice is
+the cost protection,
+so if you have AWS Shield advanced turned on,
+and you get DDoS,
+AWS will actually reimburse related Route 53,
+CloudFront, and Elastic Load Balancer that DDoS charges.
+So if you do get DDoS,
+you're not going to have to pay for the charges that
+that DDoS attack,
+you know,
+basically creates when you're using Shield Advanced.
+Now Shield Advanced is $3,000 a month.
+For a lot of enterprises that
+actually comes out really cheap,
+just depends on how big your organization is.
+But for some,
+obviously if you're a small business that
+could be an awful lot of money.
+So, on to my exam tips.
+Just know the difference between WAF and Shield.
+WAF is designed to stop hackers from doing things like
+cross-site scripting, or SQL injections or
+anything on the application layer.
+Whereas Shield is a DDoS mitigation service designed to
+prevent DDoS attacks.
+So that is it for this lecture guys.
+One more left and then we're ready to summarize,
+and then you're at the end of the course.
+If you've got the time please join me in the
+next lecture, thank you.

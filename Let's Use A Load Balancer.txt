@@ -1,0 +1,413 @@
+Okay. Hello, Cloud Gurus
+and welcome to this lecture.
+In this lecture we're going to look at
+how we can use an elastic load balancer.
+So this is a lab
+and you will need to log into the AWS console.
+Okay, so here I am in the AWS console,
+the very first thing I'm going to do
+is go over to EC2,
+EC2 is under compute.
+Let's go ahead and click on that.
+And then if you scroll down
+you can see down here,
+we have load balancers.
+So I'm going to click on load balancers.
+And we're going to provision a new load balancer.
+So we're going to click in here
+and say, create load balancer.
+And you'll see that there's three different types
+of load balancers.
+We've got application load balancers,
+network load balancers,
+and classic load balancers.
+Now application load balancers are basically
+application aware so they can see into layer seven,
+it means they can actually make
+intelligent routing decisions.
+Network load balancers are used
+when you need ultra high performance
+and static IP addresses.
+And then we've got our classic load balancers,
+they've been around for almost as long as AWS themselves.
+And these are slowly getting phased out.
+You can see here, it says previous generation.
+So let's go and use an application load balancer.
+Again for the certified cloud practitioner exam,
+it's really sort of beyond the scope
+to understand the differences between the three,
+but just remember an application load balancer
+is good for applications
+because it can see into the code
+and make intelligent decisions.
+Network load balancers are when you need
+extremely high performance and static IP addresses.
+And classic load balancers you just use
+if you want to keep it cheap and cheerful.
+So I'm going to go ahead
+and create an application load balancer.
+I'm going to give it a name.
+I'm just going to call it my ALB.
+It's going to be internet facing.
+That's really important.
+We want this to be a, you know,
+you need to be able to access this from the internet
+to be able to see our web servers.
+Then we're going to have to have just an HTTP listener.
+It's going to listen on port 80.
+Down here we select our VPC.
+We haven't covered VPCs yet.
+We will cover them off later.
+A VPC is just a virtual data center in the cloud.
+We have a default VPC created for us
+whenever we create our AWS accounts.
+And that's where our little EC2 instance
+is sitting in right now.
+And what we want to do is just say
+which availability zones we want our load balancer to use.
+What we want it to use every availability zone.
+So we want to be able to put EC2 instances
+in every single AZ,
+that way, if one AZ goes down,
+we still have multiple EC2 instances
+across our other availability zones.
+Click down here and go to next
+to configure our security groups.
+It says that it's not using a secure listener.
+This is HTTPS, but we don't need to do that,
+we're just using HTTP.
+And then select your WebDMZ security group.
+And go ahead and hit next to configure your routing.
+In you're routing you're going to configure a target group,
+give the target group a name.
+So I'm going to call this my web servers.
+This is the group
+that I'm going to put all my web servers in.
+And then just leave everything thing as default.
+Here we'll do health checks inside your target group.
+So we're just going to do it as forward slash,
+by default, we'll be checking out index dot HTML.
+Down here you can do advanced health checks.
+So you can say
+you've got a healthy threshold and unhealthy threshold.
+So healthy threshold is it's going to pull this a certain,
+you set the interval down here.
+So it's going to pull this every 30 seconds.
+And if it gets five responses back
+then the instance is healthy.
+Now you can actually change this
+to make sure it comes up quicker.
+So I might make this five seconds
+and I might make my healthy thresholds three.
+So it will become healthy within 15 seconds.
+Unhealthy thresholds is how many times it pulls.
+And if it's unhealthy, it's going to time out.
+So again, I'll think I'll just leave it as default.
+Let's see if it will let me use those values.
+No, I need to have a health check smaller than the interval.
+So my timeout needs to be smaller.
+So I'm just going to change this to three.
+See if that lets me register my targets.
+So, yep, there we go.
+And so now I'm ready to go and register targets.
+So I can click in here
+and say, add to registered targets.
+And that is now basically registering my little web server
+behind my application load balancer.
+Let's go ahead and hit next
+and go ahead and hit create.
+Now application load balancers
+can take a little bit of time.
+They can take five or 10 minutes to set up.
+So you can see here the state is provisioning.
+While we wait for that,
+what we want to do is go
+and create a new little web server
+that we're going to put
+behind this application load balancer.
+And then we'll be able to test,
+which web server we're doing,
+which web server we're seeing rather.
+So we click on EC2 dashboards
+and click on our running instances.
+I want you to make a note
+of which availability zone your EC2 instance is in.
+So mine's in us-east-1c.
+I'm going to go and launch a new instance.
+I'm going to use the Amazon Linux to AMI.
+We're going to use a t2 micro.
+And then we're going to leave everything as default
+except we will change our subnet
+and we'll change it to,
+basically I want you to choose an availability zone
+where your EC2 instance,
+the current one isn't.
+So mine's in 1c,
+so I'm going to choose 1a.
+So make sure you choose it
+into a different availability zone.
+Scroll all the way down,
+and we're going to go to advanced details.
+And in here,
+this is where we can put in bootstrap scripts.
+And a bootstrap script is just a script
+that runs as your EC2 instance boots.
+And so you can actually start scripting out things
+so that we don't have to log into our EC2 instance
+and start installing Apache, applying updates, et cetera.
+So to do this what we need to do
+is we need to do the shebang
+which is the number sign,
+and then an exclamation mark.
+And then we need to do the path to our interpreter
+which is forward slash bin forward slash bash.
+So that basically,
+if you put that in
+anything under that line,
+will run at root level
+when your EC2 instance first boots up.
+So we might want to do a yum update minus yes
+we might then want to do a yum install httpd minus yes.
+So installing Apache.
+We then want to start the Apache service,
+so service httpd minus, service httpd then start.
+And then we might want to do check config on.
+This just means that if our EC2 instance reboots,
+the Apache service will start automatically.
+So straight away, we've done an update.
+We've installed Apache.
+We've started the Apache service
+and we've told EC2,
+we've taught our little Linux server
+that if our EC2 instance reboots
+to restart the Apache service.
+The next thing we might wanna do
+is just go to our cd var,
+then www, then html directory.
+Then we might just want to create a little web page.
+So we might want to do echo
+and we might want to do html,
+and then we'll do our body,
+then we'll do our header.
+And in here, we'll say,
+Hello Cloud Gurus,
+This is
+WebServer 2.
+And then I'm just going to end my header,
+end my body,
+and don't worry, I'll give you all this code,
+I don't expect you to type it out,
+it will be in the resources section of the course.
+And then I'm going to go end html.
+And then we'll close that off.
+And so that's going to echo this out.
+And then what we want to do is just output that
+to index dot html,
+and please don't freak out
+if any of these codes or commands are bothering you,
+you're never going to be tested on this.
+I'm just showing you how to create a little web server
+without having to,
+and a little webpage without having to
+log into your web server.
+So I'm going to copy this into my clipboard
+so I don't have to type it all out again
+but I will provide this as a,
+in the resources section of the course.
+Next, we're going to add our storage.
+Just leave everything as default.
+You can add your tags in here.
+So I might want to add my name
+and if we start typing existing tags,
+it will, it will auto fill them out.
+So I'm going to call this WebServer02.
+Add another tag.
+So it might be department.
+And then we'll give this a new department.
+So this could be my Gamification Department.
+I'm just making departments up.
+And in here my Employee ID,
+I'm just going to add this as a random number
+Then we'll go ahead and configure our security groups.
+So select an existing security group.
+I'm going to use my WebDMZ.
+I'm going to go ahead and review and launch.
+And now we are ready to go.
+So I'm going to go ahead and hit launch
+and I'm going to use my existing private key
+and launch this instance.
+Now if this works,
+I shouldn't have to go in and log into this EC2 instance.
+If I just minimize this a bit more so you can see.
+This is my new EC2 instance.
+It's my WebServer02.
+I should just be able to browse to this public IP address.
+And if everything has worked correctly
+then I'll be able to see my little webpage
+which will say this is WebServer 2.
+So I'm just going to pause the video
+and wait for this to come back up.
+Okay. This has now come back up.
+If I just copy and paste this into my clipboard.
+In fact, I could just select it
+and then click on this little icon down here.
+And now I'm just going to browse
+to that IP address in a new tab.
+Okay, so here I am in a new tab,
+going to hit enter
+and there we go,
+Hello, Cloud Gurus,
+This is WebServer 2.
+So let's go back to EC2,
+just maximize the screen.
+Note that the availability zones are different.
+So 1a and 1c.
+And this is now getting ready to run.
+We go back over to our load balancers.
+We should be able to see our load balancer now
+and it is now active.
+And to test it,
+we can actually go to this DNS name in here.
+So you can go scroll down if you want,
+it's down here.
+Click that little icon
+and it'll copy it into your clipboard.
+This DNS name will now resolve to our EC2 instance.
+So we no longer have to use our public IP address.
+We can just use this web address here
+and it's going to resolve to our EC2 instance.
+And the reason that's really powerful
+is that we can start using this name here
+instead of our individual IP addresses.
+So when we start adding more and more web servers
+behind this elastic load balancer,
+one of those EC2 instances aren't available,
+it doesn't matter,
+we're still going to get our website.
+So let's go and test this.
+So just minimize the screen.
+I've gone back here.
+I'm pasting in my,
+my DNS name and you can see
+Hello Cloud Gurus, This Is WebServer 1.
+So now what I want to do
+is I want to take my EC2 instance that we just created
+and I want to add it behind my load balance.
+So I'll just maximize the screen
+to enter full screen mode.
+And then I'm just going to go down to my target groups.
+In here we can see my target groups,
+and if we click on targets,
+we can see we've got our registered target in here.
+And that our availability zone is 1c,
+but go to edit,
+I can go in and add my new instance.
+This is my WebServer2.
+So I'm going to go in
+and add that to my registered instances.
+Now we'll go through a health check.
+It will take a little bit of time.
+So I'm just going to go ahead and hit save.
+I'm going to put this into, in here
+and you can see here the status,
+one is healthy,
+one is going through its health checks right now.
+So I'm just going to pause the video,
+wait for this to become healthy,
+and then what we're going to do
+is we're going to browse to that DNS address.
+And we should be seeing two different web servers,
+web server one and web server two.
+So I'm just going to pause the video.
+So if you ever do want to hurry things along,
+just click up here on this little icon,
+which will refresh your page.
+And you can see now that the status has changed to healthy.
+So we've got two healthy instances behind my load balancer.
+I'm just going to go back to my load balancers,
+grab the DNS name,
+make sure it's copied into my clipboard.
+And then I'm going to go back to this tab
+and I'm just going to start refreshing.
+And there you go.
+WebServer 1, WebServer 2,
+WebServer 1, WebServer 2,.
+And that's really cool because these are in
+completely different availability zones.
+So if we were to go back to EC2
+and go all the way back up to our dashboard
+and click on our instances
+we would go in and terminate this one.
+So just go instant state
+and then terminate
+and go ahead and hit yes.
+We're not going to have any downtime on this.
+If I hit refresh,
+it may time out a little bit because it's doing a,
+basically a sticky session,
+but it's not going to have any significant downtime.
+So this is just going to hang for a little bit.
+There we go.
+Gateway timeout.
+If I hit refresh again, that's it, it's back up.
+So I had a moment,
+one tiny moment of downtime,
+but now my other web server is up and running
+and it's all good to go.
+So what are my exam tips?
+Well remember that load balancers
+come in three different flavors.
+You've got application load balancers,
+network load balancers,
+and classic load balancers.
+Your application load balancers are layer seven aware
+so they can make intelligent decisions.
+And by that, I mean you could have a group of servers
+that is just for your payment portal,
+or your payment gateway
+and that could be your most important group
+that you always want up.
+Your application load balancer would detect
+that when you're making a payment
+it would send the traffic to that group.
+If you weren't making a payment,
+if you were just browsing you know, a website,
+it might go to another group of EC2 instances.
+So your application load balancers
+can make intelligent routing decisions.
+Network load balancers you would use
+if you need extreme performance or a static IP address.
+A classic load balancer you would use basically
+in test and dev,
+or if your whole objective was just to keep costs low.
+Also remember that when you're designing
+your web applications,
+you should always have EC2 instances
+in multiple availability zones.
+That way if one availability zone goes down,
+you're going to have little to no outage.
+So you've done really, really well.
+Congratulations.
+You've gone from never provisioning a EC2 instance before
+to SSHing into it,
+to installing Apache on it,
+creating your own little web pages,
+putting them in different availability zones,
+scripting it using bootstrap scripts,
+and then putting them behind application load balancers.
+And you've learned how to design
+fault tolerant architecture.
+So you've done amazing.
+You've learned an awful lot so far.
+In the next lecture,
+what we're going to look at
+is we're going to look at databases.
+It's going to be a theory lecture
+and then we're going to go in
+and start provisioning our own database.
+And then what we're going to do
+is we're going to get our little EC2 instance
+to talk to our RDS instance.
+So if you've got the time
+please join me in the next lecture.
+Thank you.

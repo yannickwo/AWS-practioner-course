@@ -1,0 +1,115 @@
+Okay, hello Cloud Gurus,
+and welcome to this lecture.
+In this lecture, we're going to look at the difference
+between CloudWatch and AWS Config.
+In the exam, they're going to throw Inspector at you,
+they're going to throw Trusted Advisor at you,
+they're going to throw CloudWatch at you,
+they're going to throw AWS Config at you,
+and the services can be a bit confusing.
+And you're just going to need to know the differences
+between those four different services and their use case.
+And what will happen is you'll be given
+a scenario-based question, and it will be like,
+it'll be basically saying,
+hey, should you use Inspector for this,
+or should you be using AWS Config,
+or should you be using CloudWatch?
+Et cetera, et cetera.
+So, so long as you have a good grasp
+of those four different services,
+you will do absolutely fine in the exam.
+So let's start with CloudWatch, what is CloudWatch?
+Well CloudWatch is all about monitoring performance,
+that's all it is.
+It's an online monitoring service
+to monitor your AWS resources,
+as well as the applications that you run on AWS.
+So like I said, it's all about performance,
+so I want you to think of CloudWatch as someone
+in a gym, for example, and they're working out.
+So basically, that's what CloudWatch does,
+it monitors performance of your AWS Resources.
+So we use CloudWatch a lot with EC2,
+EC2 are virtual machines in the clouds,
+and they actually sit on the host,
+so physical servers, as virtual machines.
+And then the host basically reports back to CloudWatch,
+and you can get things like your CPU utilization,
+your network utilization, your disk utilization,
+and the status check of your EC2 instance.
+So those are called host level metrics.
+Then you can have also have custom metrics with CloudWatch,
+you need to basically go and write a script
+that will send information back to CloudWatch,
+but you can send basically anything to CloudWatch.
+So you can do things like your RAM utilization,
+you can see how much storage you've still got left
+on your EBS volumes, you could see the number of people
+that's logged into your WordPress site, things like that.
+You just need to be able to write the script
+and report it back to CloudWatch.
+So CloudWatch, all it does is monitor performance.
+AWS Config provides a detailed view of the configuration
+of your AWS resources in your AWS account.
+This includes how the resources are related
+to one another, and how they were configured in the past.
+So you can see the configurations
+and relationships change over time.
+So this could be things,
+this is basically the configuration of your AWS account.
+So, when we set up our WordPress site,
+if you remember we went to the settings and we changed the,
+you know, the IP address from being our EC2 IP address
+to being the RDS endpoint.
+That's where in WordPress,
+that's where we go and edit all the settings to WordPress.
+Well AWS Config, what that does is it monitors
+the configuration of the settings of your AWS environment.
+So it could be that you, your web DMZ had, you know,
+port 22, so the SSH port locked down
+to a particular IP address up until last Friday,
+and then somebody went in and deleted that,
+or they made a change and opened it up to the world.
+The cool thing about Config is it will show you,
+you know, that configuration,
+so it will show you that configuration change.
+So Config is all about configuration,
+whereas CloudWatch is all about performance.
+So if you see an exam question where it's asking you
+about security group changing,
+that's a configuration change,
+so you want AWS Config.
+If you see a question about RDS performance,
+such as the number of connections on a database,
+that's going to be AWS CloudWatch.
+So that is the two services that you need, you know,
+will often be compared to each other.
+Like I said in the previous lecture,
+we also have AWS Inspector as well as AWS Trusted Advisor.
+So just remember that CloudWatch is used
+for monitoring performance,
+and AWS Config is used to monitor the configuration
+of your AWS Resources.
+So in the last lecture, we looked at AWS Inspector,
+we looked at Trusted Advisor,
+and then we looked at CloudTrail.
+In this lecture, we looked at CloudWatch,
+and then we also looked AWS Config.
+So those are the five different services,
+and you're going to get a scenario-based question
+in the exam, and that's going to ask you
+which is the best service to use.
+So long as you have a clear understanding
+between the differences, between
+AWS Inspector, Trusted Advisor, CloudTrail,
+CloudWatch, and then AWS Config,
+you will absolutely ace the exam.
+It's probably worth about, anywhere between four
+to seven or eight points.
+So just have a clear understanding
+of those five different services.
+So that is it for this lecture everyone,
+if you have any questions, please let me know.
+If not, feel free to move on to the next lecture.
+Thank you.

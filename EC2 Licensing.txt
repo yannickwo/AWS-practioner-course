@@ -1,0 +1,44 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture. In this lecture,
+we're going to look at EC2 licensing.
+So I want you to recall the different types of EC2 pricing models first
+of all,
+and to begin where we have On-Demand and this is where you pay either by the
+second or hour, depending on the instance types.
+We then have Reserved and this is where the more you pay up front,
+the greater cost savings that you get.
+So you can have either a one-year commitment or a three-year commitment.
+If you go for three years, all up front,
+you're going to get the greatest cost saving possible.
+So you get a lot better savings than with On-Demand instances,
+but you are locked into a contract for one to three years,
+depending on what you choose.
+We then have Spot and Spot instance is an unused EC2 instance.
+That's available for less than the On-Demand price. Spot instances run
+whenever the capacity is available and the maximum price per hour for your
+request exceeds the Spot price. It's not good if you need consistent computing,
+such as web servers, for example,
+you want your web servers to always be on so they can answer requests.
+Spot price instances can be terminated by AWS if the price
+per hour drops below the Spot price so just bear that in mind and
+then finally we have dedicated hosts,
+and this is where you have special licensing requirements and that's what we're
+going to explore in this lecture.
+So you're going to get some scenario based questions essentially around
+licensing and any question that talks about special licensing requirements
+I want you to think of dedicated hosts first.
+So an Amazon EC2 dedicated hosts is a physical server with an
+EC2 instance capacity that's fully dedicated for your use.
+Dedicated hosts allow you to use your existing per socket per call or per
+virtual machine software licenses
+and this can include things like Windows Server, Microsoft SQL Server,
+and SUSE Linux Enterprise Server.
+So those are the different types of licenses that you can use with dedicated
+hosts.
+So if you do see a scenario-based question where it's talking about you need to
+move your workloads to EC2 but you've got a per socket licensing
+agreement with a vendor or per core or a per virtual machine licensing
+requirement I want you to think straight away have dedicated hosts and so that's
+it for this lecture. It's very, very quick,
+but just remember that going into the exam and it will definitely pick you up
+one or two extra marks. If you have any questions please let me know. If not,
+feel free to move on to the next lecture. Thank you.

@@ -1,0 +1,94 @@
+Okay, hello Cloud Gurus
+and welcome to this lecture.
+So in this lecture we're going to look at two services.
+We're going to look at AWS Quick Starts
+and AWS Landing Zones.
+So if you just go over to AWS.amazon.com/quickstart.
+So this is the Quick Start landing page,
+and if you scroll down you'll be able
+to see it's broken down into different services.
+So databases in storage, big data and analytics, data lakes,
+data warehousing, machine learning, internet of things,
+blockchain, et cetera, et cetera.
+And basically these are all environments
+that have been created by solutions architects
+to help you get started with
+a particular technology quickly.
+So for example we've got here Microsoft technologies,
+say you wanted to set up an email service
+in Microsoft Exchange.
+What you would do is you'd go in
+and you'd just hit the view guide
+and that will take you over to the guide for this particular
+Quick Start.
+And you can actually go in here
+and say launch Quick Start for a new VPC.
+What it would do is take you over to CloudFormation
+and you can see here it's using a CloudFormation template.
+And you can actually go in and hit view/edit template
+in designer, and you'll be able to see
+that CloudFormation template
+and what it is that it's building.
+So you can see here it's building out
+an Active Directory stack.
+It's building out our exchange servers,
+it's building out a whole bunch of different infrastructure
+and you can go down and have a look at this.
+It's completely beyond the scope of the Certified Cloud
+Practitioner to, it's completely beyond the scope
+of the Certified Cloud Practitioner exam to understand this,
+but we do have CloudFormation courses
+on the A Cloud Guru platform.
+So all Quick Start does is essentially it deploys solutions
+into your AWS account and these solutions have been designed
+by AWS experts in that particular technology.
+So this one would have been designed by an Exchange expert.
+If you wanted a big data solution to be deployed in your
+account that would have been done by a Redshift
+expert, for example.
+So there's lots of different templates that you can use.
+And it's completely free to use the Quick Starts service,
+but of course, just like with anything
+that CloudFormation does, the resources
+that it does provision for you,
+you're going to have to pay for.
+So you're going to have to pay for
+the EC2 instances, et cetera, et cetera.
+Now if you go over to AWS.amazon.com/answers/AWSlandingzone,
+AWS Landing Zone is different to Quick Start
+in that Quick Start, it will just provision
+a pre-defined CloudFormation template
+in a particular technology into one AWS account.
+Landing Zone allows you to set up a multi-account
+AWS environment at the click of a button.
+And it's basically, it looks like this.
+So you've got your AWS Organizations Account,
+you've then a Shared Services Account,
+you've then got a Log Archive Account,
+you've then got a Security Account.
+So it's going to deploy four different accounts
+for you and it's going to go in and set those accounts up,
+so it's a great way of automating multiple account setups.
+This is quite new, it was released at re:Invent 2018
+so it may or may not yet feature
+in the Certified Cloud Practitioner exam,
+but I would expect it to come up fairly soon.
+So what are my exam tips?
+Well, just know the difference between
+Quick Starts and Landing Zones.
+So Quick Start is a way of deploying environments
+quickly using CloudFormation templates
+built by AWS Solutions Architects
+who are experts in that particular technology.
+So we looked at an Exchange one
+and then we also looked at AWS Landing Zone,
+and this is a solution that helps customers
+quickly set up secure multi-account
+AWS environment based on AWS best practices.
+And Landing Zone currently starts with
+four different AWS accounts.
+So understand the difference between
+those two going into your Certified Cloud Practitioner exam.
+So that's it for this lecture, guys.
+If you have any questions, please let me know.
+If not, feel free to move on to the next lecture, thank you.

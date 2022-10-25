@@ -1,0 +1,32 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture. In this lecture,
+we're just going to quickly have a look at identity access management,
+best practices.
+So really what you need to know going into your exam is the following best
+practices and it's really valuable for you in real life to know this as well.
+So we'll start with the root account.
+Only use the root account to create your AWS account.
+Do not use it to log in with. Instead,
+create your own user and give them administrator access and then you'll be able
+to do everything that the root account user can do as well. With your users.
+You should only have one user should equal one real human being.
+Don't create Phantom users with user groups and policies always place your
+users in groups,
+and then apply policies to the groups that makes management much easier.
+If you can avoid it,
+don't apply policies to individual users because it can be become
+basically a management nightmare password policies.
+Make sure you have a strong password rotation policies.
+Multifactor authentication always enable MFA wherever possible roles.
+We're going to cover that off a bit later, but you use roles to access various,
+um, uh, other AWS services. So for example,
+we might give a role to a virtual machine so it's allowed to talk to S3,
+or it's allowed to report stuff back to CloudWatch,
+which is a monitoring service and we will cover that off later on as well with
+access keys,
+use access keys for programmatic access to AWS and we're going to cover that off
+later on in the course, and then IAM credential reports.
+You use your IAM credential report to audit the permissions of your
+users and accounts. So that is it.
+Just remember these best practices going into your exam as well as in real life.
+If you have any questions, please let me know. If not,
+feel free to move on to the next lecture. Thank you.

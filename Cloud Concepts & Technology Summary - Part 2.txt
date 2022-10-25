@@ -1,0 +1,147 @@
+Okay. Hello,
+Cloud Gurus and welcome back to the summary of cloud concepts and technology.
+You're almost done. This is part two. So what else did we learn?
+We learned that you can interact with AWS in three ways.
+So the first way we interacted with AWS was using the console.
+We then went on to use the command line interface or CLI,
+and of course you can also do it using the software development kits and we
+cover that off in the Certified Developer Associate Course.
+We then learned that storing credentials on our EC2 instance,
+it's probably not a good idea because of that EC2 instance is hacked basically
+people could use that credentials
+to access our AWS environment anywhere in the world.
+So we learned that roles are much more secure than using access key IDs and
+secret access keys,
+and then much easier to manage and you can apply a role to an EC2
+instance at any time when you do this,
+the change takes place immediately. Roles are universal.
+You do not have to specify what regions they're in. Similar to users,
+they are a product of IAM, which is a global service.
+We learned about load balancers, they come in three different flavors.
+So application load balancers. These are layer seven load balances,
+network load balances, and then classic load balances,
+application load balancers, like it just said are layer seven.
+So you can make intelligent routing decisions.
+That can actually see into the traffic network load balances you'd use for
+extreme performance,
+or if you need static IP addresses and then classic load balancers are pretty
+old school. They're probably going to be phased out at some point.
+You'd use these for test and dev or to keep your costs low.
+We then went on to learn all about the different databases. So we have RDS,
+which is a SQL online transaction processing database.
+these consists of six different technologies or database engines.
+So we've got Microsoft SQL server, mySQL, PostgreSQL, Oracle,
+Aurora, Maria DB. We then have DynamoDB,
+which is Amazon's noSQL database technology and then we have Redshift,
+which is used for data warehousing.
+So this is used for online analytics processing.
+So this is when you're doing the like really large sorts of queries,
+as opposed to online transaction processing,
+which is individual transactions at any given time.
+We learned about ElastiCache.
+This is the way of caching of very frequently used database queries and it
+consists of two different types of MemcacheD and Redis.
+We learned that Redshift is for business intelligence or data warehousing.
+ElastiCache like I said before to speed up performance of existing databases.
+So these are frequent identical queries.
+So it might be your top 10 on your Amazon store,
+for example and then we also learn about graph databases and that they're
+very highly scalable and highly available.
+We didn't really cover it off in the database section,
+but we looked at it in the white paper. The thing to know,
+going into your exam is if it's asking you for what Amazon's graph database
+service is, it's a service called Neptune.
+We learned that RDS has two key features.
+When we started provisioning our RDS instances. we have availability zones.
+This is used solely for disaster recovery.
+If you need to increase your performance, you want to use Read Replicas.
+So multi-AZ is for DR. Read Replicas is for performance.
+We then went on to learn about auto scaling.
+So we created our own little auto scaling group.
+It allows you to provision multiple EC2 instances behind a load balancer,
+and basically it will automatically scale depending on your demand.
+We then went on to learn about Route 53 and Amazon's domain name
+system or DNS service.
+A DNS service works exactly like a phone book is the process computers use to
+resolve domain names to IP addresses.
+So if you want to look up a name and get someone's telephone number,
+that's essentially what DNS does and Amazon's DNS service is called Route 53.
+It is named that way after Route 66 so that's,
+you know, the first interstate highway across America.
+The reason it's called Route 53 is because DNS is on the
+port 53. Route 53 is global.
+It's similar to IAM and S2,
+and you can use it to direct traffic all around the world,
+and you can even use it to register a domain name.
+We then went on to Elastic Beanstalk. This is where we could quickly you know,
+create the infrastructure to support our code. So with the Elastic Beanstalk,
+you just you basically upload your code.
+You don't have to worry about the infrastructure that runs those applications.
+Basically you upload your application Elastic Beanstalk will automatically
+handle the details of capacity provisioning, load balancing, scaling,
+and application health monitoring. Essentially,
+developers use Elastic Beanstalk if they don't know how to use AWS.
+In sort of opposite a similar service,
+but opposite is Cloud Formation. So if you know what you're doing with AWS,
+you're going to use CloudFormation all the time.
+This helps you model and set up your AWS resources so that you spend less time
+managing those resources and more time focusing on your applications in AWS
+and you just create a template. The template is a JSON template,
+and it describes all the AWS resources that you want, like your EC2 instances,
+RDS instances,
+et cetera and then CloudFormation will take care of the provisioning and
+configuring of those resources.
+You don't need to individually go in and create and configure AWS resources
+yourself and we did that by creating a WordPress site,
+using a Cloud Formation template.
+So know the difference between Elastic Beanstalk and Cloud Formation.
+both of them are free services. However,
+the resources that they provision underneath such as EC2 are not free,
+and the main difference is Elastic Beanstalk is limited in what it can
+provision. It's not programmable.
+CloudFormation is by far the most flexible product,
+and it can provision almost any AWS service and it's completely programmable
+and then finally,
+we went on to learn about AWS best cloud best practices and we went through this
+white paper.
+I highly recommend you read this white paper before going and doing your exam.
+So.
+Remember the important global services.
+So IAM is global when you create a user or a group or a role that
+is created globally. Route 53 is also global.
+CloudFront is global.
+SNS and SES are all examples of AWS global
+services. Also remember which AWS services can be used on premise.
+So we looked at Snowball. Snowball Edge. We looked at Storage Gateway.
+We looked at code deploy as well as OpsWorks.
+So these can be used to deploy things on premise.
+If you want to deploy applications on premise,
+then you're going to be using Code Deploy and OpsWorks,
+we also have IOT Green Grass as well and then finally,
+just remember what CloudWatch is. So CloudWatch is used to monitor performance.
+CloudWatch watch can monitor most of AWS as well as your applications that run
+on AWS CloudWatch with EC2 will monitor events every five minutes by
+default
+and you can have one minute intervals by turning on detailed monitoring,
+and you can create CloudWatch alarms,
+which trigger notifications and CloudWatch is all about performance.
+So just understand what CloudWatch is.
+That's all you need to know in order to go into your Certified Cloud
+Practitioner exam and moving on to the very last thing we learned about,
+which was AWS systems manager.
+So systems manager can be used to manage fleets of EC2 instances and
+virtual machines. A piece of software is installed on each VM.
+This is sometimes referred to as an agent and it can be both inside
+AWS,
+as well as on-premise and then you can use the run command to install patch
+and uninstalls software,
+and it integrates a CloudWatch to give you a dashboard of your entire
+state. So congratulations, you are at the end of section two and section three,
+we're going to look at billing and pricing and then section four,
+we're going to look at security in the cloud. to be honest,
+you probably know 60% of the information that you need in order to pass
+your cloud practitioner exam.
+and this is definitely the longest section of the course. You've done it really,
+really well.
+I hope you have enjoyed it so far and that you've learnt an awful lot.
+So if you've got the time, please join me in the next section. Thank you.

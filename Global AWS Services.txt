@@ -1,0 +1,25 @@
+Okay. Hello, Cloud Gurus and welcome to this very, very quick lecture.
+In this lecture, we're going to look at global AWS services.
+So this can come up in the exam and you need to identify which services are
+global and which are regional.
+So identity access management is the very first service that we touched,
+and that is global.
+When you create a user or a group or a role or a policy that
+applies globally, there's no user for a specific region.
+It is a global service.
+Then we have Route 53 is when you go and register a domain name.
+This again is a global service. It's not tied to any particular region.
+CloudFront, when you set up a CloudFront CDN,
+this is also a global service.
+SNS and SES are also global services.
+So remember those five going into your exam,
+some services give global views, but are regional.
+So S3 is a perfect example of that.
+You can see all your S3 buckets in one single pane of glass,
+but those S3 buckets are located in individual regions.
+So in US East 1 or in the London region, or the Paris region, et cetera,
+et cetera. So bear that in mind. Like I said, this is a super quick lecture.
+So just remember the important global services going into your exam:
+Identity and Access Management, Route 53, CloudFront, SNS, and SES.
+If you have any questions, please let me know. If not,
+feel free to move on to the next lecture. Thank you.

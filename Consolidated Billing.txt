@@ -1,0 +1,242 @@
+Okay. Hello, Cloud Gurus and welcome to this lecture. In this lecture,
+we're going to look at AWS Organizations as well as consolidated billing.
+This is going to be a theoretical lecture in the next lecture we're going to do
+an AWS Organizations lab and you can follow along,
+but you will need multiple AWS accounts, or you can just watch me do it.
+So let's go on to AWS Organizations.
+What is AWS Organizations? Well,
+this is what AWS Organizations looks like and I'll come back to this image in
+the next slide.
+So AWS Organizations is an account management service that enables you to
+consolidate multiple AWS accounts into an organization that you create and
+centrally manage and it's available in two different feature sets.
+So you've got consolidated billing,
+and then you've got all features and you might be thinking to yourself,
+why would I need multiple AWS accounts?
+Well if you think about an organization,
+maybe they've got 20 different developers and maybe those developers each have
+their own developer account, maybe human resources have their own AWS account.
+Basically there's lots of reasons why organizations would have multiple
+AWS accounts. At A Cloud Guru, we have a production account,
+which is where we have all our serverless architecture.
+Then we have multiple accounts for teaching, for example.
+So there's a lot of reasons why organizations would have multiple accounts now.
+my office manager is always chasing me for our AWS bills and because I've got
+multiple AWS accounts for different courses,
+I have to log in each time and get those bills.
+So she's been waiting for the day that I record the AWS Organizations lab so
+that we can consolidate all the bills into one account and I can just give her
+access to that. So she's been really looking forward to today.
+So that's why you'd have multiple AWS accounts.
+So let's have a look at what it looks like,
+and we'll start with the root account. So this is the main account,
+very similar to the root account terminology that we use in identity access
+management. So this is the base account.
+Then we have all these different organization units or organizational units.
+So this could be the finance department. This could be our developer.
+This could be prod, this could be test,
+et cetera and then we have all of our AWS accounts in these organizational
+units, and we can apply policies to these organizational units. So we could say,
+okay, this is my main developer account.
+I don't want them doing anything with EC2. I want everything to be serverless.
+So I'm going to apply a policy to this organizational unit,
+to our developer organizational unit,
+preventing them from provisioning EC2 instances.
+And that's exactly what we're going to do in the next lab.
+So that is how organizations work. Now, when you have organizations turned on,
+you are going to get the economies of scale.
+So if you remember from the very first lecture where we talked about Amazon's
+pricing principles essentially the more you use, the less you're going to pay.
+So with organizations turned on,
+you will get consolidated billing as a part of that as well.
+So the more your AWS accounts use, the more economies of scale you,
+and you're going to get cheaper rates. So this is organizations. Now,
+this is where that turned on and you have the full access to organizations.
+You can turn organizations on and just have consolidated billing and if you do
+that, it's going to work like this. So you've got your paying account.
+This is similar to your root account.
+Then you've got your multiple linked accounts. So it could be your test and dev.
+It could be production, it could be back office,
+et cetera and each of those those different AWS accounts
+have different bills and the paying account pays those bills and it gets to
+realize the economies of scale and the paying account is independent,
+cannot actually go in and access the resources of the other accounts.
+So in your paying account,
+you can't go in and turn on EC2 instances in your test and dev for example,
+or you can't block test and dev from being able to provision resources.
+If you need to do something like that,
+you need organizations itself with the full access,
+rather than just with consolidated billing.
+So just remember that all linked accounts are independent when you've just got
+consolidated billing turned on,
+and currently there's a limit of 20 linked accounts for consolidated billing
+but I'm believe that's a soft limit it can be changed.
+So the advantages of consolidated billing include one bill per AWS account.
+It's very easy to track and charges and allocate costs.
+So you can see exactly what your developers are spending.
+You will get the volume pricing discount and let's have a look at another
+example. So we've got tiered pricing with S3.
+So if we're using our first terabyte per month,
+we're going to be paying about 3 cents. Then the next 49 terabytes,
+we're going to be paying 2.95 cents, et cetera and again,
+the more you use the cheaper the rate gets. So this is pricing per S3.
+Don't worry. You will never be asked for pricing in an exam.
+If this is already out of date, don't worry about it. It's just an example.
+So let's have a look at a practical example for consolidated billing.
+So we've got a test and dev accounts using 600 gigs.
+We've got our production count,
+which is using 900 gigs and our back office accounts using 500 gigs.
+Without consolidated billing we're going to pay 600 times 3 cents,
+900 times 3 cents, and then 500 times 3 cents,
+which is going to give us a total bill of about $60 for two terabytes.
+With consolidated billing turned on, however,
+we're going to pay one terabyte at 3 cents.
+So we're going to do that all the way up to $30 and then the next terabyte is
+going to be under 3 cents.
+It's going to be two and 0.95 cents essentially.
+So we're only going to pay $29.50.
+So we've already saved a total of 50 cents by turning consolidated billing on
+and this is just one service you could imagine if we're doing this for all our
+services across AWS. So consolidated billing does definitely save you money.
+And like I said, before,
+organizations can be turned on with the full access to organizations where you
+can create organizational units and you can apply policies to it.
+Or you can just turn organizations on where it has just consolidated billing
+only. So there's two different types. So we looked at S3,
+let's look at EC2 and how it would work with EC2.
+So we've got our paying account and then we've got our test and dev account,
+our production account and our back office account.
+So let's say our test and dev account is using six on demand instances.
+Remember that when you're using on demand instances,
+they're going to be more expensive than using reserved instances.
+Now let's say our production account has five reserved instances,
+but they're only using three of them and let's say that they've paid for these
+reserved instances upfront over three years.
+So you get the maximum amount of discount.
+Now let's also assume that the test and dev account and the production account
+are using the same EC2 instance types. So I don't know,
+T2.micro or something like that and what will happen is that we're going to be
+billed for all five reserved instances across the paying account,
+because you've already paid for it in the production account and you're only
+going to be billed for four on demand instances.
+So you get to use those additional two reserved instances.
+You're going to be paying for all five reserved instances in your production
+account.
+You're only really going to be billed for four on demand instances in your test
+and dev account. Now that does assume that these instances need to be turned on,
+and it's a bit beyond the scope of the certified cloud practitioner to
+understand that.
+But if you do go on to do the certified solutions architect professional,
+this is a very popular exam topic is understanding how pricing works
+across multiple accounts with multiple EC2 instances and using reserved
+instances and on demand instances, et cetera.
+So let's move on to some best practices with AWS Organizations.
+So you should always enable multifactor authentication on your root account.
+So that's where you use Google authenticator,
+and you should always use a strong and complex password on the root account as
+well and then finally,
+the paying account should be used for billing purposes only.
+You shouldn't really be deploying resources such as EC2 instances or S3 buckets
+into the paying account, go and create separate accounts for that and,
+and these are just best practices, but you should definitely consider this. Now,
+before we go on and talk about some more best practices,
+I just wanted to cover off what is CloudTrail.
+We haven't talked about CloudTrail yet.
+We are going to cover it off in the security section.
+So in the next section of the course but we do need to understand what it is in
+this lecture to understand some best practices.
+So I'm going to compare CloudTrail to CloudWatch.
+We did use CloudWatch when we set up some billing alarms in the last section of
+the course and CloudWatch effectively monitors performance.
+So it's going to monitor the performance of your AWS environment. So CloudWatch,
+typically it would be used for EC2 and we use it in auto scaling.
+So CloudWatch will be sitting there watching our EC2 instances,
+and it'll be watching the CPU utilization of our EC2 instances and as soon
+as something triggers that,
+so maybe it goes above 80% for five minutes auto scaling will provision multiple
+EC2 instances and scale out. So CloudWatch is all about performance.
+I want you to think of someone at the gym whereas CloudTrail
+monitors, API calls within the AWS platform.
+So essentially CloudTrail is a tool for auditing.
+So every time you create a S3 bucket, for example,
+that's making an API call and you're creating a new resource in AWS CloudTrail
+would monitor that.
+Every time you provision a new EC2 instance CloudTrail would monitor that if you
+create a new user or you create a new group,
+or you create a new role that's CloudTrails going to be monitoring that you're
+making changes to your AWS environment,
+whereas CloudWatch monitors performance, it's going to monitor the resources.
+So how much RAM utilization is your EC2 instance using,
+how much CPU utilization? So it's a really,
+really important to have a clear understanding going into your exam
+the differences between CloudTrail and CloudWatch.
+CloudWatch is about performance. CloudTrail is an auditing tool,
+which monitors API calls within the AWS platform.
+So how can we use CloudTrail with AWS Organizations?
+So CloudTrail itself is on a per account basis and is enabled per
+region.
+To turn it on for all regions and for all accounts and then what you want to do
+is you can consolidate your logs into an S3 bucket.
+So you should turn CloudTrail on in the paying account,
+and then you should create a bar policy that allows cross account access.
+You turn on CloudTrail in all of the other accounts and then use the
+bucket in the paying account.
+So essentially what you're doing is you're pushing out your CloudTrail logs from
+all your other accounts into an S3 bucket
+in the paying account.
+And then that way you have a log of basically what everyone is doing and that
+means if someone goes in and delete something in one of your accounts they can't
+go and delete that from the logs. It's all logged into it, centralized account.
+So that's just something that you should bear in mind going into your exam.
+Remember that you should turn CloudTrail on you,
+turn it on in the paying accounts and then you create an S3 bucket in the paying
+account that allows cross account access.
+and then essentially you go into all the other accounts and you use that bucket
+as you'll sort of source of truth,
+and they will write their logs to that bucket and then that way they can only
+write. So they can't go in and read for example. So that way,
+it's basically a complete source of truth.
+They can only write all the lines there, no one can go in and make any changes.
+So that's how we can use CloudTrail with AWS Organizations.
+So onto my exam tips.
+So just remember AWS Organizations comes in two flavors, it's AWS Organization,
+full access, and then AWS Organizations just with consolidated billing.
+This is what full access looks like.
+We create organizational units and then we put AWS accounts behind those
+organizational units,
+and we can apply policies either to the organizational units or directly
+to AWS accounts.
+So moving onto some best practices with AWS Organizations,
+you should always enable multifactor authentication on the root account.
+You should always have a strong and complex password on your root account and
+then you're paying account should be used for billing purposes only do not
+deploy resources paying account and then we've got our linked accounts.
+So you can actually only have 20 linked accounts only. To add more
+you just need to visit this link and you can basically, it's a soft limit,
+so you can get them to increase it and then with billing alerts,
+when monitoring is enabled on the paying account,
+the billing data for all linked accounts is included. That's really,
+really important,
+and you can still create billing alerts on a per individual account basis.
+So again, if you have a billing alert turned on for the main paying account,
+then the billing data for all linked accounts is going to be included in that
+but then if you have a,
+let's say you've got a test and dev account and you create a billing account on
+that you can also still receive individual bills alerts moving on to CloudTrail.
+So we learned CloudTrail is it's just a way of auditing what people are doing in
+the AWS platform and what you should do is CloudTrail works on a per
+AWS account basis and is enabled per region.
+And essentially you can consolidate your logs using an S3 bucket to do this.
+You need to turn cloud trial on it in the paying account,
+create a bucket and a bucket policy that allows cross account access.
+Yes and then you turn it CloudTrail on in the other accounts and you use the
+bucket in the pan counts to log all your data,
+moving on to consolidated billing.
+It allows you to get the volume discounts across all your AWS accounts.
+Unused reserved instances for [inaudible] are applied across the group and then
+CloudTrail is on a per account and per region basis,
+but can be aggregated into a single bucket belonging to the paying
+account as well.
+That is it for this lecture guys in the next lecture we're going to get really
+hands on and we're going to go ahead and set up up AWS Organizations.
+So if you've got the time, please join me in the next lecture. Thank you.

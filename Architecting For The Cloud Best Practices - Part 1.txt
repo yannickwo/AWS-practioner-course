@@ -1,0 +1,422 @@
+Okay, hello Cloud Gurus
+and welcome to this lecture.
+In this lecture we're going
+to talk about architecting for the cloud, best practices.
+So, this is based off the whitepaper which you saw
+in the exam blueprint.
+I would recommend that you go and read that whitepaper
+before sitting your exam.
+If you do that you are going to maximize
+your chances of passing.
+So the whitepaper starts off by comparing
+traditional computing to cloud computing
+and it does this across six different areas.
+So the first one is IT assets as provisioned resources.
+Now, this actually used to be as programmable resources,
+but they've changed it to provisioned resources
+in October 2018.
+And all they mean here is that IT assets are now available
+to you as a programmable or provisioned resource.
+So in the last lecture, we looked at CloudFormation.
+CloudFormation allows us to have these templates,
+it's done using JSON.
+And you can go out and using these templates create
+EC2 instances, RDS instances, you can create S3 buckets,
+you can create basically almost everything
+inside the AWS ecosystem.
+So that's all it means is IT assets is provisioned
+resources. If you compare that to traditional computing,
+what used to happen is you would go out
+and get a purchase order, and you would purchase physical
+servers, you'd be in a three year to five year contract.
+Those servers would arrive, they'd have to be racked,
+they'd have to be connected up to all the networking gear,
+you'd have to go in and install the operating systems.
+And it would just take an awful lot of time.
+So with cloud computing, it's a lot faster.
+Cloud computing is also global, available and scalable
+in terms of its capacity.
+So as you remember the beginning of this section,
+we looked at the difference between regions,
+availability zones, and edge locations.
+We've got regions all over the world
+with multiple availability zones, and we've got even more
+edge locations than we have, you know, compared to regions.
+So basically,
+So basically, cloud computing is everywhere.
+You can deploy your applications in Tokyo, in Ireland,
+in, you know, US east 1, et cetera, et cetera.
+But then have higher level managed services available
+to you in cloud computing.
+So if you want to do machine learning on your data set,
+you can go and use AWS SageMaker.
+You don't need to go out and start getting
+machine learning experts and building your own
+machine learning, you know, environment.
+you can just go and use these higher level managed services
+that are, you know, presented to you as a product.
+We then have built-in security.
+So AWS is extremely secure.
+It's probably safer now to have your infrastructure
+on AWS than hosting it internally yourselves.
+The reason for that is they give you a whole bunch
+of different, you know, products,
+so things like web application firewalls,
+they give you things like identity access management,
+and allows you to set up groups and users
+that all have different you know,
+levels of access to your AWS account.
+It allows you to sell multifactor authentication,
+et cetera, et cetera.
+So Cloud is a lot more secure.
+It's pretty much more secure than doing things on-prem,
+in my opinion.
+Then have architecting for costs.
+This is quite an interesting one,
+because it's basically saying that you can design
+your environment in clouds to be very cost efficient.
+That's what we did at A Cloud Guru,
+we essentially built out a serverless website.
+And we did not get a bill.
+Even now, our bill is like $400 a month,
+and we're serving hundreds of thousands of users.
+So you can actually architect your environment
+to be extremely cost efficient
+if you know what you're doing.
+Then finally, we have operations on AWS.
+And this talks a little bit about a journey that most
+companies go through when they're migrating to cloud.
+Essentially, what they do is they do a lift and shift.
+So they take their virtual machines,
+and then they move them into EC2.
+And then they might do a bit of re-architecting,
+they might have on those virtual machines MySQL database
+installed, and they might say, well, actually,
+why are we doing that when we can use RDS?
+Let's just get rid of the MySQL database
+on those virtual machines and use RDS instead.
+So it's using other AWS services.
+So it's called refactoring.
+And then we have re-architecting.
+And this is where you're basically going,
+again to a serverless architecture where you're using
+all the best of AWS technologies
+to completely re-architect your application
+and make it very, very cost efficient.
+So now that we've defined the differences between
+cloud computing and traditional on-premise computing,
+the whitepaper then goes on to talk about
+the different design principles.
+And that's what we're going to be talking about
+throughout the rest of this lecture.
+So we're going to start with scalability.
+And there's two ways to scale.
+You can scale up,
+and this is where you take like a t2.micro instance,
+and you increase its size so that it's a bigger server.
+So scaling up is just increasing the amount of RAM
+or the amount of CPU inside an individual virtual machine.
+We then have scale out, and this is far more common.
+This is where you add multiple virtual machines
+behind an elastic load balancer, for example.
+So this is a far more common thing.
+And then we have a whole bunch
+of different ways to scale out.
+So we've got stateless applications.
+And I want you to think of Lambda.
+Lambda is essentially, every time you talk to Alexa,
+you're talking to Lambda.
+And Alexa doesn't remember what you say,
+it basically you say something to Alexa,
+it then runs an algorithm to figure out what it is you want,
+and then returns a result back to you.
+And that's it, it forgets what has happened.
+So that's all a stateless application is.
+So that's using Lambda.
+We then have to distribute load to multiple nodes.
+So we sort of looked at this when we were doing
+our multiple, in our WordPress example,
+where we had multiple EC2 servers,
+also looked at this with RDS where we've got read replicas.
+So essentially, if you can,
+you distribute load to multiple nodes,
+whether these be web servers,
+or if these be database servers, et cetera, et cetera.
+We then have stateless components.
+So the more stateless your components,
+the easier your infrastructure scales,
+and they use the example of when you're signed into
+a website, for example, so if you're signed in,
+you want to present personalize information such as
+your login, you know, your actual account details,
+that sort of thing.
+Now, instead of storing that on a web server, what you
+might do is store it in the user's browser as a cookie.
+So every time that they've signed in
+the cookie is valid for, let's say, four or eight
+or 12 hours or something like that.
+And once that cookie is invalid,
+they are automatically signed out,
+and they have to sign back in again.
+So, that's all a stateless component is.
+Stateful components are sort of the opposite.
+So you might want to keep the sign in cookie
+in the user's browser, but you want to understand what
+that user is doing, like what they're purchasing, for
+example, for an online store or what they're looking at.
+So instead of storing that in the user's browser,
+you definitely don't want to lose that information
+after you know, six or eight hours.
+And you would store that in a database.
+So it uses the example of RDS for example.
+So if a user it goes on to your store and does a transaction
+you want to store that in something stateful,
+so RDS or any kind of database.
+We then move on to implement Session affinity.
+So here they talk about sticky sessions.
+This is basically where you put a cookie in a user's
+browser, and every time they go and visit your website,
+an Application Load Balancer will detect that cookie.
+And it will send them back to the exact same EC2 instance.
+So basically, a sticky session just means you're stuck
+to a particular EC2 instance.
+We then have distributed processing
+and implement distributed processing.
+They use the example here of Elastic MapReduce,
+we haven't really talked about Elastic MapReduce
+in the course so far.
+Essentially, what it does is it allows you to have
+a whole bunch of different EC2 instances.
+And they process really, really large complex jobs.
+So really, really large complex amounts of data.
+And so instead of having just one EC2 instance do this,
+you have a whole fleet.
+So, you have literally thousands of them,
+and then that will cut down the amount of time
+that it takes to process that data.
+So that's Elastic MapReduce.
+So, moving on to other design principles.
+The next one is disposable resources
+instead of fixed servers.
+So essentially here we want things like EC2,
+we don't want physical assets, like, you know,
+renting a server for three to five years.
+You want to be able to terminate your environments
+and not be locked into any contract
+and get a whole bunch of flexibility.
+And then it talks a little bit about
+instantiating compute resources.
+So what does it mean by that?
+Well, it means using things like bootstrapping, for example.
+So essentially, you don't want to have to go in
+and manually configure your EC2 instances every single time.
+And we used a bootstrapping script when we were, you know,
+doing our RDS lab, we used a bootstrap script
+to go in and install WordPress.
+Then had golden images.
+We also use this in the WordPress lab.
+This is when we set up autoscaling.
+So we basically took a image of our EC2 instance after
+it had already been set up and configured.
+Then that way, every time we deployed a new EC2 instance,
+using that golden image,
+WordPress had already been set up and installed.
+Then you can also use containers.
+Containers are beyond the scope
+of the Certified Cloud Practitioner.
+so, don't worry about that.
+And then hybrid.
+So this is where you're using a combination
+of containers as well as EC2 instances as well.
+Moving on to infrastructure as code.
+so we're still in the disposable resources
+instead of fixed servers.
+So we looked at using CloudFormation.
+We use CloudFormation to provision our WordPress lab,
+in the very last lecture and it configured
+a WordPress server very, very quickly and it configured all
+our security groups, all of our RDS instances, et cetera.
+So you should always try and use infrastructure as code.
+And you should always try and use CloudFormation.
+So then move on to automation.
+And ideally you would like to get everything serverless
+because when everything is serverless,
+then you don't need to worry about your infrastructure,
+you don't need to worry about Lambda or S3,
+et cetera, et cetera.
+These services take care of themselves.
+when you move to a serverless environment, really,
+all you need to worry about is your deployment.
+So using things like CodePipeline, CodeDeploy, et cetera.
+And we cover those off in an awful lot of detail
+in the Certified Developer Associate course.
+We then have infrastructure management and deployment.
+So this can be things like Elastic Beanstalk.
+This is where essentially all you have
+to worry about is your code.
+You upload this to Elastic Beanstalk
+and it'll grow out your environment
+just like a Beanstalk underneath.
+We also have a Amazon EC2 auto recovery,
+AWS Systems Manager as well as autoscaling.
+These are all different examples under
+infrastructure management and deployment.
+Don't worry, we don't really need to know what these
+services are for the Certified Cloud Practitioner
+aside from obviously autoscaling.
+Moving onto automations, we've got alarms and events.
+so Amazon CloudWatch alarms.
+We did look at this in a little bit of detail
+when we were setting up billing alert.
+We then have Amazon CloudWatch Events.
+We haven't really covered this off in the Certified Cloud
+Practitioner, but essentially let's say you've got
+an S3 bucket and someone uploads a picture to it,
+you can, basically configure CloudWatch Events
+to detect that someone's uploaded a picture to S3,
+and then it will trigger a Lambda function and maybe it will
+generate a watermark on that image.
+So, basically CloudWatch Events is a way
+of having your environment proactively respond
+to a change in the environment.
+So in this example where we've got
+someone uploading an image to S3.
+You have Lambda scheduled event so you can actually run
+Lambda functions at midnight on every Monday
+doing a particular thing.
+so again, that's another example of automation.
+And then finally we have AWS WAF security automations.
+And this is essentially
+a WAF is just a web application firewall.
+It can actually automatically respond to someone
+who's trying to do something bad to your site.
+So a good example of this would be SQL injections
+or cross-site scripting.
+These are ways that hackers try and manipulate your website.
+If you've got an AWS WAF in front of it,
+they won't be able to do that.
+Moving onto loose coupling.
+So there's four different headings in loose coupling.
+The first one is well-defined interfaces
+and this uses an example of using APIs.
+So Amazon have a service called Amazon API Gateway,
+which allows you to create your own
+APIs and expose them to the public internet.
+And again, it's completely out beyond the scope
+of the Certified Cloud Practitioner to cover this
+off in any kind of detail.
+We do cover it off in Certified Solutions Architect
+Associate where you will go and create your own APIs.
+And we start building serverless websites using API gateway.
+We then have Service Discovery.
+So the example here is let's say you've got an EC2 instance
+and it needs to connect to a database server.
+If it's just using a fixed IP address to connect
+to that database server and that server then fails,
+it's just going to, you know, nothing's going to happen.
+If you use an EC2 instance that connects to an RDS instance
+using its DNS name and you've got multi-AZ turned on,
+if that RDS instance then fails,
+well because it's using the DNS name,
+AWS will switch it over to the other availability zone
+and you won't have any kind of outage or you'll only be
+for a couple of seconds like we saw in the labs.
+So that's just service discovery.
+It's allowing one component of AWS
+to automatically discover another component of AWS.
+We then have Asynchronous Integration.
+Up here we've got a tightly coupled, you know, environment.
+So if one of these things fails, then that's it.
+You know, your whole process is not going to work,
+so your whole application won't work.
+When you have a loosely coupled environment,
+it makes it a lot easier.
+And we, look at this in the Certified Solutions
+Architect Associate, we look at SQS.
+SQS is just a queue service.
+So you can put messages into this queue.
+So it could be, hey, put a watermark on this image.
+These are essentially EC2 instances.
+They poll the queue to get a job and then they'll be like,
+hey, it says I need to watermark this image.
+So the EC2 instance goes through and watermarks the image.
+If this EC2 instance fails, there'll be another EC2 instance
+pulling the messages from the queue.
+So it just means that because you're no longer
+tightly coupled, it gives you resilience.
+So you should always have loose coupling as a part of your,
+you know, as a part of your environment.
+And then finally we have distributed systems best practices.
+And so this is graceful failure in practice.
+So the idea here is let's say you've got an S3 website
+and then a particular page doesn't exist.
+You have an error.HTML page.
+So you have a way of telling your users,
+sorry, there has been a failure and also a mechanism
+to report back to your system administrators
+so they can go in and say, hey, we haven't uploaded
+this HTML page to our S3 website.
+Then move on to services and not servers.
+So we've got managed services and serverless architectures.
+So you should always focus on services rather than
+using physical or virtual servers, if you can.
+So, use AWS managed services,
+things like Lambda for example, things like S3,
+things like Route 53, basically anything where there isn't,
+we're not relying on physical servers.
+And then, it goes on to talk about serverless architectures.
+So, that's really where every enterprise should be going
+in the next five to 10 years is moving everything
+over to serverless.
+So, the great thing about serverless
+is you don't have to manage servers.
+And this is a slightly an old diagram,
+but this is give you an idea of how our application works.
+So, we built our own learning management system
+on the AWS Cloud.
+We run angular JS in all, our browsers across all devices.
+And then that basically queries Amazon's API Gateway.
+So API Gateway here,
+and then we use a whole bunch of different services.
+So we have all these different Lambda functions
+behind API Gateway.
+We use Cloud Search to do so, basically if you want to be
+able to search on our forums that's using AWS Cloud Search,
+we use Auth0, which is another microservice
+that allows you when you're logging into our website to
+use things like Facebook or to use your LinkedIn, et cetera.
+We then store all our video files in S3.
+We actually use a CloudFront as our CDN network.
+This says we use Firebase.
+So we've actually moved over to DynamoDB now.
+So like I said, this is slightly out of date.
+We use Stripe and PayPal for our credit card payments.
+We use Intercom to talk to our customers
+and we use Campaign Monitors to send you, you know, emails.
+So, this is the, A Cloud Guru platform as a whole.
+And you'll see that we literally do not
+have any EC2 servers.
+So, we do not have any EC2 instances.
+And our entire compute bill, is about $400 a month,
+which is just amazing when you consider
+how many people we train.
+And this is one of my favorite quotes from Werner Vogels,
+he's the CTO of Amazon.
+He says that no server is easier to manage than no server.
+And so it's kind of like an Inception-style quote.
+But it's true, we don't manage any servers,
+we don't have any system administrators.
+So there's nothing easier than that.
+You know, all we have is our developers
+who develop inside Lambda and API gateway.
+So this is the end of part one.
+Congratulations, you've done really, really well.
+Why don't you go have a break,
+make yourself a tea or a coffee.
+I know this can be a little bit dry,
+but it is really important to understand this whitepaper
+in order to have a good chance of passing your exam.
+Again, I'd highly recommend
+that you go on and read it as well.
+So if you've got the time, please join me in part two.
+We're going to do it really, really quickly.

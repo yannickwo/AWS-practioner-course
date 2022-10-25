@@ -1,0 +1,139 @@
+[Ryan Kroonenburg] Okay, hello Cloud Gurus
+and welcome this lecture.
+And in this lecture we're going to look at
+how to create a billing alarm.
+Now, for most of the lectures in this course,
+we'll be using AWS Free Tier,
+however, there are some lectures
+where you will not be using Free Tier,
+or we might exceed the limits of Free Tier.
+And in order to just alert us when we go over the amount
+what we're going to do is go ahead
+and set up a billing alarm.
+So billing alarm is basically an amount that you set
+let's say it's going to be $10,
+and it will send you an alarm
+as soon as your AWS bill goes over that for the month.
+So, this is a lab
+and you will need to log into the AWS Console.
+Okay, so here I am in the AWS Console,
+I want you to just make sure that your region is set
+to Northern Virginia.
+So make sure it's in Northern Virginia,
+you can see all the different regions around the world here.
+And then what we're going to do
+is we're going to go over to a service called CloudWatch.
+Now CloudWatch is exactly what it sounds like.
+It's a way of monitoring your cloud,
+or watching your cloud.
+And you can find CloudWatch here
+under Management and Governance
+and we're going to, it's the second one down,
+and go ahead and click on CloudWatch.
+And that will launch the CloudWatch Console.
+And then what we want to do,
+is we're going to go ahead and click on billing.
+And in here we're going to create a billing alarm.
+So what we need to do is hit Create Alarm.
+Now if you don't see this screen
+it means that you've clicked
+the wrong Create Alarm button.
+So there's actually two.
+If you click this one up here,
+it's going to create a generic alarm.
+So go just hit Cancel
+and then click the one down here, Create Alarm.
+And then you should see this screen.
+If you still don't see this screen
+you can actually go back and you can select the metric
+and then you just click into Billing
+and you go Total Estimated Charges
+and then you click on US dollars,
+and hit Select Metric
+and then you'll get this exact same screen.
+So hopefully everyone is at this point.
+I know it can seem a little bit confusing.
+And so what we're going to do is,
+you can see here we've got our currency in US dollars,
+the period is going to be every six hours
+it's going to be checking our account
+to make sure we haven't gone over that.
+We've got two different threshold types here.
+We've got Static and Anomaly Detection.
+Anomaly is basically for detecting anomalies,
+we just want Static.
+And we're just going to say,
+"Whenever Estimated Charges is Greater Than,"
+and then you enter in here at the number 10, US dollars,
+then it's going to do an alarm.
+There's some additional configuration options in here,
+such as the number of data points that you want
+and how to treat missing data.
+But don't worry about that.
+Just go ahead and hit Next.
+And then what we need to do is create an SNS topic.
+And SNS stands for Simple Notification Service.
+And we're going to cover that a bit later on in the course.
+And what we want to do is just create a new topic.
+And so the topic in here, we'll just call it Billing Alarm.
+And in here we enter in our email address.
+And it has to all be one word.
+And so in here, enter in our email address,
+and make sure you enter a legitimate email address,
+because you will have to confirm this.
+So I've entered in my email address,
+I have blurred it out,
+because I don't want everyone emailing me.
+And go ahead and hit create topic.
+That will then create a topic
+and you should get an email straight away,
+basically telling you to subscribe to that topic.
+Go into your email, click on the link
+and then you will be subscribed to that topic.
+Once you've done that, just go ahead hit Next.
+In here we're going to enter our alarm name.
+So again, we're just going to call it Billing Alarm.
+And my alarm description,
+"Send me an
+"email
+"if my bill goes over
+"$10."
+So there we go, go ahead and hit Next.
+And then we could...
+This is a preview of it all.
+All you need to do is scroll down to the very bottom
+and then go ahead and hit Create Alarm.
+And so, you can see here
+the Action says "Pending Confirmation"
+that means you need to go into your email
+and just subscribe to that topic.
+And when you have clicked on that link in your email,
+you'll see something very similar to this,
+just saying "Your subscription is confirmed."
+Then if you go back to the console,
+and you just hit the refresh button,
+you'll see that the actions are in there.
+At the moment, there's insufficient data,
+that's because we said
+"Hey, check my account every six hours"
+so depending on your own account,
+it may take a little bit of time for this to turn into OK.
+But just wait and be patient, and that's it.
+You will now get an alarm every time
+your bill goes over $10.
+And so where this comes up in the exam,
+is basically it's asking you how can you get automatic
+notifications if your account goes over, like,
+a $1000 or whatever,
+well the answer is you go into CloudWatch
+and you create a billing alarm.
+A billing alarm uses an SNS topic.
+We will cover that off later off in the course.
+But essentially an SNS topic
+is just basically a way of emailing you
+whenever your alarm goes over the $10 threshold.
+So that's where it will come up in the exam.
+And oh, you can see it just went into an OK status as well.
+So that is it for this lecture guys,
+if you have any questions, please let me know.
+If not, feel free to move on to the next lecture, thank you.

@@ -1,0 +1,528 @@
+Okay, hello, Cloud Gurus
+and welcome to this lecture.
+So, we have passed the heavy theory part about EC2,
+and now we're gonna go on
+and start getting our hands dirty with EC2.
+Like I always say,
+the best way to learn AWS is to start using it.
+So, this is a lab
+and you will have to log into the AWS Console.
+Okay, so here I am in the AWS Console.
+If we go over to services, you'll see EC2 under compute,
+so go ahead and click on that.
+Now, I would be conscious of your region.
+Do try and do this in Northern Virginia.
+EC2 is a per region service,
+so if you go to Ireland or to London or to Paris,
+it will spin up EC2 instances in those regions,
+and you don't get the global view
+that you do get with S3 or with IAM or with Route 53.
+So, it is a region by region service.
+So, if you've never used EC2,
+it's gonna look exactly like this.
+You're gonna have zero of everything,
+apart from your default security groups.
+And what we wanna do,
+is we're gonna go ahead and hit launch instance.
+So we're gonna launch our instance.
+Now in here, we can click on free tier only.
+That will make sure we're only using
+free tier EC2 instances.
+Throughout the rest of this course
+we're gonna use the Amazon Linux 2 AMI,
+so we're gonna use this one.
+But do have a look at all the different, you know,
+AMIs that are available.
+We've got some Windows ones,
+we've got just normal Linux ones.
+So, like Ubuntu, for example.
+We've got some .NET Core, et cetera, et cetera.
+So, these are all the different operating systems.
+So, we're gonna use the Amazon Linux 2.
+So, go ahead and select that.
+And then in here, we've got our instance families.
+So, this is Fight Dr. McPixie,
+this is where you get all the different instance classes.
+And depending on your region,
+it depends what is available.
+So, hopefully in Northern Virginia
+we should have every one available.
+I'm going to use a t2 micro
+because that is free tier eligible.
+So, let's go ahead and hit next
+to configure our instance details.
+So, in here we specify the number of instances,
+we only want one.
+In here we could request spot instances.
+So, instead of paying it, you know, by the per second
+or by minute or by hour,
+we could just set our spot price.
+We don't wanna do that.
+And here is our network.
+Just leave this as default.
+Basically, you have these things called VPCs
+and they're virtual,
+they're basically like miniature datacenters in the cloud.
+And so, we will cover it off a little bit later,
+but it is beyond the scope
+of the certified cloud practitioner course.
+In here we've got different availability zones.
+So, we've got us-east-1a, b, c, d,
+and then e and f.
+So, we've got an awful lot of availability zones.
+Some regions will only have two availability zones.
+So, it depends on the region.
+Now, interestingly, us-east-1a,
+for this AWS account,
+will be actually a different region
+for another AWS account.
+And the reason Amazon do that,
+is they don't want everyone just to be selecting 1a
+because it's the first one,
+so they actually do randomize it.
+But again, you don't really need to know that
+for your cloud practitioner's exam,
+it's just something interesting.
+So, I'm gonna say no preference.
+I wanna deploy my EC2 instance
+into any available availability zone.
+We're gonna leave auto-assign public IP address.
+We want a public IP address
+to be able to access this instance.
+Scroll down.
+We can ignore all the other things.
+We will cover them off in more detail
+if you wanna go on and do
+the certified solutions architect associate.
+But for now, all you need to do
+is just basically say we want one instance
+with no preference,
+it can be anywhere.
+And just leave all the options as default.
+So, let's go ahead and add our storage.
+So that we've just configured out EC2 instance,
+this is going to be our virtual hard disk in the cloud.
+So, this is our EBS instance.
+And in here we can change our volume type.
+So, we've got general purpose,
+we've got provisioned IOPS,
+we've got magnetic standard.
+And you can only boot,
+the reason you only get three options here,
+is you can only boot from these three different classes.
+So, from GP to Io1 and the magnetic standard.
+If we would add another volume in here,
+you'll see that we get more.
+So, we get our cold hard disk drive,
+we get our throughput optimized.
+So, these are our normal magnetic drives
+that we covered off in the last lecture.
+We don't really need them for this one,
+so I'm just going to do standard purpose gp2.
+We're gonna go in and add our tags.
+So, let's add a few tags.
+We're gonna add in our names.
+So, we're gonna call this, WebServer01.
+I'm gonna add another tag,
+so this will be my department,
+who owns this web server.
+Well, I'm gonna say, it's our applications team.
+And then, let's add another department, employee_ID.
+So employee, and then ID.
+So, which employee has spun this one up.
+And I'm just gonna enter my ID in there.
+So, let's go ahead and configure our security groups.
+So, we are gonna create a new security group.
+I'm gonna call this, WebDMZ,
+WebDMZ.
+Now, you might be wondering, what is a security group?
+Well, a security group is basically
+just a virtual firewall in the cloud.
+And let me explain this in something
+that will make it very easy to understand.
+So, let's talk about how computers communicate.
+But before we even get to that,
+let's talk about human beings and how we work.
+So, you've got your eye,
+and your eye is designed for one purpose,
+it's designed to see.
+And in fact, it's designed to interpret light,
+to make sense of light.
+And it works from various different wavelengths.
+There's some wavelengths that your eye can't see.
+The eye can see an awful lot of different wavelengths,
+it can see all the colors in the rainbow, for example.
+So, basically light is transmitted,
+and your eye receives light
+and make sense of that information.
+Likewise, your ear will hear music or hear sound,
+and likewise, your skin can feel heat.
+So, that's the way human beings work.
+You know, we different parts of our body
+and they can each interpret
+different sources of information.
+And computers actually work in exactly the same way.
+So, we've got Linux computers.
+Linux computers talk over SSH.
+So, this is on port 22.
+Windows PCs, they talk to each other
+using Remote Desktop Protocol or RDP.
+And this is on a different port called port 3389.
+And then things like HTTP, HTTPS,
+they all talk on different ports.
+So, HTTP works on port 80.
+HTTPS works on port 443.
+Now, computers on the internet
+can be flooded with information.
+They can get information from port 22,
+3389, port 80, port 443.
+And this, you may wanna restrict
+who is trying to talk to your computer,
+you know, someone trying to control your computer.
+And that's exactly what a firewall does.
+And this is an old school firewall.
+So, firewalls enable communications through different ports.
+So, if you wanted to let everything in,
+you would let everything in
+on what's called a CIDR address range.
+And so, it's just this IP address of 0.0.0.0/0.
+And when you put that address range in,
+it's saying, hey, just let everything in on this port.
+So, let everything in on port 21
+or let everything in on port 80.
+And depending on the port,
+you may wanna let everything in, or you may not.
+So, web servers, for example, you do,
+if you've got a web server,
+the whole purpose of the web server
+is to give web content out to anyone that requests it.
+So, you would want port 80 open to the entire world.
+But, if you've got a Linux server
+that you just wanna administer your own,
+let's say on port 22, so SSH port,
+you may just wanna lock that down to only your IP address.
+So, you would wanna let everything in on port 80,
+but you may wanna lock everything down
+to your own IP address.
+And we use this /32 notation.
+So, you would enter your public IP address in here
+where these four Xs are.
+And then the /32 just means
+only one address is allowed in on this port.
+So, that's what we're doing here.
+SSH works on port 22.
+And we're gonna allow this open to the whole world.
+Now, you could just hit My IP,
+and Amazon will automatically specify your public IP address
+down to the /32.
+So, if you do My IP,
+it means that only you can SSH into this web server.
+Now, there's advantages and disadvantages to this.
+The advantage is it's very secure,
+no one else will be able to connect into it.
+The disadvantage is, however,
+that if your IP address changes,
+you're gonna have to go in and change this rule.
+So, for the rest of this course,
+we're just going to say anywhere.
+We're gonna use 0.0.0.0.
+You're always gonna get a warning message
+because it's really not a wise idea to do that normally,
+especially for this port.
+But for web traffic,
+that's what web servers do, right?
+They want to be able to respond to web requests.
+So, we're gonna go in and open up port HTTP,
+and that operates on port 80.
+And we're gonna open up that up to the whole world.
+And this is IP4, and this is IP6 notation.
+So, that's all we're doing in here.
+So, I want you to open up SSH and HTTP,
+so port 22 and port 80, to anywhere in the world.
+And let's go ahead and hit review and launch.
+And now we're gonna go ahead and hit launch.
+In here, it's going to create a key pair.
+So, a key pair is just a way of us being able
+to log into our EC2 instances.
+And there's two types of keys in asymmetric cryptography.
+You've got your public keys
+and you've got your private keys.
+And the way I like to think of this,
+is your public key is just like a padlock.
+You can go and put your padlock,
+and you can have like hundreds of copies of this padlock.
+And you can put it on your bike,
+you can put it on your locker,
+you can put it on your front door.
+And the only thing that can open that padlock is a key.
+And you only really wanna have one copy of your key
+because then only you control it.
+So, you can have multiple copies of your public key,
+but you only really want one copy of your private key.
+And your private key is used to open your public key.
+So, it's just used to open your padlock.
+It's the easiest way to think of this.
+So, what we need to do is we need to create a new key pair.
+I'm gonna call my key pair, MyPrivateKey.
+Just keep it really simple.
+And I'm going to download this now.
+So, you do need to definitely download this
+because you can only create it once.
+Once you've downloaded it,
+let's go ahead and hit launch instances.
+So that is now launching.
+If we click here on view instances,
+it will spin up here in a few seconds or even a few minutes,
+depending on how quick it is
+in your availability zone and your region.
+So, I'm just gonna pause the video
+and I'm gonna wait for this to come up online.
+Okay, so here is my EC2 instance.
+It is now in the instance state of running.
+It's now in the us-east-1c availability zone.
+Your availability zone may be different.
+Over here it's my public IP address,
+and I need to use this to connect into it.
+If you go down here,
+you'll see the little copy to clipboard icon,
+so just click on that.
+That is now in my clipboard.
+Now, depending on whether or not you're using Mac
+or if you're using Windows,
+the next steps vary.
+So, I'm just gonna continue this on for Mac users.
+For Windows users,
+please jump to 14 minutes and five seconds.
+So Mac users, if you go into finder
+and you click on applications,
+we can scroll all the way down to utilities,
+and in utilities you'll see this thing called, terminal.
+So, I want you to open that up.
+So, I'm in terminal.
+I'm just gonna go view into full screen.
+And I'm in the acloudguru directory.
+You'll be in whatever directory,
+what you call your home screen.
+And then, all you need to do is type in cd
+and then Downloads.
+And that will take you to your downloads directory.
+If you type ls, that means list,
+you'll be able to see the private key that you downloaded.
+So, mine is called, MyPrivateKey.pem.
+And what do we need to do first of all,
+is just change the permissions on this.
+So, we need to do chmod and then 400,
+and then the name of our key.
+So, it's MyPrivateKey.pem,
+and hit enter.
+Once we've done that,
+let's clear the screen to keep it simple.
+And then, all we need to do
+to connect into our EC2 instance,
+is type ssh ec2-user and then @.
+Then we paste in our public IP address,
+and then it's minus and then i,
+and then it's the name of the key.
+So, it's MyPrivateKey.pem.
+Go ahead and hit enter.
+It'll ask you if you're sure
+you want to continue to connect.
+I'm gonna type in, yes.
+And there we go.
+We can see it's my Amazon Linux 2 AMI.
+Now, for some reason, it's timing out.
+The very first thing you should do is check
+that port 22 is open on your security group.
+So, I'll just quickly show you how to do that.
+So, back in the EC2 screen,
+all you need to do is click on security groups
+under network and security.
+So, click in there.
+And just select the security group.
+So, it's my WebDMZ.
+Click on inbound,
+and just make sure that port 22 is open to the entire world.
+If you're still having trouble connecting,
+a lot of networks,
+so if you're in a library or if you're at workplace,
+a lot of networks just block port 22,
+so you need to find a way
+to get around your network restrictions.
+I would just try and tether to my mobile phone,
+that often works.
+That's normally 99% of the cause,
+is people block port 22,
+or you have to go and try this at home.
+So, hopefully you can get past that bit.
+So, I'm back in my terminal window.
+I'm gonna just clear the screen.
+We're gonna elevate our privileges to route.
+So, we do that by typing sudo su,
+and this gives us root level access.
+So, we are now a root user.
+You can see it says root over here.
+And root gives us admin access,
+it allows us to do anything that we want.
+And so now what we might wanna do,
+is type in yum and then update and then minus yes.
+And this will update our EC2 instances
+with all the latest security patches.
+So, that is now updating it
+with all the latest security patches.
+And that's it.
+And there we go, it's complete.
+So, Mac users, you can now skip to the end of this lecture.
+Now we're just gonna switch over for Windows users,
+so they understand how they can connect in.
+Okay, so I'm here on my Windows PC.
+And what I need to do
+is just go over to the start bar
+and click on the start bar.
+And then what we need to do,
+is we need to go down and find PuTTY.
+So, scroll all the way down till you see PuTTY.
+Click in PuTTY.
+And the first thing we need to do,
+is just go over to PuTTYgen.
+And what we're gonna do is generate our PPK file.
+So, we're turning our PEM file into a PPK file.
+So, click on load an existing private key file.
+And then what you need to do
+is navigate to where you downloaded this.
+So for me, it was in my downloads directory.
+And then make sure you change this here to all files,
+because it's only gonna show you PPKs.
+So, mine is myWebServer.pem.
+Go ahead and open that up.
+And then, once you've loaded that,
+it will say successfully imported foreign key.
+Click okay.
+And then what we wanna do
+is go ahead and save our private key.
+And it says, do you wanna save this without a passphrase?
+I'm gonna say, yes.
+And that saves it into our PPK.
+So, I'm gonna call it myWebServer,
+but instead of PEM, just PPK.
+And then, I'm gonna go ahead and hit save.
+And then that saves it into my download directory.
+Once you've done that,
+you can close PuTTY Key Gen.
+And then go back down to PuTTY,
+and open up just normal PuTTY directory.
+And then we wanna open up PuTTY.
+And then, what we wanna do now,
+is the very first thing we wanna do,
+is go over to SSH here,
+and go to our Auth.
+And then, in here we need to enter our private key.
+So, we go to browse,
+and then open up your private key,
+which is myWebServer.ppk.
+Then we go back up to our session.
+And then what we wanna do is type in
+our public IP address in here.
+So, back in the AWS Console,
+we just click on services,
+go to EC2 and grab your public IP address.
+And here we go.
+My public IP address is just over here if I scroll across.
+So, it's 35.176.116.168.
+Copy that into your clipboard.
+We go back over to PuTTY,
+paste it in here,
+and then just go ahead and click save,
+and that will save your settings.
+And then just click on the IP address and go open.
+And you should have no issues.
+And just paste it up in here as well.
+And then, go ahead and hit open.
+It may prompt you for a username,
+so you just have to type in, ec2-user.
+Like so.
+Hit enter, and there you go,
+you're logged in to your Amazon Linux AMI
+on a Windows machine.
+Now, if you do have network connectivity issues,
+a lot of corporate networks block SSH.
+So, try going out via your phone or try doing this at home.
+That's nine times out of 10 is the issue.
+The other thing, you can just go back and double check,
+is if you click on here,
+and then go down to your security group
+and make sure your security group has SSH open to the world.
+So, it's under security, security groups,
+and then click on your Web-DMZ,
+and then click on inbound.
+And your SSH port is port 22,
+and it's gotta have this 0.0.0.0/0.
+So, under my exam tips.
+Well, congratulations,
+you've provisioned your first EC2 instance,
+you've taken a step into a much wider world.
+Just remember that EC2 is a compute-based service.
+It's not serverless,
+it's an actual virtual server in the cloud.
+Remember that you need to connect to EC2
+using a private key.
+And I said a private key is just like a key
+that you wanna keep,
+and a public key is just like a padlock.
+So, you use your private key to unlock your padlock.
+You don't wanna share your private key with anyone.
+Then we learned that computers like human beings,
+communicate in a whole bunch of different variety of ways.
+So, Linux servers, if you wanna administer them,
+you use SSH, and that's on port 22.
+Microsoft computers or Windows servers,
+if you wanna administer them,
+you use the RDP or Remote Desktop Protocol.
+And that sits on port 3389.
+We then also learned that things like HTTP and HTTPS,
+they work on port 80 and port 443.
+And basically, when you're using a security group,
+you're basically using a virtual firewall.
+So, this is an old school,
+very old school Cisco ASA 5505.
+These are the very first firewalls I used to use
+when I was a solutions architect.
+Nowadays, everything's done through virtual firewalls
+and using security groups.
+So, when we wanna let everything in,
+we just allow everything on 0.0.0.0/0.
+If we wanna let just one IP address in,
+we use the private or the public IP address and then /32.
+The /32 means this IP address only,
+that's all the difference is.
+And so, like I said, security groups,
+they are virtual firewalls in the cloud.
+You need to open up ports in order to use them.
+Popular ports are SSH, HTTP, HTTPS and RDP.
+And then finally, we should always design for failure.
+So, if you're gonna have a production, you know, website,
+you should always have one EC2 instance
+in at least one availability zone,
+and you should have at least two.
+So, you have one in one availability zone,
+one in another availability zone.
+And then that way if one goes down,
+the other one will serve the traffic.
+So, remember that.
+So, well done, everyone,
+you've provisioned your first EC2 instance.
+I hope you had lots of fun.
+In the next lecture,
+we're gonna look at how we can get our hands dirty
+with this EC2 instance.
+So, so far we've been interacting
+with AWS using the console.
+So, you know, we've been going into EC2, IAM, S3.
+We've been using the graphical user interface or GUI.
+In the next lecture,
+we're gonna look at how we can use the command line.
+And the great thing about our little EC2 instance,
+is it was already installed with the command line tools.
+So, we'll be able to use the command line
+to go and do things like make S3 Buckets, for example.
+So, if you've got the time,
+please join me in the next lecture, thank you.
