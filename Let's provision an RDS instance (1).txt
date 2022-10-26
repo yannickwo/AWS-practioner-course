@@ -218,6 +218,21 @@ and we are going to leave everything as default,
 except we're going to scroll down,
 we're going to go to advanced details,
 and in here we're going to pass it a Boot Strap script.
+##########
+!/bin/bash
+yum install httpd php php-mysql -y
+amazon-linux-extras install -y php7.2
+cd /var/www/html
+wget https://wordpress.org/wordpress-5.4.1.tar.gz
+tar -xzf wordpress-5.4.1.tar.gz
+cp -r wordpress/* /var/www/html/
+rm -rf wordpress
+rm -rf wordpress-5.4.1.tar.gz
+chmod -R 755 wp-content
+chown -R apache:apache wp-content
+service httpd start
+chkconfig httpd on
+#######
 Now this is the Boot Strap script in here.
 It is way beyond the scope of the certified cloud
 practitioner to understand what it's doing,
@@ -510,4 +525,4 @@ don't beat yourself up,
 and we'll try and help you on the discussion forums.
 So if you have any questions, please let us know.
 If not, feel free to move on to the next lecture.
-Thank you.
+Thank you.
